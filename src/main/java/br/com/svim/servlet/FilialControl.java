@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.svim.control;
+package br.com.svim.servlet;
 
 import br.com.svim.dao.FilialDao;
 import br.com.svim.model.Filial;
