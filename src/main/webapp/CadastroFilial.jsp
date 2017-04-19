@@ -22,13 +22,13 @@
                             Nome
                         </td>
                         <td>
-                            <input type="text" id="FilialNome" value=""/>
+                            <input type="text" name="FilialNome" value=""/>
                         </td>
                         <td>
                             CEP
                         </td>
                         <td>
-                            <input type="text" id="FilialCEP" value=""/>
+                            <input type="text" name="FilialCEP" value=""/>
                         </td>
                     </tr>
                     <tr>
@@ -36,13 +36,13 @@
                             Endereço
                         </td>
                         <td>
-                            <input type="text" id="FilialRua" value=""/>
+                            <input type="text" name="FilialRua" value=""/>
                         </td>
                         <td>
                             Numero
                         </td>
                         <td>
-                            <input type="text" id="FilialNumero" value=""/>
+                            <input type="text" name="FilialNumero" value=""/>
                         </td>
                     </tr>
                     <tr>
@@ -50,13 +50,13 @@
                             Bairro
                         </td>
                         <td>
-                            <input type="text" id="FilialBairro" value=""/>
+                            <input type="text" name="FilialBairro" value=""/>
                         </td>
                         <td>
                             Cidade
                         </td>
                         <td>
-                            <input type="text" id="FilialCidade" value=""/>
+                            <input type="text" name="FilialCidade" value=""/>
                         </td>
                     </tr>
                     <tr>
@@ -64,7 +64,7 @@
                             UF
                         </td>
                         <td>
-                            <input type="text" id="FilialUF" value=""/>
+                            <input type="text" name="FilialUF" value=""/>
                         </td>
                         <td>
                             <div align="center">-</div>

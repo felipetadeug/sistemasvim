@@ -22,7 +22,7 @@ public class SQL_Connection {
 
     SQL_Connection() {
         this.user = "root";
-        this.senha = "133218Hf";
+        this.senha = "";
         this.database = "autopostosvim";
         this.driver = "com.mysql.jdbc.Driver";
     }

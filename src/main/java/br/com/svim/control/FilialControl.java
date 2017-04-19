@@ -38,7 +38,7 @@ public class FilialControl extends HttpServlet {
         Filial filial = new Filial();
 
         filial.setNome_filial(request.getParameter("FilialNome"));
-        filial.setRua(request.getParameter("FilialNua"));
+        filial.setRua(request.getParameter("FilialRua"));
         filial.setBairro(request.getParameter("FilialBairro"));
         filial.setCidade(request.getParameter("FilialCidade"));
         filial.setUf(request.getParameter("FilialUF"));
@@ -47,19 +47,7 @@ public class FilialControl extends HttpServlet {
 
         FilialDao daoCadatro = new FilialDao();
         daoCadatro.cadastrarFilial(filial);
-
-       // try (PrintWriter out = response.getWriter()) {
-       //     /* TODO output your page here. You may use following sample code. */
-       //     out.println("<!DOCTYPE html>");
-       //     out.println("<html>");
-       //     out.println("<head>");
-       //     out.println("<title>Servlet FilialControl</title>");
-       //     out.println("</head>");
-       //     out.println("<body>");
-       //     out.println("<h1>Servlet FilialControl at " + request.getContextPath() + "</h1>");
-       //     out.println("</body>");
-       //     out.println("</html>");
-       // }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
