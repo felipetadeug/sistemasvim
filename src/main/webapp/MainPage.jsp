@@ -16,7 +16,7 @@
         <h3>Main Page - SVIM</h3>
         <ul>
             <li><a href="CadastroFilial.jsp">Cadastrar Filial</a></li>
-            <li><a href="CadastroFilial.jsp">Alterar Filial</a></li>
+            <li><a href="AlterarFilial.jsp">Alterar Filial</a></li>
         </ul>
     </center>
 </body>
