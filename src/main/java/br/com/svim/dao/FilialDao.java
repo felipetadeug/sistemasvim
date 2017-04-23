@@ -26,12 +26,7 @@ public class FilialDao {
             Connection conexao = conn.getConexao();
             Statement Stat = conexao.createStatement();
 
-            String sql = param.insertFilial(filial.getNome_filial(),
-                                            filial.getRua(),
-                                            filial.getNumero(),
-                                            filial.getBairro(),
-                                            filial.getCidade(),filial.getUf(),
-                                            filial.getCep());
+            String sql = param.insertFilial(filial);
 
             Stat.executeUpdate(sql);
 

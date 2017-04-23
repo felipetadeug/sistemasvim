@@ -5,13 +5,17 @@
  */
 package br.com.svim.dao;
 
+import br.com.svim.model.Filial;
+
 /**
  *
  * @author Cauê Ghetti
  */
 public class Filial_Parameters {
 
-    protected String insertFilial(String Nome,String Rua,int Numero,String Bairro,String Cidade,String UF,String CEP){
+    protected String insertFilial(Filial filial){
+        
+        
         
          String sql = "insert into filial("
                                             + "nome,"
@@ -21,13 +25,13 @@ public class Filial_Parameters {
                                             + "cidade,"
                                             + "uf,"
                                             + "cep ) "
-                                                + "values('"+Nome+"',"
-                                                + "'"+Rua+"',"
-                                                +""+Numero+","
-                                                + "'"+Bairro+"',"
-                                                + "'"+Cidade+"',"
-                                                + "'"+UF+"',"
-                                                + "'"+CEP+"')";
+                                                + "values('"+filial.getNome_filial()+"',"
+                                                + "'"+filial.getRua()+"',"
+                                                +""+filial.getNumero()+","
+                                                + "'"+filial.getBairro()+"',"
+                                                + "'"+filial.getCidade()+"',"
+                                                + "'"+filial.getUf()+"',"
+                                                + "'"+filial.getCep()+"')";
         
         return sql;
     }
