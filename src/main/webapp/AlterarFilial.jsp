@@ -13,7 +13,19 @@
     <body>
     <center>
         <h1>Alterar Filial</h1>
-        <form id="AlteraFilialForm" action="./FilialControl">
+        <form id="AlteraFilialForm" action="./FilialAlterar">
+            <table>
+                <tr>
+                    <td>
+                        ID:
+                    </td>
+                    <td>
+                        <input type="text" name="FilialID"/>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <br>
             <table>
                 <div id="Campos">
                     <tr>
@@ -71,7 +83,6 @@
                 </div>
                 <td>
                     <input type="submit" name="FilialConfirma" value="Alterar"/>
-                    <input type="submit" name="FilialCancela" value="Cancelar"/>
                 </td>
                 </tr>
             </table>

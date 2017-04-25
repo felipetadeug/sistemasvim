@@ -14,7 +14,7 @@
     <body>
     <center>
         <h1>Cadastro Filial</h1>
-        <form id="CadastroFilialForm" action="./FilialControl">
+        <form id="CadastroFilialForm" action="./FilialCadastrar">
             <table>
                 <div id="Campos">
                     <tr>

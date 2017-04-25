@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Cauê Ghetti
  */
-public class FilialControl extends HttpServlet {
+public class FilialCadastrar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,19 +35,6 @@ public class FilialControl extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
 
-        Filial filial = new Filial();
-
-        filial.setNome_filial(request.getParameter("FilialNome"));
-        filial.setRua(request.getParameter("FilialRua"));
-        filial.setBairro(request.getParameter("FilialBairro"));
-        filial.setCidade(request.getParameter("FilialCidade"));
-        filial.setUf(request.getParameter("FilialUF"));
-        filial.setCep(request.getParameter("FilialCEP"));
-        filial.setNumero(12);
-
-        FilialDao daoCadatro = new FilialDao();
-        daoCadatro.cadastrarFilial(filial);
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -65,7 +52,7 @@ public class FilialControl extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(FilialControl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FilialCadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -80,11 +67,25 @@ public class FilialControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        Filial filial = new Filial();
+
+        filial.setNome_filial(request.getParameter("FilialNome"));
+        filial.setRua(request.getParameter("FilialRua"));
+        filial.setBairro(request.getParameter("FilialBairro"));
+        filial.setCidade(request.getParameter("FilialCidade"));
+        filial.setUf(request.getParameter("FilialUF"));
+        filial.setCep(request.getParameter("FilialCEP"));
+        filial.setNumero(12);
+
+        FilialDao daoCadatro = new FilialDao();
         try {
-            processRequest(request, response);
+            daoCadatro.cadastrarFilial(filial);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(FilialControl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FilialCadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        
     }
 
     /**
