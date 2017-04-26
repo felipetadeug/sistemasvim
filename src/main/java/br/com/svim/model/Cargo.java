@@ -11,4 +11,39 @@ package br.com.svim.model;
  */
 public class Cargo {
     
+    private int idCargo;
+    private String cargo;
+    private int hierarquia;
+
+    public Cargo() {
+    }
+
+    public Cargo(int idCargo, String cargo, int hierarquia) {
+        this.idCargo = idCargo;
+        this.cargo = cargo;
+        this.hierarquia = hierarquia;
+    }
+
+    public int getIdCargo() {
+        return idCargo;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public int getHierarquia() {
+        return hierarquia;
+    }
+
+    public void setHierarquia(int hierarquia) {
+        this.hierarquia = hierarquia;
+    }
+    
+    
+    
 }

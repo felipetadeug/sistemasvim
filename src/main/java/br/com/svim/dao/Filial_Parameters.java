@@ -25,7 +25,7 @@ public class Filial_Parameters {
                                             + "cidade,"
                                             + "uf,"
                                             + "cep ) "
-                                                + "values('"+filial.getNome_filial()+"',"
+                                                + "values('"+filial.getNomeFilial()+"',"
                                                 + "'"+filial.getRua()+"',"
                                                 +""+filial.getNumero()+","
                                                 + "'"+filial.getBairro()+"',"

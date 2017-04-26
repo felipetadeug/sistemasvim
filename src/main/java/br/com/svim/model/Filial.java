@@ -10,8 +10,9 @@ package br.com.svim.model;
  * @author Cauê Ghetti
  */
 public class Filial {
-    
-    private String nome_filial;
+
+    private int idFilial;
+    private String nomeFilial;
     private String rua;
     private String cep;
     private int numero;
@@ -19,12 +20,12 @@ public class Filial {
     private String Cidade;
     private String uf;
 
-     public Filial() {
-    
+    public Filial() {
     }
 
-    public Filial(String nome_filial, String rua, String cep, int numero, String bairro, String Cidade, String uf) {
-        this.nome_filial = nome_filial;
+    public Filial(int idFilial, String nomeFilial, String rua, String cep, int numero, String bairro, String Cidade, String uf) {
+        this.idFilial = idFilial;
+        this.nomeFilial = nomeFilial;
         this.rua = rua;
         this.cep = cep;
         this.numero = numero;
@@ -32,13 +33,17 @@ public class Filial {
         this.Cidade = Cidade;
         this.uf = uf;
     }
-    
-    public String getNome_filial() {
-        return nome_filial;
+
+    public int getIdFilial() {
+        return idFilial;
     }
 
-    public void setNome_filial(String nome_filial) {
-        this.nome_filial = nome_filial;
+    public String getNomeFilial() {
+        return nomeFilial;
+    }
+
+    public void setNomeFilial(String nomeFilial) {
+        this.nomeFilial = nomeFilial;
     }
 
     public String getRua() {
@@ -88,5 +93,5 @@ public class Filial {
     public void setUf(String uf) {
         this.uf = uf;
     }
- 
+
 }

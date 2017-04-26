@@ -70,7 +70,7 @@ public class FilialCadastrar extends HttpServlet {
 
         Filial filial = new Filial();
 
-        filial.setNome_filial(request.getParameter("FilialNome"));
+        filial.setNomeFilial(request.getParameter("FilialNome"));
         filial.setRua(request.getParameter("FilialRua"));
         filial.setBairro(request.getParameter("FilialBairro"));
         filial.setCidade(request.getParameter("FilialCidade"));
