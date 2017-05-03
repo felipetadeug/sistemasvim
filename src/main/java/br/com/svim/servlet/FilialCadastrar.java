@@ -5,7 +5,7 @@
  */
 package br.com.svim.servlet;
 
-import br.com.svim.dao.FilialDao;
+import br.com.svim.dao.DaoFilial;
 import br.com.svim.model.Filial;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -76,16 +76,7 @@ public class FilialCadastrar extends HttpServlet {
         filial.setCidade(request.getParameter("FilialCidade"));
         filial.setUf(request.getParameter("FilialUF"));
         filial.setCep(request.getParameter("FilialCEP"));
-        filial.setNumero(12);
-
-        FilialDao daoCadatro = new FilialDao();
-        try {
-            daoCadatro.cadastrarFilial(filial);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(FilialCadastrar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        
+        filial.setNumero(12);     
     }
 
     /**
