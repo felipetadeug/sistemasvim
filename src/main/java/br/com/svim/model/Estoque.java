@@ -12,12 +12,12 @@ package br.com.svim.model;
 public class Estoque {
     private Produto produto;
     private Filial filial;
-    private int quantidade;
+    private double quantidade;
 
     public Estoque() {
     }
 
-    public Estoque(Produto produto, Filial filial, int quantidade) {
+    public Estoque(Produto produto, Filial filial, double quantidade) {
         this.produto = produto;
         this.filial = filial;
         this.quantidade = quantidade;
@@ -35,11 +35,11 @@ public class Estoque {
         this.filial = filial;
     }
 
-    public int getQuantidade() {
+    public double getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(double quantidade) {
         this.quantidade = quantidade;
     }
     

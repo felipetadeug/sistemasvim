@@ -10,23 +10,15 @@ package br.com.svim.model;
  * @author iago.cguimaraes
  */
 public class ItemVenda {
-    private int idItemVenda;
     private Produto produto;
     private double quantidade;
-    private double valor;
-
+    
     public ItemVenda() {
     }
 
-    public ItemVenda(int idItemVenda, Produto produto, double quantidade, double valor) {
-        this.idItemVenda = idItemVenda;
+    public ItemVenda(Produto produto, double quantidade) {
         this.produto = produto;
         this.quantidade = quantidade;
-        this.valor = valor;
-    }
-
-    public int getIdItemVenda() {
-        return idItemVenda;
     }
 
     public Produto getProduto() {
@@ -46,12 +38,6 @@ public class ItemVenda {
     }
 
     public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-    
-    
+        return getProduto().getPreco() * getQuantidade();
+    }       
 }

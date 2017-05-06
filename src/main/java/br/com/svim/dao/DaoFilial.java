@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class DaoFilial {
 
-    public static void cadastrarFilial(Filial filial) throws Exception {
+    public static void cadastrar(Filial filial) throws Exception {
         try {
             Connection conn = SqlConnection.getConexao();
             String sql = "call cadastrar_filial(?,?,?,?,?,?,?)";
@@ -31,7 +31,7 @@ public class DaoFilial {
         }
     }
 
-    public static void alterarFilial(Filial filial) throws Exception {
+    public static void alterar(Filial filial) throws Exception {
         try {
             Connection conn = SqlConnection.getConexao();
             String sql = "call alterar_filial(?,?,?,?,?,?,?,?)";
@@ -54,7 +54,7 @@ public class DaoFilial {
         }
     }
 
-    public static Filial obterFilial(int idFilial) throws Exception {
+    public static Filial obter(int idFilial) throws Exception {
         try {
             Filial filial = new Filial();
             Connection conn = SqlConnection.getConexao();
@@ -84,7 +84,7 @@ public class DaoFilial {
         }
     }
     
-        public static ArrayList<Filial> obterFiliais() throws Exception {
+        public static ArrayList<Filial> obter() throws Exception {
         try {
             ArrayList<Filial> filiais = new ArrayList<Filial>();
             Connection conn = SqlConnection.getConexao();

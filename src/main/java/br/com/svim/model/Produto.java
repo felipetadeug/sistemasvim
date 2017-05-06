@@ -14,19 +14,19 @@ public class Produto {
     private String produto;
     private TipoProduto tipoProduto;
     private double preco;
-    private boolean ehCombustivel;
-    private boolean ehEstocavel;
+    private boolean combustivel;
+    private boolean estocavel;
 
     public Produto() {
     }
 
-    public Produto(int idProduto, String produto, TipoProduto tipoProduto, double preco, boolean ehCombustivel, boolean ehEstocavel) {
+    public Produto(int idProduto, String produto, TipoProduto tipoProduto, double preco, boolean combustivel, boolean estocavel) {
         this.idProduto = idProduto;
         this.produto = produto;
         this.tipoProduto = tipoProduto;
         this.preco = preco;
-        this.ehCombustivel = ehCombustivel;
-        this.ehEstocavel = ehEstocavel;
+        this.combustivel = combustivel;
+        this.estocavel = estocavel;
     }
 
     public int getIdProduto() {
@@ -57,20 +57,20 @@ public class Produto {
         this.preco = preco;
     }
 
-    public boolean isEhCombustivel() {
-        return ehCombustivel;
+    public boolean isCombustivel() {
+        return combustivel;
     }
 
-    public void setEhCombustivel(boolean ehCombustivel) {
-        this.ehCombustivel = ehCombustivel;
+    public void setCombustivel(boolean combustivel) {
+        this.combustivel = combustivel;
     }
 
-    public boolean isEhEstocavel() {
-        return ehEstocavel;
+    public boolean isEstocavel() {
+        return estocavel;
     }
 
-    public void setEhEstocavel(boolean ehEstocavel) {
-        this.ehEstocavel = ehEstocavel;
+    public void setEstocavel(boolean estocavel) {
+        this.estocavel = estocavel;
     }
     
     

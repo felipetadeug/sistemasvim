@@ -10,7 +10,9 @@ package br.com.svim.model;
  * @author iago.cguimaraes
  */
 public class TipoProduto {
+
     private int idTipoProduto;
+
     private String tipoProduto;
 
     public TipoProduto() {
@@ -21,6 +23,10 @@ public class TipoProduto {
         this.tipoProduto = tipoProduto;
     }
 
+    public int getIdTipoProduto() {
+        return idTipoProduto;
+    }
+
     public String getTipoProduto() {
         return tipoProduto;
     }
@@ -28,6 +34,5 @@ public class TipoProduto {
     public void setTipoProduto(String tipoProduto) {
         this.tipoProduto = tipoProduto;
     }
-    
-    
+
 }

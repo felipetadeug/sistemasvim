@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class SqlConnection {
 
     private static String user = "root";
-    private static String senha = "";
+    private static String senha = "root";
     private static String database = "jdbc:mysql://localhost:3306/autopostosvim";
     private static String driver = "com.mysql.jdbc.Driver";
 
