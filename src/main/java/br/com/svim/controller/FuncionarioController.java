@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * @author Iago
  */
 public class FuncionarioController {
+
     public static void cadastrar(Funcionario funcionario) throws Exception {
         try {
             DaoFuncionario.cadastrar(funcionario);
@@ -45,4 +46,17 @@ public class FuncionarioController {
             throw e;
         }
     }
+
+    public static Funcionario logar(String cpf, String senha) throws Exception {
+        try {
+            Funcionario funcionario = DaoFuncionario.obter(cpf,senha);
+            if(funcionario.getIdFuncionario() == 0){
+                throw new Exception("CPF e/ou senha incorreto(s)");
+            }
+            return funcionario;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
 }
