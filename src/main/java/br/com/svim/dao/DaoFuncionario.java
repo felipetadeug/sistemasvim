@@ -119,4 +119,36 @@ public class DaoFuncionario {
             throw e;
         }
     }
+
+    public static Funcionario obter(String cpf, String senha) throws Exception {
+        try {
+            Funcionario funcionario = new Funcionario();
+            Connection conn = SqlConnection.getConexao();
+            String sql = "call obter_funcionario_bylogin(?, ?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, cpf);
+            stmt.setString(1, senha);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                funcionario = new Funcionario(
+                        rs.getInt("id_funcionario"),
+                        rs.getString("nome"),
+                        rs.getString("cpf"),
+                        rs.getDate("data_nascimento"),
+                        rs.getDate("data_admissao"),
+                        DaoCargo.obter(rs.getInt("id_cargo")),
+                        DaoFilial.obter(rs.getInt("id_filial")),
+                        rs.getString("senha"));
+            }
+            stmt.close();
+            conn.close();
+
+            return funcionario;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
 }
