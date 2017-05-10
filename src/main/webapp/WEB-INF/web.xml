@@ -8,13 +8,25 @@
         <servlet-name>FilialAlterar</servlet-name>
         <servlet-class>br.com.svim.servlet.FilialAlterar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CargoCadastrar</servlet-name>
+        <servlet-class>br.com.svim.servlet.CargoCadastrar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FuncionarioCadastrar</servlet-name>
+        <servlet-class>br.com.svim.servlet.FuncionarioCadastrar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FilialControl</servlet-name>
         <url-pattern>/FilialControl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>FilialAlterar</servlet-name>
-        <url-pattern>/FilialAlterar</url-pattern>
+        <servlet-name>CargoCadastrar</servlet-name>
+        <url-pattern>/CargoCadastrar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FuncionarioCadastrar</servlet-name>
+        <url-pattern>/FuncionarioCadastrar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
