@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class ProdutoController {
     public static void cadastrar(Produto produto) throws Exception {
         try {
+            validar(produto);
            DaoProduto.cadastrar(produto);
         } catch (Exception e) {
             throw e;
@@ -24,6 +25,7 @@ public class ProdutoController {
 
     public static void alterar(Produto produto) throws Exception {
         try {
+            validar(produto);
             DaoProduto.alterar(produto);
         } catch (Exception e) {
             throw e;
@@ -45,4 +47,14 @@ public class ProdutoController {
             throw e;
         }
     }
+       private static void validar(Produto produto) throws Exception{
+           try {
+               if (produto.getProduto() == null || produto.getProduto().trim().isEmpty()){
+                   throw new Exception("Produto vazio");
+               }
+               
+           } catch (Exception e){
+               throw e;
+           }
+       }
 }

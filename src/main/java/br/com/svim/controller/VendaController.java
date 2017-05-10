@@ -47,4 +47,13 @@ public class VendaController {
         }
     }
     
+    private static void validar(Venda venda) throws Exception{
+        try {
+            
+            
+        } catch (Exception e){
+            throw e;
+        }
+    }
+    
 }

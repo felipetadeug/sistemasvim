@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class FilialController {
     public static void cadastrar(Filial filial) throws Exception {
     try {
+            validar(filial);
             DaoFilial.cadastrar(filial);
         } catch (Exception e) {
             throw e;
@@ -24,6 +25,7 @@ public class FilialController {
 
     public static void alterar(Filial filial) throws Exception {
         try {
+            validar(filial);
             DaoFilial.alterar(filial);
         } catch (Exception e) {
             throw e;
@@ -45,4 +47,29 @@ public class FilialController {
             throw e;
         }
     }
+        private static void validar(Filial filial) throws Exception {
+            try{
+                if(filial.getNomeFilial() == null || filial.getNomeFilial().trim().isEmpty()){
+                    throw new Exception("Nome de Filial está vazio");
+                }
+                if(filial.getRua() == null || filial.getRua().trim().isEmpty()){
+                    throw new Exception("Campo Rua vazio");
+                }
+                if(filial.getCep() == null || filial.getCep().trim().isEmpty()){
+                    throw new Exception("Campo CEP vazio");
+                }
+                if(filial.getBairro() == null || filial.getBairro().trim().isEmpty()){
+                    throw new Exception("Campo Bairro vazio");
+                }
+                if(filial.getCidade() == null || filial.getCidade().trim().isEmpty()){
+                    throw new Exception("Campo Cidade Vazio");
+                }
+                if(filial.getUf() == null || filial.getUf().trim().isEmpty()){
+                    throw new Exception("Campo UF vazio");
+                }
+                
+            } catch(Exception e){
+                throw e;
+            }
+        }
 }

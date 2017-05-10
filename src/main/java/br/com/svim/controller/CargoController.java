@@ -14,8 +14,10 @@ import java.util.ArrayList;
  * @author Iago
  */
 public class CargoController {
+
     public static void cadastrar(Cargo cargo) throws Exception {
         try {
+            validar(cargo);
             DaoCargo.cadastrar(cargo);
         } catch (Exception e) {
             throw e;
@@ -24,6 +26,7 @@ public class CargoController {
 
     public static void alterar(Cargo cargo) throws Exception {
         try {
+            validar(cargo);
             DaoCargo.alterar(cargo);
         } catch (Exception e) {
             throw e;
@@ -37,10 +40,20 @@ public class CargoController {
             throw e;
         }
     }
-    
-        public static ArrayList<Cargo> obter() throws Exception {
+
+    public static ArrayList<Cargo> obter() throws Exception {
         try {
             return DaoCargo.obter();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    private static void validar(Cargo cargo) throws Exception {
+        try {
+            if (cargo.getCargo() == null || cargo.getCargo().trim().isEmpty()) {
+                throw new Exception("Cargo vazio");
+            }
         } catch (Exception e) {
             throw e;
         }

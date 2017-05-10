@@ -14,8 +14,10 @@ import java.util.ArrayList;
  * @author Iago
  */
 public class TipoProdutoController {
+
     public static void cadastrar(TipoProduto tipoProduto) throws Exception {
         try {
+            validar(tipoProduto);
             DaoTipoProduto.cadastrar(tipoProduto);
         } catch (Exception e) {
             throw e;
@@ -24,6 +26,7 @@ public class TipoProdutoController {
 
     public static void alterar(TipoProduto tipoProduto) throws Exception {
         try {
+            validar(tipoProduto);
             DaoTipoProduto.alterar(tipoProduto);
         } catch (Exception e) {
             throw e;
@@ -32,15 +35,25 @@ public class TipoProdutoController {
 
     public static TipoProduto obter(int idTipoProduto) throws Exception {
         try {
-           return DaoTipoProduto.obter(idTipoProduto);
+            return DaoTipoProduto.obter(idTipoProduto);
         } catch (Exception e) {
             throw e;
         }
     }
-    
-        public static ArrayList<TipoProduto> obter() throws Exception {
+
+    public static ArrayList<TipoProduto> obter() throws Exception {
         try {
             return DaoTipoProduto.obter();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    private static void validar(TipoProduto tipoProduto) throws Exception {
+        try {
+            if (tipoProduto.getTipoProduto() == null || tipoProduto.getTipoProduto().trim().isEmpty()) {
+                throw new Exception("Tipo de Produto vazio");
+            }
         } catch (Exception e) {
             throw e;
         }
