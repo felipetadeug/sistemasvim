@@ -17,7 +17,7 @@ public class Filial {
     private String cep;
     private int numero;
     private String bairro;
-    private String Cidade;
+    private String cidade;
     private String uf;
 
     public Filial() {
@@ -30,7 +30,7 @@ public class Filial {
         this.cep = cep;
         this.numero = numero;
         this.bairro = bairro;
-        this.Cidade = Cidade;
+        this.cidade = Cidade;
         this.uf = uf;
     }
 
@@ -79,11 +79,11 @@ public class Filial {
     }
 
     public String getCidade() {
-        return Cidade;
+        return cidade;
     }
 
-    public void setCidade(String Cidade) {
-        this.Cidade = Cidade;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public String getUf() {

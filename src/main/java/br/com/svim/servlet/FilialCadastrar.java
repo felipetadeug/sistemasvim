@@ -5,7 +5,8 @@
  */
 package br.com.svim.servlet;
 
-import br.com.svim.dao.DaoFilial;
+
+import br.com.svim.controller.FilialController;
 import br.com.svim.model.Filial;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,48 +23,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class FilialCadastrar extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException {
-        response.setContentType("text/html;charset=UTF-8");
-
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(FilialCadastrar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -76,7 +35,23 @@ public class FilialCadastrar extends HttpServlet {
         filial.setCidade(request.getParameter("FilialCidade"));
         filial.setUf(request.getParameter("FilialUF"));
         filial.setCep(request.getParameter("FilialCEP"));
-        filial.setNumero(12);     
+        filial.setNumero(Integer.parseInt(request.getParameter("FilialNumero")));     
+        
+        
+        try{
+        
+           FilialController filialCon = new FilialController();
+           filialCon.cadastrar(filial);
+           
+            
+        }catch(Exception e){
+        
+            System.err.println("ERROR-----> " +e);
+            
+        }
+        
+        
+        
     }
 
     /**
