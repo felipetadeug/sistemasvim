@@ -16,10 +16,10 @@
         <h3>Main Page - SVIM</h3>
         <ul>
             <li><a href="CadastroFilial.jsp">Cadastrar Filial</a></li>
-            <li><a href="AlterarFilial.jsp">Alterar Filial</a></li>
+            <li><a href="FilialListar">Alterar Filial</a></li>
             <li><a href="CadastrarCargo.jsp">Cadastrar Cargo</a></li>
             <li><a href="CadastrarFuncionario.jsp">Cadastrar Funcionario</a></li>
-        </ul>s
+        </ul>
     </center>
 </body>
 </html>

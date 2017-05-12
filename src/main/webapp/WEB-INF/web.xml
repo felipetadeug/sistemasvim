@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>FilialControl</servlet-name>
-        <servlet-class>br.com.svim.servlet.FilialCadastrar</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>FilialAlterar</servlet-name>
         <servlet-class>br.com.svim.servlet.FilialAlterar</servlet-class>
     </servlet>
@@ -16,10 +12,14 @@
         <servlet-name>FuncionarioCadastrar</servlet-name>
         <servlet-class>br.com.svim.servlet.FuncionarioCadastrar</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>FilialControl</servlet-name>
-        <url-pattern>/FilialControl</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>FilialCadastrar</servlet-name>
+        <servlet-class>br.com.svim.servlet.FilialCadastrar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilialListar</servlet-name>
+        <servlet-class>br.com.svim.servlet.FilialListar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CargoCadastrar</servlet-name>
         <url-pattern>/CargoCadastrar</url-pattern>
@@ -27,6 +27,14 @@
     <servlet-mapping>
         <servlet-name>FuncionarioCadastrar</servlet-name>
         <url-pattern>/FuncionarioCadastrar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilialCadastrar</servlet-name>
+        <url-pattern>/FilialCadastrar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilialListar</servlet-name>
+        <url-pattern>/FilialListar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

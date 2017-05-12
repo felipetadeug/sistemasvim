@@ -9,7 +9,10 @@ import br.com.svim.controller.FilialController;
 import br.com.svim.model.Filial;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Cauê Ghetti
  */
-public class FilialCadastrar extends HttpServlet {
+public class FilialListar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,30 +34,17 @@ public class FilialCadastrar extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        Filial filial = new Filial();
+            throws ServletException, IOException, Exception {
 
-        filial.setNomeFilial(request.getParameter("FilialNome"));
-        filial.setRua(request.getParameter("FilialRua"));
-        filial.setBairro(request.getParameter("FilialBairro"));
-        filial.setCidade(request.getParameter("FilialCidade"));
-        filial.setUf(request.getParameter("FilialUF"));
-        filial.setCep(request.getParameter("FilialCEP"));
-        filial.setNumero(Integer.parseInt(request.getParameter("FilialNumero")));     
-        
-        
-        try{
-        
-           FilialController filialCon = new FilialController();
-           filialCon.cadastrar(filial);
-           
-           request.getRequestDispatcher("CadastroFilial.jsp").forward(request, response);
-           
-            
-        }catch(Exception e){
-        
-            System.err.println("ERROR-----> " +e);
-            
+        List<Filial> filialList = new ArrayList<>();
+        FilialController control = new FilialController();
+
+        try {
+            filialList = control.obter();
+            request.setAttribute("ListFilial", filialList);
+            request.getRequestDispatcher("ListarFilial.jsp").forward(request, response);
+        } catch (Exception e) {
+            System.err.println("ERROR-----> " + e);
         }
     }
 
@@ -70,7 +60,11 @@ public class FilialCadastrar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(FilialListar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -84,7 +78,11 @@ public class FilialCadastrar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(FilialListar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
