@@ -39,6 +39,7 @@ public class FilialListar extends HttpServlet {
         List<Filial> filialList = new ArrayList<>();
         FilialController control = new FilialController();
 
+        
         try {
             filialList = control.obter();
             request.setAttribute("ListFilial", filialList);

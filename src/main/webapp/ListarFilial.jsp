@@ -29,16 +29,13 @@
             </tr>
             <c:forEach var="filial" items="${ListFilial}">
                 <tr>
-                    <%--
-                    <td>${filial.getNome()}</td>
-                    <td>${filial.getRua()}</td>
-                    <td>${filial.getNumero()}</td>
-                    <td>${filial.getBairro()}</td>
-                    <td>${filial.getCidade()}</td>
-                    <td>${filial.getCep()}</td>
-                    <td>${filial.getUf()}</td>
-                    --%>
-
+                    <td>${filial.nome}</td>
+                    <td>${filial.rua}</td>
+                    <td>${filial.numero}</td>
+                    <td>${filial.bairro}</td>
+                    <td>${filial.cidade}</td>
+                    <td>${filial.cep}</td>
+                    <td>${filial.uf}</td>
                 </tr>
             </c:forEach>
         </table>
