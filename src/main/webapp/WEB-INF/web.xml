@@ -28,6 +28,14 @@
         <servlet-name>CargoListar</servlet-name>
         <servlet-class>br.com.svim.servlet.CargoListar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CargoDeletar</servlet-name>
+        <servlet-class>br.com.svim.servlet.CargoDeletar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CargoAlterar</servlet-name>
+        <servlet-class>br.com.svim.servlet.CargoAlterar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CargoCadastrar</servlet-name>
         <url-pattern>/CargoCadastrar</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>CargoListar</servlet-name>
         <url-pattern>/CargoListar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CargoDeletar</servlet-name>
+        <url-pattern>/CargoDeletar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CargoAlterar</servlet-name>
+        <url-pattern>/CargoAlterar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
