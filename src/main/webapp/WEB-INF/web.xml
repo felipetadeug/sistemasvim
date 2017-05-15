@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>FilialAlterar</servlet-name>
-        <servlet-class>br.com.svim.servlet.FilialAlterar</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CargoCadastrar</servlet-name>
         <servlet-class>br.com.svim.servlet.CargoCadastrar</servlet-class>
     </servlet>
@@ -19,6 +15,18 @@
     <servlet>
         <servlet-name>FilialListar</servlet-name>
         <servlet-class>br.com.svim.servlet.FilialListar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilialAlterar</servlet-name>
+        <servlet-class>br.com.svim.servlet.FilialAlterar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilialDeletar</servlet-name>
+        <servlet-class>br.com.svim.servlet.FilialDeletar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CargoListar</servlet-name>
+        <servlet-class>br.com.svim.servlet.CargoListar</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CargoCadastrar</servlet-name>
@@ -35,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>FilialListar</servlet-name>
         <url-pattern>/FilialListar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilialAlterar</servlet-name>
+        <url-pattern>/FilialAlterar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilialDeletar</servlet-name>
+        <url-pattern>/FilialDeletar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CargoListar</servlet-name>
+        <url-pattern>/CargoListar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
