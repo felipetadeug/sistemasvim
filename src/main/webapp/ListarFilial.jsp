@@ -5,39 +5,168 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+<!DOCTYPE html>
+<!-- Tela - Alterar Filial-->
+<!-- Felipe Tadeu https://www.w3schools.com/bootstrap/bootstrap_grid_basic.asp // http://www.flextool.com.br/tabela_cores.html-->
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>SVIM - Editar Filial</title>
+        <link rel="shortcut icon" href="imagens/favicon.ico"/>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <p>Filiais</p>
-        <table class=".table-striped">
-            <tr>
-                <td>Nome</td>
-                <td>Rua</td>
-                <td>Numero</td>
-                <td>Bairro</td>
-                <td>Cidade</td>
-                <td>CEP</td>
-                <td>UP</td>
-            </tr>
-            <c:forEach var="filial" items="${ListFilial}">
-                <tr>
-                    <td>${filial.getNomeFilial()}</td>
-                    <td>${filial.getRua()}</td>
-                    <td>${filial.getNumero()}</td>
-                    <td>${filial.getBairro()}</td>
-                    <td>${filial.getCidade()}</td>
-                    <td>${filial.getCep()}</td>
-                    <td>${filial.getUf()}</td>
-                </tr>
-            </c:forEach>
-        </table>
+        <div class="container-fluid">
+            <header class="row" id="superior">
+                <div class="col-md-12">
+                    <h1>SVIM</h1>
+                </div>			
+            </header>
+
+            <div class="row">			
+                <aside class="col-md-2" id="menu">
+                    <h1>Operações</h1>
+
+                    <ul>
+                        <li><a href="venda.html">Realizar Venda</a></li>
+
+                        <li><a href="">Cadastrar Itens</a></li>
+                        <ul>
+                            <li><a href="#">Novo Cadastro</a></li>
+                            <li><a href="#">Alterar Cadastro</a></li>
+                        </ul>
+
+                        <li><a href="">Cadastrar Usuarios</a></li>
+                        <ul>
+                            <li><a href="#">Novo Cadastro</a></li>
+                            <li><a href="#">Alterar Cadastro</a></li>
+                        </ul>
+
+                        <li><a href="">Cadastrar Filiais</a></li>
+                        <ul>
+                            <li><a href="#">Novo Cadastro</a></li>
+                            <li><a href="#">Alterar Cadastro</a></li>
+                        </ul>
+
+                        <li><a href="#">Estoque</a></li>
+                        <li><a href="#">Relatórios</a></li>
+                    </ul>
+                </aside>
+
+                <section class="col-md-10" id="principal">
+                    <article class="descricao page-header">
+                        <h1 class="txt">Editar Filial</h1>
+                        <p class="txt">Selecione o a filial a ser editada.</p>
+                    </article>
+
+                    <table class="table table-hover">
+                        <thead>				
+                            <tr>
+                                <th>Nome</th>
+                                <th>CEP</th>
+                                <th>Endereço</th>
+                                <th>Nº</th>
+                                <th>Bairro</th>
+                                <th>Cidade</th>
+                                <th>UF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="filial" items="${ListFilial}">
+                                <tr>
+                                    <td>${filial.getNomeFilial()}</td>
+                                    <td>${filial.getCep()}</td>
+                                    <td>${filial.getRua()}</td>
+                                    <td>${filial.getNumero()}</td>
+                                    <td>${filial.getBairro()}</td>
+                                    <td>${filial.getCidade()}</td>
+                                    <td>${filial.getUf()}</td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+
+                    <br/>
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Editar Selecionado</button>
+
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Editar Filial</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="form-group col-md-8">
+                                                <label for="nome">Nome:</label>
+                                                <input type="nome" name="nome" class="form-control" >
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="cep">CEP:</label>
+                                                <input type="text" name="cep" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-md-8">
+                                                <label for="endereco">Endereço:</label>
+                                                <input type="text" name="endereco" class="form-control">
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="numero">Número:</label>
+                                                <input type="text" name="numero" class="form-control">
+                                            </div>						
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-md-4">
+                                                <label for="bairro">Bairro:</label>
+                                                <input type="text" name="bairro" class="form-control">
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="cidade">Cidade:</label>
+                                                <input type="text" name="cidade" class="form-control">
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="uf">UF:</label>
+                                                <select name="uf" class="form-control">
+                                                    <option value="SP">SP</option>
+                                                </select>
+                                            </div>					
+                                        </div>
+
+                                        <br/>
+
+                                        <button type="submit" class="btn btn-success">Atualizar</button>
+                                    </form>
+                                </div>
+                            </div>				      
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="row" id="rodape">
+                <div class="col-md-12">
+                    <p>Sistema SVIM -  Todos os direitos reservados ®</p>
+                </div>			
+            </footer>
+        </div>
     </body>
 </html>
