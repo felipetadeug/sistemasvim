@@ -39,6 +39,23 @@ public class FilialListar extends HttpServlet {
         List<Filial> filialList = new ArrayList<>();
         FilialController control = new FilialController();
 
+        Filial filial = new Filial();
+
+        /*filial.setNomeFilial(request.getParameter("nomeFilial"));
+        filial.setRua(request.getParameter("rua"));
+
+        if (request.getParameter("numero") != null) {
+            filial.setNumero(Integer.parseInt(request.getParameter("numero")));
+        } else {
+            filial.setNumero(0);
+        }
+
+        filial.setCep(request.getParameter("cep"));
+        filial.setCidade(request.getParameter("cidade"));
+        filial.setBairro(request.getParameter("bairro"));
+        filial.setUf(request.getParameter("uf"));
+
+        */
         
         try {
             filialList = control.obter();

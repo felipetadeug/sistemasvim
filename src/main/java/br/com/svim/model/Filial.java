@@ -67,7 +67,7 @@ public class Filial {
     }
 
     public void setNumero(int numero) {
-        this.numero = numero;
+            this.numero = numero;
     }
 
     public String getBairro() {
