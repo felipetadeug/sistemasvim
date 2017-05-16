@@ -37,6 +37,10 @@ public class Filial {
     public int getIdFilial() {
         return idFilial;
     }
+    
+    public void setIdFilial(int id){
+        this.idFilial = id;
+    }
 
     public String getNomeFilial() {
         return nomeFilial;

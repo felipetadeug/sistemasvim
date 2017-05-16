@@ -34,18 +34,6 @@ public class CargoListar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        /*
-        
-        Colocar dentro o JSP de Alterar Cargo estão função lista os Cargos 
-        
-        <c:forEach var="cargo" items="${ListCargo}">
-            <tr>
-                <td>${cargo.getCargo()}</td>
-                <td>${cargo.getHierarquia()}</td>
-            </tr>
-        </c:forEach>
-         */
-        
         List<Cargo> cargoList = new ArrayList<>();
         CargoController control = new CargoController();
 
@@ -55,7 +43,7 @@ public class CargoListar extends HttpServlet {
 
             cargoList = control.obter();
             request.setAttribute("ListCargo", cargoList);
-            request.getRequestDispatcher("").forward(request, response);
+            request.getRequestDispatcher("parametros.jsp").forward(request, response);
 
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);

@@ -5,6 +5,9 @@
  */
 package br.com.svim.servlet;
 
+import br.com.svim.controller.FuncionarioController;
+import br.com.svim.model.Cargo;
+import br.com.svim.model.Filial;
 import br.com.svim.model.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -46,14 +49,30 @@ public class FuncionarioCadastrar extends HttpServlet {
         
         try {
             SimpleDateFormat dateType = new SimpleDateFormat( "dd/MM/yyyy" );
-            funcionario.setDataAdmissao((Date) dateType.parse(request.getParameter("data_nasc")));
+            funcionario.setDataAdmissao((Date) dateType.parse(request.getParameter("data_ad")));
+            funcionario.setDataNascimento((Date) dateType.parse(request.getParameter("data_nasc")));
         } catch (ParseException ex) {
             Date data;
             Logger.getLogger(FuncionarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        Cargo cargo = new Cargo();
+        cargo.setCargo(request.getParameter("cargo"));
+        funcionario.setCargo(cargo);
         
+        Filial filial = new Filial();
+        filial.setNomeFilial(request.getParameter("filial"));
+        funcionario.setFilial(filial);
         
+        funcionario.setSenha(request.getParameter("filial"));
+        
+        FuncionarioController control = new FuncionarioController();
+        
+        try {
+            control.cadastrar(funcionario);
+        } catch (Exception ex) {
+            Logger.getLogger(FuncionarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -44,7 +44,7 @@ public class FilialListar extends HttpServlet {
         try {
             filialList = control.obter();
             request.setAttribute("ListFilial", filialList);
-            request.getRequestDispatcher("ListarFilial.jsp").forward(request, response);
+            request.getRequestDispatcher("editar_filial.jsp").forward(request, response);
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
         }

@@ -16,7 +16,7 @@ import java.util.InputMismatchException;
  */
 public class FuncionarioController {
 
-    public static void cadastrar(Funcionario funcionario) throws Exception {
+    public  void cadastrar(Funcionario funcionario) throws Exception {
         try {
             DaoFuncionario.cadastrar(funcionario);
         } catch (Exception e) {
@@ -24,7 +24,7 @@ public class FuncionarioController {
         }
     }
 
-    public static void alterar(Funcionario funcionario) throws Exception {
+    public  void alterar(Funcionario funcionario) throws Exception {
         try {
             DaoFuncionario.alterar(funcionario);
         } catch (Exception e) {
@@ -32,7 +32,7 @@ public class FuncionarioController {
         }
     }
 
-    public static Funcionario obter(int idFuncionario) throws Exception {
+    public  Funcionario obter(int idFuncionario) throws Exception {
         try {
             return DaoFuncionario.obter(idFuncionario);
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class FuncionarioController {
         }
     }
 
-    public static ArrayList<Funcionario> obter() throws Exception {
+    public  ArrayList<Funcionario> obter() throws Exception {
         try {
             return DaoFuncionario.obter();
         } catch (Exception e) {
@@ -49,7 +49,7 @@ public class FuncionarioController {
     }
 
 
-    private static void validar(Funcionario funcionario) throws Exception {
+    private  void validar(Funcionario funcionario) throws Exception {
         try {
             if (funcionario.getNome() == null || funcionario.getNome().trim().isEmpty()) {
                 throw new Exception("Campo Nome vazio");
@@ -62,7 +62,7 @@ public class FuncionarioController {
         }
     }
 
-    private static boolean isCPF(String CPF) {
+    private  boolean isCPF(String CPF) {
 
         if (CPF.equals("00000000000") || CPF.equals("11111111111")
                 || CPF.equals("22222222222") || CPF.equals("33333333333")
@@ -117,7 +117,7 @@ public class FuncionarioController {
         }
     }
 
-    public static Funcionario logar(String cpf, String senha) throws Exception {
+    public  Funcionario logar(String cpf, String senha) throws Exception {
         try {
             Funcionario funcionario = DaoFuncionario.obter(cpf,senha);
             if(funcionario.getIdFuncionario() == 0){

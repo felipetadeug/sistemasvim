@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class CargoController {
 
-    public static void cadastrar(Cargo cargo) throws Exception {
+    public  void cadastrar(Cargo cargo) throws Exception {
         try {
             validar(cargo);
             DaoCargo.cadastrar(cargo);
@@ -24,7 +24,7 @@ public class CargoController {
         }
     }
 
-    public static void alterar(Cargo cargo) throws Exception {
+    public  void alterar(Cargo cargo) throws Exception {
         try {
             validar(cargo);
             DaoCargo.alterar(cargo);
@@ -33,7 +33,7 @@ public class CargoController {
         }
     }
 
-    public static Cargo obter(int idCargo) throws Exception {
+    public  Cargo obter(int idCargo) throws Exception {
         try {
             return DaoCargo.obter(idCargo);
         } catch (Exception e) {
@@ -41,7 +41,7 @@ public class CargoController {
         }
     }
 
-    public static ArrayList<Cargo> obter() throws Exception {
+    public  ArrayList<Cargo> obter() throws Exception {
         try {
             return DaoCargo.obter();
         } catch (Exception e) {
@@ -49,7 +49,7 @@ public class CargoController {
         }
     }
 
-    private static void validar(Cargo cargo) throws Exception {
+    private  void validar(Cargo cargo) throws Exception {
         try {
             if (cargo.getCargo() == null || cargo.getCargo().trim().isEmpty()) {
                 throw new Exception("Cargo vazio");

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ListarFilial
-    Created on : 12/05/2017, 16:40:09
+    Document   : alterar_filial
+    Created on : 16/05/2017, 15:06:25
     Author     : Cauê Ghetti
 --%>
 
@@ -17,13 +17,11 @@
         <link rel="shortcut icon" href="imagens/favicon.ico"/>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="style.css">
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-        <script type="text/javascript" src="alterar_filial.js"></script>
+        <script type="text/javascript" src="editar_filial.js"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -34,37 +32,27 @@
             </header>
 
             <div class="row">			
-                <aside class="col-md-2" id="menu">
-                    <h1>Operações</h1>
-
+               <aside class="col-md-2" id="menu">
                     <ul>
-                        <li><a href="venda.html">Realizar Venda</a></li>
+                        <li><a href="cadastrar_item.jsp">Novo Cadastro - Item</a></li>
+                        <li><a href="./ListarItem">Alterar Cadastro - Item</a></li>
 
-                        <li><a href="">Cadastrar Itens</a></li>
-                        <ul>
-                            <li><a href="#">Novo Cadastro</a></li>
-                            <li><a href="#">Alterar Cadastro</a></li>
-                        </ul>
+                        <li><a href="./PopUpFuncionario">Novo Cadastro - Funcionario</a></li>
+                        <li><a href="./FuncionarioListar">Alterar Cadastro - Funcionario</a></li>
 
-                        <li><a href="">Cadastrar Usuarios</a></li>
-                        <ul>
-                            <li><a href="#">Novo Cadastro</a></li>
-                            <li><a href="#">Alterar Cadastro</a></li>
-                        </ul>
+                        <li><a href="cadastrar_filial.jsp">Novo Cadastro - Filial</a></li>
+                        <li><a href="./ListarFilial">Alterar Cadastro - Filial</a></li>
 
-                        <li><a href="">Cadastrar Filiais</a></li>
-                        <ul>
-                            <li><a href="#">Novo Cadastro</a></li>
-                            <li><a href="#">Alterar Cadastro</a></li>
-                        </ul>
 
-                        <li><a href="#">Estoque</a></li>
-                        <li><a href="#">Relatórios</a></li>
+                        <li><a href="">Estoque</a></li>
+                        <li><a href="">Relatórios</a></li>
+                        <li><a href="./CargoListar">Parâmetros</a></li>
                     </ul>
                 </aside>
 
+
                 <section class="col-md-10" id="principal">
-                    <article class="descricao page-header">
+                    <article class="page-header">
                         <h1 class="txt">Editar Filial</h1>
                         <p class="txt">Selecione o a filial a ser editada.</p>
                     </article>
@@ -83,18 +71,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="filial" items="${ListFilial}">
-                                <tr>
-                                    <td>${filial.getIdFilial()}</td>
-                                    <td>${filial.getNomeFilial()}</td>
-                                    <td>${filial.getCep()}</td>
-                                    <td>${filial.getRua()}</td>
-                                    <td>${filial.getNumero()}</td>
-                                    <td>${filial.getBairro()}</td>
-                                    <td>${filial.getCidade()}</td>
-                                    <td>${filial.getUf()}</td>
-                                </tr>
-                            </c:forEach>
+                        <c:forEach var="filial" items="${ListFilial}">
+                            <tr>
+                                <td>${filial.getIdFilial()}</td>
+                                <td>${filial.getNomeFilial()}</td>
+                                <td>${filial.getCep()}</td>
+                                <td>${filial.getRua()}</td>
+                                <td>${filial.getNumero()}</td>
+                                <td>${filial.getBairro()}</td>
+                                <td>${filial.getCidade()}</td>
+                                <td>${filial.getUf()}</td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
 
@@ -111,7 +99,7 @@
                                 </div>
 
                                 <div class="modal-body">
-                                    <form>
+                                    <form action="./FilialAlterar">
                                         <div class="row">
                                             <div class="form-group col-md-8">
                                                 <label for="nome">Nome:</label>
@@ -151,10 +139,11 @@
                                                 <label for="uf">UF:</label>
                                                 <select name="uf" class="form-control">
                                                     <option value="SP">SP</option>
+                                                    <!-- Script para carregar UF-->
                                                 </select>
                                             </div>					
                                         </div>
-                                        
+
                                         <input type="hidden" name="id">
 
                                         <br/>

@@ -34,13 +34,13 @@ public class FilialCadastrar extends HttpServlet {
             throws ServletException, IOException {
         Filial filial = new Filial();
 
-        filial.setNomeFilial(request.getParameter("FilialNome"));
-        filial.setRua(request.getParameter("FilialRua"));
-        filial.setBairro(request.getParameter("FilialBairro"));
-        filial.setCidade(request.getParameter("FilialCidade"));
-        filial.setUf(request.getParameter("FilialUF"));
-        filial.setCep(request.getParameter("FilialCEP"));
-        filial.setNumero(Integer.parseInt(request.getParameter("FilialNumero")));     
+        filial.setNomeFilial(request.getParameter("nome"));
+        filial.setRua(request.getParameter("endereco"));
+        filial.setBairro(request.getParameter("bairro"));
+        filial.setCidade(request.getParameter("cidade"));
+        filial.setUf(request.getParameter("uf"));
+        filial.setCep(request.getParameter("cep"));
+        filial.setNumero(Integer.parseInt(request.getParameter("numero")));     
         
         
         try{
@@ -48,7 +48,7 @@ public class FilialCadastrar extends HttpServlet {
            FilialController filialCon = new FilialController();
            filialCon.cadastrar(filial);
            
-           request.getRequestDispatcher("CadastroFilial.jsp").forward(request, response);
+           request.getRequestDispatcher("cadastrar_filial.jsp").forward(request, response);
            
             
         }catch(Exception e){

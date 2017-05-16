@@ -5,8 +5,8 @@
  */
 package br.com.svim.servlet;
 
-import br.com.svim.controller.CargoController;
-import br.com.svim.model.Cargo;
+import br.com.svim.controller.ProdutoController;
+import br.com.svim.model.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Cauê Ghetti
  */
-public class CargoAlterar extends HttpServlet {
+public class ItemCadastar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,23 +30,20 @@ public class CargoAlterar extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        CargoController control = new CargoController();
-        Cargo cargo = new Cargo();
+            throws ServletException, IOException, Exception {
         
-        cargo.setIdCargo(Integer.parseInt(request.getParameter("id")));
-        cargo.setCargo(request.getParameter("nome"));
-        cargo.setHierarquia(2);
-
-        try {
-            control.alterar(cargo);
-            request.getRequestDispatcher("./CargoListar").forward(request, response);
-
-        } catch (Exception e) {
-            System.err.println("ERROR ----> " + e);
-        }
-
+        Produto item = new Produto();
+        
+        item.setCombustivel(false);
+        item.setEstocavel(false);
+        item.setPreco(0);
+        item.setProduto(request.getParameter("descricao"));
+        
+        ProdutoController control = new ProdutoController();
+        
+        control.cadastrar(item);
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,7 +58,7 @@ public class CargoAlterar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /**
@@ -75,7 +72,7 @@ public class CargoAlterar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /**

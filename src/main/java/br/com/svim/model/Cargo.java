@@ -27,6 +27,10 @@ public class Cargo {
     public int getIdCargo() {
         return idCargo;
     }
+    
+    public void setIdCargo(int id){
+        this.idCargo = id;
+    }
 
     public String getCargo() {
         return cargo;

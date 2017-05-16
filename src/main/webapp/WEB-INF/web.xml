@@ -36,6 +36,30 @@
         <servlet-name>CargoAlterar</servlet-name>
         <servlet-class>br.com.svim.servlet.CargoAlterar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PopUpFuncionario</servlet-name>
+        <servlet-class>br.com.svim.servlet.PopUpFuncionario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FuncionarioListar</servlet-name>
+        <servlet-class>br.com.svim.servlet.FuncionarioListar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FuncionarioAlterar</servlet-name>
+        <servlet-class>br.com.svim.servlet.FuncionarioAlterar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ItemCadastar</servlet-name>
+        <servlet-class>br.com.svim.servlet.ItemCadastar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ItemAlterar</servlet-name>
+        <servlet-class>br.com.svim.servlet.ItemAlterar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FuncionarioDeletar</servlet-name>
+        <servlet-class>br.com.svim.servlet.FuncionarioDeletar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CargoCadastrar</servlet-name>
         <url-pattern>/CargoCadastrar</url-pattern>
@@ -71,6 +95,30 @@
     <servlet-mapping>
         <servlet-name>CargoAlterar</servlet-name>
         <url-pattern>/CargoAlterar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PopUpFuncionario</servlet-name>
+        <url-pattern>/PopUpFuncionario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FuncionarioListar</servlet-name>
+        <url-pattern>/FuncionarioListar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FuncionarioAlterar</servlet-name>
+        <url-pattern>/FuncionarioAlterar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ItemCadastar</servlet-name>
+        <url-pattern>/ItemCadastar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ItemAlterar</servlet-name>
+        <url-pattern>/ItemAlterar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FuncionarioDeletar</servlet-name>
+        <url-pattern>/FuncionarioDeletar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

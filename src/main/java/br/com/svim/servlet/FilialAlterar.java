@@ -35,6 +35,7 @@ public class FilialAlterar extends HttpServlet {
         FilialController control = new FilialController();
         Filial filial = new Filial();
 
+        filial.setIdFilial(Integer.parseInt(request.getParameter("id")));
         filial.setNomeFilial(request.getParameter("nome"));
         filial.setRua(request.getParameter("endereco"));
         filial.setBairro(request.getParameter("bairro"));
@@ -46,7 +47,7 @@ public class FilialAlterar extends HttpServlet {
         try {
             
             control.alterar(filial);
-            request.getRequestDispatcher("ListarFilial.jsp").forward(request, response);
+            request.getRequestDispatcher("./FilialListar").forward(request, response);
         
         } catch (Exception e) {
             System.err.println("ERROR ----> "+e);

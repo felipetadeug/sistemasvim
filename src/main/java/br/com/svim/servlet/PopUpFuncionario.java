@@ -6,9 +6,13 @@
 package br.com.svim.servlet;
 
 import br.com.svim.controller.CargoController;
+import br.com.svim.controller.FilialController;
 import br.com.svim.model.Cargo;
+import br.com.svim.model.Filial;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Cauê Ghetti
  */
-public class CargoAlterar extends HttpServlet {
+public class PopUpFuncionario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,22 +35,38 @@ public class CargoAlterar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        CargoController control = new CargoController();
-        Cargo cargo = new Cargo();
         
-        cargo.setIdCargo(Integer.parseInt(request.getParameter("id")));
-        cargo.setCargo(request.getParameter("nome"));
-        cargo.setHierarquia(2);
+        List<Filial> filialList = new ArrayList<>();
+        FilialController control = new FilialController();
+
+        Filial filial = new Filial();
 
         try {
-            control.alterar(cargo);
-            request.getRequestDispatcher("./CargoListar").forward(request, response);
+            filialList = control.obter();
+            request.setAttribute("ListFilial", filialList);
+            
+        } catch (Exception e) {
+            System.err.println("ERROR-----> " + e);
+        }
+        
+        List<Cargo> cargoList = new ArrayList<>();
+        CargoController controlCargo = new CargoController();
+
+        Cargo cargo = new Cargo();
+
+        try {
+
+            cargoList = controlCargo.obter();
+            request.setAttribute("ListCargo", cargoList);
+            
 
         } catch (Exception e) {
-            System.err.println("ERROR ----> " + e);
-        }
+            System.err.println("ERROR-----> " + e);
 
+        }
+        
+        request.getRequestDispatcher("cadastrar_funcionario.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
