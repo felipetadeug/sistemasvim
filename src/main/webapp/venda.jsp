@@ -36,7 +36,7 @@
                         <li><a href="./FuncionarioListar">Alterar Cadastro - Funcionario</a></li>
 
                         <li><a href="cadastrar_filial.jsp">Novo Cadastro - Filial</a></li>
-                        <li><a href="./ListarFilial">Alterar Cadastro - Filial</a></li>
+                        <li><a href="./FilialListar">Alterar Cadastro - Filial</a></li>
 
 
                         <li><a href="">Estoque</a></li>

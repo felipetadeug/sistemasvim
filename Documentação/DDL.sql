@@ -190,7 +190,7 @@ CREATE TABLE `venda` (
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `alterar_cargo`(
  in _id int
-,in _cargo varchar(14)
+,in _cargo varchar(50)
 ,in _hierarquia int
 )
 begin
