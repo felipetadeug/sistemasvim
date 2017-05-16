@@ -22,6 +22,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="alterar_filial.js"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -70,6 +72,7 @@
                     <table class="table table-hover">
                         <thead>				
                             <tr>
+                                <th>ID</th>
                                 <th>Nome</th>
                                 <th>CEP</th>
                                 <th>Endereço</th>
@@ -82,6 +85,7 @@
                         <tbody>
                             <c:forEach var="filial" items="${ListFilial}">
                                 <tr>
+                                    <td>${filial.getIdFilial()}</td>
                                     <td>${filial.getNomeFilial()}</td>
                                     <td>${filial.getCep()}</td>
                                     <td>${filial.getRua()}</td>
@@ -150,6 +154,8 @@
                                                 </select>
                                             </div>					
                                         </div>
+                                        
+                                        <input type="hidden" name="id">
 
                                         <br/>
 

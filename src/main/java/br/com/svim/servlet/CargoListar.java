@@ -45,6 +45,7 @@ public class CargoListar extends HttpServlet {
             </tr>
         </c:forEach>
          */
+        
         List<Cargo> cargoList = new ArrayList<>();
         CargoController control = new CargoController();
 

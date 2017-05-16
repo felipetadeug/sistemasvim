@@ -10,8 +10,15 @@
 #rodape{
 }
 
-form{
-	margin-left: 30px;
-	margin-right: 30px;
+.well, .txt, .btn-primary{
+	margin-right: 20px;
+	margin-left: 20px;
 }
 
+table{
+	margin-left: 20px;
+}
+
+.selected{
+	background-color: #EEE9E9;
+}

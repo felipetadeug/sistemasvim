@@ -54,7 +54,7 @@
 					<li><a href="">Cadastrar Filiais</a></li>
 					<ul>
 						<li><a href="#">Novo Cadastro</a></li>
-						<li><a href="#">Alterar Cadastro</a></li>
+						<li><a href="./FilialListar">Alterar Cadastro</a></li>
 					</ul>
 
 					<li><a href="#">Estoque</a></li>
