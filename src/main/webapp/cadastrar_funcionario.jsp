@@ -45,6 +45,7 @@
 
                         <li><a href="">Estoque</a></li>
                         <li><a href="">Relatórios</a></li>
+                        <li><a href="venda.jsp">Venda</a></li>
                         <li><a href="./CargoListar">Parâmetros</a></li>
                     </ul>
                 </aside>
