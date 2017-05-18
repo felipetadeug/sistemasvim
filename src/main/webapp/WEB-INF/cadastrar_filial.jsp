@@ -53,40 +53,40 @@
                         <p class="txt">Insira os dados de sua filial.</p>
                     </article>
 
-                    <form class="well well-lg" action="./FilialCadastrar">
+                    <form class="well well-lg" method="POST" action="./FilialCadastrar">
                         <div class="row">
                             <div class="form-group col-md-10">
                                 <label for="nome">Nome:</label>
-                                <input type="text" name="nome" class="form-control">
+                                <input type="text" name="nome" class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-2">
                                 <label for="cep">CEP:</label>
-                                <input type="text" name="cep" class="form-control">
+                                <input type="text" name="cep" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group col-md-10">
                                 <label for="endereco">Endereço:</label>
-                                <input type="text" name="endereco" class="form-control">
+                                <input type="text" name="endereco" class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-2">
                                 <label for="numero">Número:</label>
-                                <input type="text" name="numero" class="form-control">
+                                <input type="text" name="numero" class="form-control" required>
                             </div>						
                         </div>
 
                         <div class="row">
                             <div class="form-group col-md-5">
                                 <label for="bairro">Bairro:</label>
-                                <input type="text" name="bairro" class="form-control">
+                                <input type="text" name="bairro" class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-5">
                                 <label for="cidade">Cidade:</label>
-                                <input type="text" name="cidade" class="form-control">
+                                <input type="text" name="cidade" class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-2">

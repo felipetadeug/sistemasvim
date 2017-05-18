@@ -35,16 +35,10 @@ public class FilialListar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-
-        List<Filial> filialList = new ArrayList<>();
-        FilialController control = new FilialController();
-
-        Filial filial = new Filial();
-
         try {
-            filialList = control.obter();
+            List<Filial> filialList = FilialController.obter();
             request.setAttribute("ListFilial", filialList);
-            request.getRequestDispatcher("editar_filial.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/editar_filial.jsp").forward(request, response);
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
         }

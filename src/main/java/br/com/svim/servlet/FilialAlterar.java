@@ -31,8 +31,6 @@ public class FilialAlterar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        FilialController control = new FilialController();
         Filial filial = new Filial();
 
         filial.setIdFilial(Integer.parseInt(request.getParameter("id")));
@@ -46,8 +44,8 @@ public class FilialAlterar extends HttpServlet {
 
         try {
             
-            control.alterar(filial);
-            request.getRequestDispatcher("./FilialListar").forward(request, response);
+            FilialController.alterar(filial);
+            request.getRequestDispatcher("WEB-INF/FilialListar").forward(request, response);
         
         } catch (Exception e) {
             System.err.println("ERROR ----> "+e);

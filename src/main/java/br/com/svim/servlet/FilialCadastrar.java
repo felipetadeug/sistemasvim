@@ -40,21 +40,12 @@ public class FilialCadastrar extends HttpServlet {
         filial.setCidade(request.getParameter("cidade"));
         filial.setUf(request.getParameter("uf"));
         filial.setCep(request.getParameter("cep"));
-        filial.setNumero(Integer.parseInt(request.getParameter("numero")));     
-        
-        
+        filial.setNumero(Integer.parseInt(request.getParameter("numero")));                   
         try{
-        
-           FilialController filialCon = new FilialController();
-           filialCon.cadastrar(filial);
-           
-           request.getRequestDispatcher("cadastrar_filial.jsp").forward(request, response);
-           
-            
-        }catch(Exception e){
-        
-            System.err.println("ERROR-----> " +e);
-            
+           FilialController.cadastrar(filial);       
+           request.getRequestDispatcher("WEB-INF/cadastrar_filial.jsp").forward(request, response);           
+        }catch(Exception e){    
+            System.err.println("ERROR-----> " +e);         
         }
     }
 

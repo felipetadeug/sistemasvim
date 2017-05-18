@@ -42,7 +42,7 @@ public class CargoCadastrar extends HttpServlet {
             CargoController cargoCon = new CargoController();
             cargoCon.cadastrar(cargo);
             
-            request.getRequestDispatcher("./CargoListar").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/CargoListar").forward(request, response);
 
         } catch (Exception e) {
 

@@ -65,7 +65,7 @@ public class PopUpFuncionario extends HttpServlet {
 
         }
         
-        request.getRequestDispatcher("cadastrar_funcionario.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/cadastrar_funcionario.jsp").forward(request, response);
         
     }
 

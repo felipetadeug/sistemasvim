@@ -41,7 +41,7 @@ public class CargoAlterar extends HttpServlet {
 
         try {
             control.alterar(cargo);
-            request.getRequestDispatcher("./CargoListar").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/CargoListar").forward(request, response);
 
         } catch (Exception e) {
             System.err.println("ERROR ----> " + e);
