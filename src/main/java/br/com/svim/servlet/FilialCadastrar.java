@@ -32,8 +32,8 @@ public class FilialCadastrar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         Filial filial = new Filial();
-
         filial.setNomeFilial(request.getParameter("nome"));
         filial.setRua(request.getParameter("endereco"));
         filial.setBairro(request.getParameter("bairro"));

@@ -33,23 +33,12 @@ public class CargoListar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        List<Cargo> cargoList = new ArrayList<>();
-        CargoController control = new CargoController();
-
-        Cargo cargo = new Cargo();
-
         try {
-
-            cargoList = control.obter();
-            request.setAttribute("ListCargo", cargoList);
+            request.setAttribute("ListCargo", CargoController.obter());
             request.getRequestDispatcher("WEB-INF/parametros.jsp").forward(request, response);
-
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
-
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

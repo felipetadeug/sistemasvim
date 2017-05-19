@@ -14,16 +14,17 @@ import java.util.ArrayList;
  * @author Iago
  */
 public class ProdutoController {
-    public  void cadastrar(Produto produto) throws Exception {
+
+    public static void cadastrar(Produto produto) throws Exception {
         try {
             validar(produto);
-           DaoProduto.cadastrar(produto);
+            DaoProduto.cadastrar(produto);
         } catch (Exception e) {
             throw e;
         }
     }
 
-    public  void alterar(Produto produto) throws Exception {
+    public static void alterar(Produto produto) throws Exception {
         try {
             validar(produto);
             DaoProduto.alterar(produto);
@@ -32,29 +33,30 @@ public class ProdutoController {
         }
     }
 
-    public  Produto obter(int idProduto) throws Exception {
+    public static Produto obter(int idProduto) throws Exception {
         try {
             return DaoProduto.obter(idProduto);
         } catch (Exception e) {
             throw e;
         }
     }
-    
-        public  ArrayList<Produto> obter() throws Exception {
+
+    public static ArrayList<Produto> obter() throws Exception {
         try {
             return DaoProduto.obter();
         } catch (Exception e) {
             throw e;
         }
     }
-       private  void validar(Produto produto) throws Exception{
-           try {
-               if (produto.getProduto() == null || produto.getProduto().trim().isEmpty()){
-                   throw new Exception("Produto vazio");
-               }
-               
-           } catch (Exception e){
-               throw e;
-           }
-       }
+
+    private static void validar(Produto produto) throws Exception {
+        try {
+            if (produto.getProduto() == null || produto.getProduto().trim().isEmpty()) {
+                throw new Exception("Produto vazio");
+            }
+
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 }

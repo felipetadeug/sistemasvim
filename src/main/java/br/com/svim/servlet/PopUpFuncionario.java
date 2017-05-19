@@ -34,37 +34,13 @@ public class PopUpFuncionario extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        List<Filial> filialList = new ArrayList<>();
-        FilialController control = new FilialController();
-
-        Filial filial = new Filial();
-
+            throws ServletException, IOException {     
         try {
-            filialList = control.obter();
-            request.setAttribute("ListFilial", filialList);
-            
+            request.setAttribute("ListFilial", FilialController.obter());
+            request.setAttribute("ListCargo", CargoController.obter();
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
-        }
-        
-        List<Cargo> cargoList = new ArrayList<>();
-        CargoController controlCargo = new CargoController();
-
-        Cargo cargo = new Cargo();
-
-        try {
-
-            cargoList = controlCargo.obter();
-            request.setAttribute("ListCargo", cargoList);
-            
-
-        } catch (Exception e) {
-            System.err.println("ERROR-----> " + e);
-
-        }
-        
+        }      
         request.getRequestDispatcher("WEB-INF/cadastrar_funcionario.jsp").forward(request, response);
         
     }

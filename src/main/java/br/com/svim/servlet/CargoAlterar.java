@@ -32,15 +32,13 @@ public class CargoAlterar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        CargoController control = new CargoController();
-        Cargo cargo = new Cargo();
-        
+        Cargo cargo = new Cargo();       
         cargo.setIdCargo(Integer.parseInt(request.getParameter("id")));
         cargo.setCargo(request.getParameter("nome"));
         cargo.setHierarquia(2);
 
         try {
-            control.alterar(cargo);
+            CargoController.alterar(cargo);
             request.getRequestDispatcher("WEB-INF/CargoListar").forward(request, response);
 
         } catch (Exception e) {
