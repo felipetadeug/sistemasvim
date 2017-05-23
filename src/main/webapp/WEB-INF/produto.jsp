@@ -29,21 +29,15 @@
 
             <div class="row">			
                 <aside class="col-md-2" id="menu">
-                    <ul>
-                        <li><a href="cadastrar_item.jsp">Novo Cadastro - Item</a></li>
-                        <li><a href="./ItemAlterar">Alterar Cadastro - Item</a></li>
-
-                        <li><a href="./PopUpFuncionario">Novo Cadastro - Funcionario</a></li>
-                        <li><a href="./FuncionarioListar">Alterar Cadastro - Funcionario</a></li>
-
-                        <li><a href="cadastrar_filial.jsp">Novo Cadastro - Filial</a></li>
-                        <li><a href="./FilialListar">Alterar Cadastro - Filial</a></li>
-
-
+                    <ul>                  
+                        <li><a href="">Venda</a></li>
                         <li><a href="">Estoque</a></li>
-                        <li><a href="">Relatórios</a></li>
-                        <li><a href="venda.jsp">Venda</a></li>
-                        <li><a href="./CargoListar">Parâmetros</a></li>
+                        <li><a href="">Relatório</a></li>
+                        <li><a href="./FilialListar">Filial</a></li>
+                        <li><a href="./CargoListar">Cargo</a></li>
+                        <li><a href="./FuncionarioListar">Funcionario</a></li>                      
+                        <li><a href="./ProdutoListar">Produto</a></li>
+                        <li><a href="./TipoProdutoListar">Tipo de Produto</a></li>
                     </ul>
                 </aside>
 
@@ -106,7 +100,18 @@
                                                     <option value="produto">Produto</option>
                                                     <option value="servico">Serviço</option>
                                                 </select>
-                                            </div>						
+                                            </div>
+
+                                            <div class="form-group col-md-3">
+                                                <label for="estocavel">É estocável:</label>
+                                                <input type="checkbox" name="estocavel" class="form-control">
+                                            </div>
+
+                                            <div class="form-group col-md-3">
+                                                <label for="combustivel">É combustivel:</label>
+                                                <input type="checkbox" name="combustivel" class="form-control">
+                                            </div>
+
                                         </div>
 
                                         <input type="hidden" name="id">

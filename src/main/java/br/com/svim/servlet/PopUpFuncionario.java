@@ -37,7 +37,7 @@ public class PopUpFuncionario extends HttpServlet {
             throws ServletException, IOException {     
         try {
             request.setAttribute("ListFilial", FilialController.obter());
-            request.setAttribute("ListCargo", CargoController.obter();
+            request.setAttribute("ListCargo", CargoController.obter());
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
         }      

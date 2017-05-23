@@ -33,15 +33,11 @@ public class CargoCadastrar extends HttpServlet {
             throws ServletException, IOException {
 
         Cargo cargo = new Cargo();
-
         cargo.setCargo(request.getParameter("cargos"));
         cargo.setHierarquia(2);
 
         try {
-
-            CargoController cargoCon = new CargoController();
-            cargoCon.cadastrar(cargo);
-            
+            CargoController.cadastrar(cargo);            
             request.getRequestDispatcher("WEB-INF/CargoListar").forward(request, response);
 
         } catch (Exception e) {

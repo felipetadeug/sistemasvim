@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="script/editar_filial.js"></script>
+        <script type="text/javascript" src="filial.js"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -32,22 +32,16 @@
             </header>
 
             <div class="row">			
-               <aside class="col-md-2" id="menu">
-                    <ul>
-                        <li><a href="cadastrar_item.jsp">Novo Cadastro - Item</a></li>
-                        <li><a href="./ListarItem">Alterar Cadastro - Item</a></li>
-
-                        <li><a href="./PopUpFuncionario">Novo Cadastro - Funcionario</a></li>
-                        <li><a href="./FuncionarioListar">Alterar Cadastro - Funcionario</a></li>
-
-                        <li><a href="cadastrar_filial.jsp">Novo Cadastro - Filial</a></li>
-                        <li><a href="./FilialListar">Alterar Cadastro - Filial</a></li>
-
-
+                <aside class="col-md-2" id="menu">
+                    <ul>                  
+                        <li><a href="">Venda</a></li>
                         <li><a href="">Estoque</a></li>
-                        <li><a href="">Relatórios</a></li>
-                        <li><a href="venda.jsp">Venda</a></li>
-                        <li><a href="./CargoListar">Parâmetros</a></li>
+                        <li><a href="">Relatório</a></li>
+                        <li><a href="./FilialListar">Filial</a></li>
+                        <li><a href="./CargoListar">Cargo</a></li>
+                        <li><a href="./FuncionarioListar">Funcionario</a></li>                      
+                        <li><a href="./ProdutoListar">Produto</a></li>
+                        <li><a href="./TipoProdutoListar">Tipo de Produto</a></li>
                     </ul>
                 </aside>
 
@@ -57,6 +51,11 @@
                         <h1 class="txt">Editar Filial</h1>
                         <p class="txt">Selecione o a filial a ser editada.</p>
                     </article>
+                    
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastrarFilial">Cadastrar</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarFilial">Editar</button>
+                    <button type="button" class="btn btn-primary">Deletar</button>
 
                     <table class="table table-hover">
                         <thead>				
@@ -72,26 +71,26 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="filial" items="${ListFilial}">
-                            <tr>
-                                <td>${filial.getIdFilial()}</td>
-                                <td>${filial.getNomeFilial()}</td>
-                                <td>${filial.getCep()}</td>
-                                <td>${filial.getRua()}</td>
-                                <td>${filial.getNumero()}</td>
-                                <td>${filial.getBairro()}</td>
-                                <td>${filial.getCidade()}</td>
-                                <td>${filial.getUf()}</td>
-                            </tr>
-                        </c:forEach>
+                            <c:forEach var="filial" items="${ListFilial}">
+                                <tr>
+                                    <td>${filial.getIdFilial()}</td>
+                                    <td>${filial.getNomeFilial()}</td>
+                                    <td>${filial.getCep()}</td>
+                                    <td>${filial.getRua()}</td>
+                                    <td>${filial.getNumero()}</td>
+                                    <td>${filial.getBairro()}</td>
+                                    <td>${filial.getCidade()}</td>
+                                    <td>${filial.getUf()}</td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
 
                     <br/>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Editar Selecionado</button>
 
-                    <div class="modal fade" id="myModal" role="dialog">
+
+                    <div class="modal fade" id="editarFilial" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -150,6 +149,71 @@
                                         <br/>
 
                                         <button type="submit" class="btn btn-success">Atualizar</button>
+                                    </form>
+                                </div>
+                            </div>				      
+                        </div>
+                    </div>
+
+                    <!-- Modal - Cadastro -->                    
+                    <div class="modal fade" id="cadastrarFilial" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Cadastrar Filial</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form method="POST" action="./FilialCadastrar">
+                                        <div class="row">
+                                            <div class="form-group col-md-10">
+                                                <label for="nome">Nome:</label>
+                                                <input type="text" name="nome" class="form-control" required>
+                                            </div>
+
+                                            <div class="form-group col-md-2">
+                                                <label for="cep">CEP:</label>
+                                                <input type="text" name="cep" class="form-control" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-md-10">
+                                                <label for="endereco">Endereço:</label>
+                                                <input type="text" name="endereco" class="form-control" required>
+                                            </div>
+
+                                            <div class="form-group col-md-2">
+                                                <label for="numero">Número:</label>
+                                                <input type="text" name="numero" class="form-control" required>
+                                            </div>						
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-md-5">
+                                                <label for="bairro">Bairro:</label>
+                                                <input type="text" name="bairro" class="form-control" required>
+                                            </div>
+
+                                            <div class="form-group col-md-5">
+                                                <label for="cidade">Cidade:</label>
+                                                <input type="text" name="cidade" class="form-control" required>
+                                            </div>
+
+                                            <div class="form-group col-md-2">
+                                                <label for="uf">UF:</label>
+                                                <select name="uf" class="form-control">
+                                                    <option value="SP">SP</option> 
+                                                    <!-- Script para carregar valores. -->
+                                                </select>
+                                            </div>					
+                                        </div>
+
+                                        <br/>
+
+                                        <button type="reset" class="btn btn-danger">Limpar</button>
+                                        <button type="submit" class="btn btn-success">Cadastrar</button>
                                     </form>
                                 </div>
                             </div>				      

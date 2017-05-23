@@ -37,7 +37,7 @@ public class FilialListar extends HttpServlet {
             throws ServletException, IOException, Exception {
         try {
             request.setAttribute("ListFilial", FilialController.obter());
-            request.getRequestDispatcher("WEB-INF/editar_filial.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/filial.jsp").forward(request, response);
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
         }

@@ -6,6 +6,8 @@
 
 window.addEventListener('load',function(){
 	
+        alert('teste');
+        
 	// ao clicar em uma linha da tabela
 	$('.table tr').click(function(){
 		// adiciona a classe selected na linha e remove da antiga
@@ -25,19 +27,19 @@ window.addEventListener('load',function(){
 		filial.uf = $(this).find('td:nth-child(8)').html();
 		
 		// envia os dados pros campos da modal
-                $('.modal [name=id]').val(filial.id);
-		$('.modal [name=nome]').val(filial.nome);
-		$('.modal [name=cep]').val(filial.cep);
-		$('.modal [name=endereco]').val(filial.endereco);
-		$('.modal [name=numero]').val(filial.numero);
-		$('.modal [name=bairro]').val(filial.bairro);
-		$('.modal [name=cidade]').val(filial.cidade);
-		$('.modal [name=uf]').val(filial.uf);
+                $('#editarFilial [name=id]').val(filial.id);
+		$('#editarFilial [name=nome]').val(filial.nome);
+		$('#editarFilial [name=cep]').val(filial.cep);
+		$('#editarFilial [name=endereco]').val(filial.endereco);
+		$('#editarFilial [name=numero]').val(filial.numero);
+		$('#editarFilial [name=bairro]').val(filial.bairro);
+		$('#editarFilial [name=cidade]').val(filial.cidade);
+		$('#editarFilial [name=uf]').val(filial.uf);
 		
 	});
 	
 	// ao clicar no botao de editar (abrir modal)
-	$('button[data-toggle=modal]').click(function(){
+	$('button[data-target="#editarFilial"]').click(function(){
 		if($('tr.selected').length == 0){
 			alert('selecione um registro');
 			return false;
