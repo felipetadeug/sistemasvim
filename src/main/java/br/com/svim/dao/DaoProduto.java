@@ -16,6 +16,7 @@ import java.util.ArrayList;
  * @author Iago
  */
 public class DaoProduto {
+
     public static void cadastrar(Produto produto) throws Exception {
         try {
             Connection conn = SqlConnection.getConexao();
@@ -84,8 +85,8 @@ public class DaoProduto {
             throw e;
         }
     }
-    
-        public static ArrayList<Produto> obter() throws Exception {
+
+    public static ArrayList<Produto> obter() throws Exception {
         try {
             ArrayList<Produto> produtos = new ArrayList<Produto>();
             Connection conn = SqlConnection.getConexao();
@@ -110,4 +111,19 @@ public class DaoProduto {
             throw e;
         }
     }
+
+    public static void deletar(int id) throws Exception {
+        try {
+            Connection conn = SqlConnection.getConexao();
+            String sql = "call remover_produto(?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
 }

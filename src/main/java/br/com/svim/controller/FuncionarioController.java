@@ -50,8 +50,8 @@ public class FuncionarioController {
 
     public static Funcionario logar(String cpf, String senha) throws Exception {
         try {
-            Funcionario funcionario = DaoFuncionario.obter(cpf,senha);
-            if(funcionario.getIdFuncionario() == 0){
+            Funcionario funcionario = DaoFuncionario.obter(cpf, senha);
+            if (funcionario.getIdFuncionario() == 0) {
                 throw new Exception("CPF e/ou senha incorreto(s)");
             }
             return funcionario;
@@ -59,13 +59,21 @@ public class FuncionarioController {
             throw e;
         }
     }
-    
+
+    public static void deletar(int id) throws Exception {
+        try {
+            DaoFuncionario.deletar(id);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
     private static void validar(Funcionario funcionario) throws Exception {
         try {
             if (funcionario.getNome() == null || funcionario.getNome().trim().isEmpty()) {
                 throw new Exception("Campo Nome vazio");
             }
-            if (!isCPF(funcionario.getCpf())){
+            if (!isCPF(funcionario.getCpf())) {
                 throw new Exception("CPF inválido");
             }
         } catch (Exception e) {

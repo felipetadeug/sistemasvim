@@ -49,6 +49,14 @@ public class FilialController {
         }
     }
 
+    public static void deletar(int id) throws Exception {
+        try {
+            DaoFilial.deletar(id);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
     private static void validar(Filial filial) throws Exception {
         try {
             if (filial.getNomeFilial() == null || filial.getNomeFilial().trim().isEmpty()) {

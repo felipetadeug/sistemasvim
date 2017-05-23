@@ -16,8 +16,8 @@ import java.util.ArrayList;
  * @author Iago
  */
 public class DaoCargo {
-    
-     public static void cadastrar(Cargo cargo) throws Exception {
+
+    public static void cadastrar(Cargo cargo) throws Exception {
         try {
             Connection conn = SqlConnection.getConexao();
             String sql = "call cadastrar_cargo(?,?)";
@@ -76,8 +76,8 @@ public class DaoCargo {
             throw e;
         }
     }
-    
-        public static ArrayList<Cargo> obter() throws Exception {
+
+    public static ArrayList<Cargo> obter() throws Exception {
         try {
             ArrayList<Cargo> cargos = new ArrayList<Cargo>();
             Connection conn = SqlConnection.getConexao();
@@ -100,4 +100,19 @@ public class DaoCargo {
         }
     }
     
+    public static void deletar(int id) throws Exception{
+        try{
+            Connection conn = SqlConnection.getConexao();
+            String sql = "call remover_cargo(?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            stmt.close();
+            conn.close();
+        }
+        catch(Exception e){
+            throw e;
+        }
+    }
+
 }

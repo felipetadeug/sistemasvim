@@ -49,6 +49,14 @@ public class CargoController {
         }
     }
 
+    public static void deletar(int id) throws Exception {
+        try {
+            DaoCargo.deletar(id);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
     private static void validar(Cargo cargo) throws Exception {
         try {
             if (cargo.getCargo() == null || cargo.getCargo().trim().isEmpty()) {
@@ -58,4 +66,5 @@ public class CargoController {
             throw e;
         }
     }
+
 }

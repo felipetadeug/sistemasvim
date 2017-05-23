@@ -151,4 +151,18 @@ public class DaoFuncionario {
         }
     }
 
+    public static void deletar(int id) throws Exception {
+        try {
+            Connection conn = SqlConnection.getConexao();
+            String sql = "call remover_funcionario(?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
 }

@@ -1,4 +1,3 @@
-
 package br.com.svim.dao;
 
 import br.com.svim.model.Filial;
@@ -83,8 +82,8 @@ public class DaoFilial {
             throw e;
         }
     }
-    
-        public static ArrayList<Filial> obter() throws Exception {
+
+    public static ArrayList<Filial> obter() throws Exception {
         try {
             ArrayList<Filial> filiais = new ArrayList<Filial>();
             Connection conn = SqlConnection.getConexao();
@@ -107,6 +106,20 @@ public class DaoFilial {
             conn.close();
 
             return filiais;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public static void deletar(int id) throws Exception {
+        try {
+            Connection conn = SqlConnection.getConexao();
+            String sql = "call remover_filial(?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            stmt.close();
+            conn.close();
         } catch (Exception e) {
             throw e;
         }

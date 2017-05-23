@@ -49,6 +49,14 @@ public class ProdutoController {
         }
     }
 
+    public static void deletar(int id) throws Exception {
+        try {
+            DaoProduto.deletar(id);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
     private static void validar(Produto produto) throws Exception {
         try {
             if (produto.getProduto() == null || produto.getProduto().trim().isEmpty()) {

@@ -16,7 +16,7 @@ import br.com.svim.model.TipoProduto;
  * @author Iago
  */
 public class DaoTipoProduto {
-    
+
     public static void cadastrar(TipoProduto tipoProduto) throws Exception {
         try {
             Connection conn = SqlConnection.getConexao();
@@ -41,7 +41,7 @@ public class DaoTipoProduto {
 
             stmt.setInt(1, tipoProduto.getIdTipoProduto());
             stmt.setString(2, tipoProduto.getTipoProduto());
-            
+
             stmt.execute();
             stmt.close();
             conn.close();
@@ -73,8 +73,8 @@ public class DaoTipoProduto {
             throw e;
         }
     }
-    
-        public static ArrayList<TipoProduto> obter() throws Exception {
+
+    public static ArrayList<TipoProduto> obter() throws Exception {
         try {
             ArrayList<TipoProduto> tipos = new ArrayList<TipoProduto>();
             Connection conn = SqlConnection.getConexao();
@@ -91,6 +91,20 @@ public class DaoTipoProduto {
             conn.close();
 
             return tipos;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public static void deletar(int id) throws Exception {
+        try {
+            Connection conn = SqlConnection.getConexao();
+            String sql = "call remover_tipo_produto(?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            stmt.close();
+            conn.close();
         } catch (Exception e) {
             throw e;
         }
