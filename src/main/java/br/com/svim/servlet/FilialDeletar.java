@@ -33,6 +33,7 @@ public class FilialDeletar extends HttpServlet {
 
         try {
             FilialController.deletar(Integer.parseInt(request.getParameter("id")));
+            request.getRequestDispatcher("./FilialListar").forward(request, response);
         } catch (Exception e) {
             System.out.println("ERROR --->   "+e);
         }
