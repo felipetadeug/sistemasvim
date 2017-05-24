@@ -1074,7 +1074,7 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `remover_filial`(
- in id int
+ in _id int
 )
 begin
 

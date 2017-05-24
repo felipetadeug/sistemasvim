@@ -48,14 +48,14 @@
 
                 <section class="col-md-10" id="principal">
                     <article class="page-header">
-                        <h1 class="txt">Editar Filial</h1>
-                        <p class="txt">Selecione o a filial a ser editada.</p>
+                        <h1 class="txt">Filial</h1>
+                        <p class="txt">Controle de filiais</p>
                     </article>
                     
 
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastrarFilial">Cadastrar</button>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarFilial">Editar</button>
-                    <button type="button" class="btn btn-primary">Deletar</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deletarFilial">Deletar</button>
 
                     <table class="table table-hover">
                         <thead>				
@@ -89,7 +89,7 @@
                     <br/>
 
 
-
+                    <!-- Modal - Editar -->
                     <div class="modal fade" id="editarFilial" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -99,7 +99,7 @@
                                 </div>
 
                                 <div class="modal-body">
-                                    <form action="./FilialAlterar">
+                                    <form method="POST" action="./FilialAlterar">
                                         <div class="row">
                                             <div class="form-group col-md-8">
                                                 <label for="nome">Nome:</label>
@@ -155,7 +155,7 @@
                         </div>
                     </div>
 
-                    <!-- Modal - Cadastro -->                    
+                    <!-- Modal - Cadastrar -->                    
                     <div class="modal fade" id="cadastrarFilial" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -219,6 +219,27 @@
                             </div>				      
                         </div>
                     </div>
+                    
+                    <!-- Modal - Deletar -->                    
+                    <div class="modal fade" id="deletarFilial" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Excluir Filial</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form method="POST" action="./FilialDeletar">
+                                        <h2>Tem certeza que deseja deletar este registro?</h2>
+                                        <input type="hidden" name="id">
+                                        <button type="submit" class="btn btn-danger">Deletar</button>
+                                    </form>
+                                </div>
+                            </div>				      
+                        </div>
+                    </div>
+                    
                 </section>
             </div>
 

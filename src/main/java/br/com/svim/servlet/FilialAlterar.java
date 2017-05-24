@@ -45,7 +45,7 @@ public class FilialAlterar extends HttpServlet {
         try {
             
             FilialController.alterar(filial);
-            request.getRequestDispatcher("WEB-INF/FilialListar").forward(request, response);
+            request.getRequestDispatcher("./FilialListar").forward(request, response);
         
         } catch (Exception e) {
             System.err.println("ERROR ----> "+e);

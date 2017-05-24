@@ -43,7 +43,7 @@ public class FilialCadastrar extends HttpServlet {
         filial.setNumero(Integer.parseInt(request.getParameter("numero")));                   
         try{
            FilialController.cadastrar(filial);       
-           request.getRequestDispatcher("WEB-INF/cadastrar_filial.jsp").forward(request, response);           
+           request.getRequestDispatcher("./FilialListar").forward(request, response);           
         }catch(Exception e){    
             System.err.println("ERROR-----> " +e);         
         }
