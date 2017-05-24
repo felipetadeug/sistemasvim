@@ -23,7 +23,7 @@ public class Autenticar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/filial.jsp").forward(request, response);
+        request.getRequestDispatcher("./FilialListar").forward(request, response);
     }
 
     @Override

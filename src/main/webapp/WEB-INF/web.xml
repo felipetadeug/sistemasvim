@@ -37,10 +37,6 @@
         <servlet-class>br.com.svim.servlet.CargoAlterar</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PopUpFuncionario</servlet-name>
-        <servlet-class>br.com.svim.servlet.PopUpFuncionario</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>FuncionarioListar</servlet-name>
         <servlet-class>br.com.svim.servlet.FuncionarioListar</servlet-class>
     </servlet>
@@ -95,10 +91,6 @@
     <servlet-mapping>
         <servlet-name>CargoAlterar</servlet-name>
         <url-pattern>/CargoAlterar</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>PopUpFuncionario</servlet-name>
-        <url-pattern>/PopUpFuncionario</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FuncionarioListar</servlet-name>

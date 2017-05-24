@@ -5,6 +5,7 @@
  */
 package br.com.svim.servlet;
 
+import br.com.svim.controller.FilialController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -28,8 +29,14 @@ public class FilialDeletar extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
+            throws ServletException, IOException, Exception {
+
+        try {
+            FilialController.deletar(Integer.parseInt(request.getParameter("id")));
+        } catch (Exception e) {
+            System.out.println("ERROR --->   "+e);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -44,7 +51,7 @@ public class FilialDeletar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       
     }
 
     /**
@@ -58,7 +65,7 @@ public class FilialDeletar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       
     }
 
     /**
