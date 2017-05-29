@@ -5,13 +5,14 @@
  */
 package br.com.svim.servlet;
 
+import br.com.svim.controller.CargoController;
+import br.com.svim.controller.FilialController;
 import br.com.svim.controller.FuncionarioController;
 import br.com.svim.model.Cargo;
 import br.com.svim.model.Filial;
 import br.com.svim.model.Funcionario;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
@@ -36,43 +37,72 @@ public class FuncionarioCadastrar extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Funcionario funcionario = new Funcionario();
-        
+
         funcionario.setNome(request.getParameter("nome"));
         funcionario.setCpf(request.getParameter("cpf"));
-        
+
         try {
-            SimpleDateFormat dateType = new SimpleDateFormat( "dd/MM/yyyy" );
-            funcionario.setDataAdmissao((Date) dateType.parse(request.getParameter("data_ad")));
-            funcionario.setDataNascimento((Date) dateType.parse(request.getParameter("data_nasc")));
+            SimpleDateFormat dateType = new SimpleDateFormat("yyyy-MM-dd");
+            funcionario.setDataAdmissao(dateType.parse(request.getParameter("dtadm")));
+            funcionario.setDataNascimento(dateType.parse(request.getParameter("dtnasc")));
+
         } catch (ParseException ex) {
             Date data;
             Logger.getLogger(FuncionarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        Cargo cargo = new Cargo();
-        cargo.setCargo(request.getParameter("cargo"));
-        funcionario.setCargo(cargo);
-        
-        Filial filial = new Filial();
-        filial.setNomeFilial(request.getParameter("filial"));
-        funcionario.setFilial(filial);
-        
-        funcionario.setSenha(request.getParameter("filial"));
-        
-        FuncionarioController control = new FuncionarioController();
-        
+
         try {
-            control.cadastrar(funcionario);
+            Cargo cargo = CargoController.obter(Integer.parseInt(request.getParameter("cargo")));
+            funcionario.setCargo(cargo);
+
+            Filial filial = FilialController.obter(Integer.parseInt(request.getParameter("filial")));
+            funcionario.setFilial(filial);
         } catch (Exception ex) {
             Logger.getLogger(FuncionarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        funcionario.setSenha(request.getParameter("senha"));
+
+        try {
+            FuncionarioController.cadastrar(funcionario);
+            request.getRequestDispatcher("./FuncionarioListar").forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(FuncionarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**
@@ -80,5 +110,9 @@ public class FuncionarioCadastrar extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-    
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
 }

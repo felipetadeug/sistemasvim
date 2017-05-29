@@ -32,6 +32,7 @@ public class FuncionarioDeletar extends HttpServlet {
             throws ServletException, IOException {
         try {
            FuncionarioController.deletar(Integer.parseInt(request.getParameter("id")));
+           request.getRequestDispatcher("./FuncionarioListar").forward(request, response);
         } catch (Exception e) {
             System.out.println("ERROR --->   "+e);
         }

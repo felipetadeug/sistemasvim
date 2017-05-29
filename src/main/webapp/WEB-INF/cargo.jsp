@@ -86,12 +86,12 @@
                                         <div class="row">
                                             <div class="form-group col-md-8">
                                                 <label for="cargo">Cargo:</label>
-                                                <input type="text" name="cargo" class="form-control" >
+                                                <input type="text" name="cargo" class="form-control" required>
                                             </div>
 
                                             <div class="form-group col-md-4">
                                                 <label for="hierarquia">Hierarquia:</label>
-                                                <input type="number" name="hierarquia" class="form-control">
+                                                <input type="number" name="hierarquia" class="form-control" required>
                                             </div>
                                         </div>
 
@@ -121,12 +121,12 @@
                                         <div class="row">
                                             <div class="form-group col-md-8">
                                                 <label for="cargo">Cargo:</label>
-                                                <input type="text" name="cargo" class="form-control" >
+                                                <input type="text" name="cargo" class="form-control" required>
                                             </div>
 
                                             <div class="form-group col-md-4">
                                                 <label for="hierarquia">Hierarquia:</label>
-                                                <input type="number" name="hierarquia" class="form-control">
+                                                <input type="number" name="hierarquia" class="form-control" required>
                                             </div>
                                         </div>
 

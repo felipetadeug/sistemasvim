@@ -5,8 +5,10 @@
  */
 package br.com.svim.servlet;
 
+import br.com.svim.controller.CargoController;
+import br.com.svim.controller.FilialController;
+import br.com.svim.controller.FuncionarioController;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,8 +31,14 @@ public class FuncionarioListar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.getRequestDispatcher("editar_funcionario.jsp").forward(request, response);
+        try {
+            request.setAttribute("ListFilial", FilialController.obter());
+            request.setAttribute("ListCargo", CargoController.obter());
+            request.setAttribute("ListFuncionario", FuncionarioController.obter());
+            request.getRequestDispatcher("WEB-INF/funcionario.jsp").forward(request, response);
+        } catch (Exception e) {
+            System.err.println("ERROR-----> " + e);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -41,6 +41,10 @@ public class Funcionario {
         return idFuncionario;
     }
 
+    public void setIdFuncionario(int idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+        
     public String getNome() {
         return nome;
     }
@@ -61,16 +65,16 @@ public class Funcionario {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setDataNascimento(java.util.Date dataNascimento) {
+        this.dataNascimento = new java.sql.Date(dataNascimento.getTime());
     }
 
     public Date getDataAdmissao() {
         return dataAdmissao;
     }
 
-    public void setDataAdmissao(Date dataAdmissao) {
-        this.dataAdmissao = dataAdmissao;
+    public void setDataAdmissao(java.util.Date dataAdmissao) {
+        this.dataAdmissao = new java.sql.Date(dataAdmissao.getTime());
     }
 
     public Cargo getCargo() {
