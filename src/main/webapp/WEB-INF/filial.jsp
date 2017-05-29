@@ -1,19 +1,12 @@
-<%-- 
-    Document   : alterar_filial
-    Created on : 16/05/2017, 15:06:25
-    Author     : Cauê Ghetti
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<!-- Tela - Alterar Filial-->
-<!-- Felipe Tadeu https://www.w3schools.com/bootstrap/bootstrap_grid_basic.asp // http://www.flextool.com.br/tabela_cores.html-->
 <html lang="en">
     <head>
-        <title>SVIM - Editar Filial</title>
+        <title>SVIM - Filial</title>
         <link rel="shortcut icon" href="imagens/favicon.ico"/>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="style.css">

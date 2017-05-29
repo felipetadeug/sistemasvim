@@ -1,20 +1,12 @@
-<%-- 
-    Document   : parametros.jsp
-    Created on : 16/05/2017, 16:44:45
-    Author     : Cauê Ghetti
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
 <!DOCTYPE html>
-
 <html lang="en">
     <head>
-        <title>SVIM - Parâmetros</title>
+        <title>SVIM - Cargo</title>
         <link rel="shortcut icon" href="imagens/favicon.ico"/>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="style.css">
@@ -22,14 +14,14 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="editar_parametros.js"></script>
+        <script type="text/javascript" src="cargo.js"></script>
     </head>
     <body>
         <div class="container-fluid">
             <header class="row" id="superior">
                 <div class="col-md-12">
                     <h1>SVIM</h1>
-                </div>		
+                </div>			
             </header>
 
             <div class="row">			
@@ -46,87 +38,136 @@
                     </ul>
                 </aside>
 
+
                 <section class="col-md-10" id="principal">
                     <article class="page-header">
-                        <h1 class="txt">Parâmetros</h1>
-                        <p class="txt">Controle os parâmetros no sistema.</p>
+                        <h1 class="txt">Cargo</h1>
+                        <p class="txt">Controle de cargos</p>
                     </article>
+                    
 
-                    <form class="well well-lg" action="./CargoCadastrar">
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label for="cargo">Cargo:</label>
-                                <input type="text" name="cargo" class="form-control">
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label for="hierarquia">Hierarquia</label>
-                                <input type="text" name="hierarquia" class="form-control">
-                            </div>
-                        </div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastrarCargo">Cadastrar</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarCargo">Editar</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deletarCargo">Deletar</button>
 
-                        <br/>
-
-                        <button type="reset" class="btn btn-danger">Limpar</button>
-                        <button type="submit" class="btn btn-success">Cadastrar</button>
-                    </form>
-
-                    <div class="well well-lg ">					
-                        <table class="table table-hover">
-                            <thead>				
+                    <table class="table table-hover">
+                        <thead>				
+                            <tr>
+                                <th>ID</th>
+                                <th>Cargo</th>
+                                <th>Hierarquia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="cargo" items="${ListCargo}">
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Cargos de Funcionarios</th>
+                                    <td>${cargo.getIdCargo()}</td>
+                                    <td>${cargo.getCargo()}</td>
+                                    <td>${cargo.getHierarquia()}</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach var="cargo" items="${ListCargo}">
-                                    <tr>
-                                        <td>${cargo.getIdCargo()}</td>
-                                        <td>${cargo.getCargo()}</td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
+                            </c:forEach>
+                        </tbody>
+                    </table>
 
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCargos">Editar Selecionado</button>
+                    <br/>
 
-                        <div class="modal fade" id="myModalCargos" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Editar Parâmetros - Cargos</h4>
-                                    </div>
 
-                                    <div class="modal-body">
-                                        <form action="./CargoAlterar">
-                                            <div class="row">
-                                                <div class="form-group col-md-12">
-                                                    <label for="nome">Nome:</label>
-                                                    <input type="text" name="nome" class="form-control" >
-                                                </div>
+                    <!-- Modal - Editar -->
+                    <div class="modal fade" id="editarCargo" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Editar Cargo</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form method="POST" action="./CargoAlterar">
+                                        <div class="row">
+                                            <div class="form-group col-md-8">
+                                                <label for="cargo">Cargo:</label>
+                                                <input type="text" name="cargo" class="form-control" >
                                             </div>
 
-                                            <input type="hidden" name="id">
+                                            <div class="form-group col-md-4">
+                                                <label for="hierarquia">Hierarquia:</label>
+                                                <input type="number" name="hierarquia" class="form-control">
+                                            </div>
+                                        </div>
 
-                                            <br/>
+                                        <input type="hidden" name="id">
 
-                                            <button type="submit" class="btn btn-success">Atualizar</button>
-                                        </form>
-                                    </div>
+                                        <br/>
+
+                                        <button type="submit" class="btn btn-success">Atualizar</button>
+                                    </form>
                                 </div>
-                            </div>			
-                        </div>  
+                            </div>				      
+                        </div>
+                    </div>
+
+                    <!-- Modal - Cadastrar -->                    
+                    <div class="modal fade" id="cadastrarCargo" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Cadastrar Cargo</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form method="POST" action="./CargoCadastrar">
+                                        
+                                        <div class="row">
+                                            <div class="form-group col-md-8">
+                                                <label for="cargo">Cargo:</label>
+                                                <input type="text" name="cargo" class="form-control" >
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="hierarquia">Hierarquia:</label>
+                                                <input type="number" name="hierarquia" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <br/>
+
+                                        <button type="reset" class="btn btn-danger">Limpar</button>
+                                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                                    </form>
+                                </div>
+                            </div>				      
+                        </div>
+                    </div>
+                    
+                    <!-- Modal - Deletar -->                    
+                    <div class="modal fade" id="deletarCargo" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Excluir Cargo</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form method="POST" action="./CargoDeletar">
+                                        <h2>Tem certeza que deseja deletar este registro?</h2>
+                                        <input type="hidden" name="id">
+                                        <button type="submit" class="btn btn-danger">Deletar</button>
+                                    </form>
+                                </div>
+                            </div>				      
+                        </div>
+                    </div>
+                    
                 </section>
             </div>
+
+            <footer class="row" id="rodape">
+                <div class="col-md-12">
+                    <p>Sistema SVIM -  Todos os direitos reservados ®</p>
+                </div>			
+            </footer>
         </div>
-
-        <footer class="row" id="rodape">
-            <div class="col-md-12">
-                <p>Sistema SVIM -  Todos os direitos reservados ®</p>
-            </div>			
-        </footer>
-    </div>
-</body>
+    </body>
 </html>
-

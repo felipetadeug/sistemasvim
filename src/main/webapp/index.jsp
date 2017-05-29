@@ -41,7 +41,7 @@
 					</div>				
 					
 					<div class="form_login">
-						<form action="./Autenticar">
+						<form method="POST" action="./Autenticar">
 							<input type="text" name="usuario" placeholder="Usuário">
 							<input type="password" name="senha" placeholder="Senha">
 							<button>Login</button>

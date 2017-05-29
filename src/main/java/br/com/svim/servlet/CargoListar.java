@@ -35,7 +35,7 @@ public class CargoListar extends HttpServlet {
             throws ServletException, IOException {
         try {
             request.setAttribute("ListCargo", CargoController.obter());
-            request.getRequestDispatcher("WEB-INF/parametros.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/cargo.jsp").forward(request, response);
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
         }

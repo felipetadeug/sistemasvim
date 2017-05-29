@@ -34,12 +34,12 @@ public class CargoAlterar extends HttpServlet {
 
         Cargo cargo = new Cargo();       
         cargo.setIdCargo(Integer.parseInt(request.getParameter("id")));
-        cargo.setCargo(request.getParameter("nome"));
-        cargo.setHierarquia(2);
+        cargo.setCargo(request.getParameter("cargo"));
+        cargo.setHierarquia(Integer.parseInt(request.getParameter("hierarquia")));
 
         try {
             CargoController.alterar(cargo);
-            request.getRequestDispatcher("WEB-INF/CargoListar").forward(request, response);
+            request.getRequestDispatcher("./CargoListar").forward(request, response);
 
         } catch (Exception e) {
             System.err.println("ERROR ----> " + e);

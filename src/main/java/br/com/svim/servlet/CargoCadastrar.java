@@ -31,23 +31,19 @@ public class CargoCadastrar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         Cargo cargo = new Cargo();
-        cargo.setCargo(request.getParameter("cargos"));
-        cargo.setHierarquia(2);
-
+        cargo.setCargo(request.getParameter("cargo"));
+        cargo.setHierarquia(Integer.parseInt(request.getParameter("hierarquia")));
         try {
-            CargoController.cadastrar(cargo);            
-            request.getRequestDispatcher("WEB-INF/CargoListar").forward(request, response);
+            CargoController.cadastrar(cargo);
+            request.getRequestDispatcher("./CargoListar").forward(request, response);
 
         } catch (Exception e) {
-
             System.err.println("ERROR-----> " + e);
-
         }
-
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -57,28 +53,6 @@ public class CargoCadastrar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        Cargo cargo = new Cargo();
-
-        cargo.setCargo(request.getParameter(""));
-        cargo.setHierarquia(Integer.parseInt(request.getParameter("")));
-
-        try {
-
-            CargoController cargoCon = new CargoController();
-            cargoCon.cadastrar(cargo);
-
-        } catch (Exception e) {
-
-            System.err.println("ERROR-----> " + e);
-
-        }
-
+        processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
 }

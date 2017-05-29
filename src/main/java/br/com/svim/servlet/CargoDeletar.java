@@ -33,6 +33,7 @@ public class CargoDeletar extends HttpServlet {
         
         try {
             CargoController.deletar(Integer.parseInt(request.getParameter("id")));
+            request.getRequestDispatcher("./CargoListar").forward(request, response);
         } catch (Exception e) {
             System.out.println("ERROR --->   "+e);
         }
