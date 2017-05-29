@@ -26,6 +26,10 @@ public class TipoProduto {
     public int getIdTipoProduto() {
         return idTipoProduto;
     }
+    
+    public void setIdTipoProduto(int idTipoProduto){
+        this.idTipoProduto = idTipoProduto;
+    }
 
     public String getTipoProduto() {
         return tipoProduto;

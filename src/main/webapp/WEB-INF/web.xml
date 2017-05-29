@@ -56,6 +56,22 @@
         <servlet-name>FuncionarioDeletar</servlet-name>
         <servlet-class>br.com.svim.servlet.FuncionarioDeletar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TipoProdutoCadastrar</servlet-name>
+        <servlet-class>br.com.svim.servlet.TipoProdutoCadastrar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TipoProdutoListar</servlet-name>
+        <servlet-class>br.com.svim.servlet.TipoProdutoListar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TipoProdutoAlterar</servlet-name>
+        <servlet-class>br.com.svim.servlet.TipoProdutoAlterar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TipoProdutoDeletar</servlet-name>
+        <servlet-class>br.com.svim.servlet.TipoProdutoDeletar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CargoCadastrar</servlet-name>
         <url-pattern>/CargoCadastrar</url-pattern>
@@ -111,6 +127,22 @@
     <servlet-mapping>
         <servlet-name>FuncionarioDeletar</servlet-name>
         <url-pattern>/FuncionarioDeletar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TipoProdutoCadastrar</servlet-name>
+        <url-pattern>/TipoProdutoCadastrar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TipoProdutoListar</servlet-name>
+        <url-pattern>/TipoProdutoListar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TipoProdutoAlterar</servlet-name>
+        <url-pattern>/TipoProdutoAlterar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TipoProdutoDeletar</servlet-name>
+        <url-pattern>/TipoProdutoDeletar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
