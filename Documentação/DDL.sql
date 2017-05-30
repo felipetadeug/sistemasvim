@@ -341,9 +341,8 @@ begin
 
 update produto
 set 
-	 produto = _produto
-    ,cpf = _cpf
-    ,idd_tipo_produto = _id_tipo_produto
+     produto = _produto
+    ,id_tipo_produto = _id_tipo_produto
     ,preco = _preco
     ,eh_combustivel = _eh_combustivel
     ,eh_estocavel = _eh_estocavel

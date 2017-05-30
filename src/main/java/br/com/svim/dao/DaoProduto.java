@@ -44,11 +44,11 @@ public class DaoProduto {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setInt(1, produto.getIdProduto());
-            stmt.setString(1, produto.getProduto());
-            stmt.setInt(2, produto.getTipoProduto().getIdTipoProduto());
-            stmt.setDouble(3, produto.getPreco());
-            stmt.setBoolean(4, produto.isCombustivel());
-            stmt.setBoolean(5, produto.isEstocavel());
+            stmt.setString(2, produto.getProduto());
+            stmt.setInt(3, produto.getTipoProduto().getIdTipoProduto());
+            stmt.setDouble(4, produto.getPreco());
+            stmt.setBoolean(5, produto.isCombustivel());
+            stmt.setBoolean(6, produto.isEstocavel());
 
             stmt.execute();
             stmt.close();

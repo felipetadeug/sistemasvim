@@ -6,9 +6,9 @@
 package br.com.svim.servlet;
 
 import br.com.svim.controller.ProdutoController;
+import br.com.svim.controller.TipoProdutoController;
 import br.com.svim.model.Produto;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Cauê Ghetti
+ * @author iago.cguimaraes
  */
-public class ItemCadastar extends HttpServlet {
+public class ProdutoCadastrar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,20 +30,25 @@ public class ItemCadastar extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
-        
-        Produto item = new Produto();
-        
-        item.setCombustivel(false);
-        item.setEstocavel(false);
-        item.setPreco(0);
-        item.setProduto(request.getParameter("descricao"));
-        
-        ProdutoController control = new ProdutoController();
-        
-        control.cadastrar(item);
-        
-        
+            throws ServletException, IOException {
+        Produto produto = new Produto();
+
+        produto.setProduto(request.getParameter("produto"));
+        produto.setPreco(Double.parseDouble(request.getParameter("preco")));
+        try {
+            produto.setTipoProduto(TipoProdutoController.obter(Integer.parseInt(request.getParameter("tipo_produto"))));
+        } catch (Exception e) {
+            System.err.println("ERROR-----> " + e);
+        }
+        produto.setCombustivel(Boolean.parseBoolean(request.getParameter("combustivel")));
+        produto.setEstocavel(Boolean.parseBoolean(request.getParameter("estocavel")));
+
+        try {
+            ProdutoController.cadastrar(produto);
+            request.getRequestDispatcher("./ProdutoListar").forward(request, response);
+        } catch (Exception e) {
+            System.err.println("ERROR-----> " + e);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,7 +63,7 @@ public class ItemCadastar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
     /**
@@ -72,7 +77,7 @@ public class ItemCadastar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
     /**
