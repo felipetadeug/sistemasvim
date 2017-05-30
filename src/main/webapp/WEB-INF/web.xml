@@ -45,14 +45,6 @@
         <servlet-class>br.com.svim.servlet.FuncionarioAlterar</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ItemCadastar</servlet-name>
-        <servlet-class>br.com.svim.servlet.ItemCadastar</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ItemAlterar</servlet-name>
-        <servlet-class>br.com.svim.servlet.ItemAlterar</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>FuncionarioDeletar</servlet-name>
         <servlet-class>br.com.svim.servlet.FuncionarioDeletar</servlet-class>
     </servlet>
@@ -71,6 +63,22 @@
     <servlet>
         <servlet-name>TipoProdutoDeletar</servlet-name>
         <servlet-class>br.com.svim.servlet.TipoProdutoDeletar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProdutoListar</servlet-name>
+        <servlet-class>br.com.svim.servlet.ProdutoListar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProdutoDeletar</servlet-name>
+        <servlet-class>br.com.svim.servlet.ProdutoDeletar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProdutoCadastrar</servlet-name>
+        <servlet-class>br.com.svim.servlet.ProdutoCadastrar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProdutoAlterar</servlet-name>
+        <servlet-class>br.com.svim.servlet.ProdutoAlterar</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CargoCadastrar</servlet-name>
@@ -117,14 +125,6 @@
         <url-pattern>/FuncionarioAlterar</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ItemCadastar</servlet-name>
-        <url-pattern>/ItemCadastar</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ItemAlterar</servlet-name>
-        <url-pattern>/ItemAlterar</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>FuncionarioDeletar</servlet-name>
         <url-pattern>/FuncionarioDeletar</url-pattern>
     </servlet-mapping>
@@ -143,6 +143,22 @@
     <servlet-mapping>
         <servlet-name>TipoProdutoDeletar</servlet-name>
         <url-pattern>/TipoProdutoDeletar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdutoListar</servlet-name>
+        <url-pattern>/ProdutoListar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdutoDeletar</servlet-name>
+        <url-pattern>/ProdutoDeletar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdutoCadastrar</servlet-name>
+        <url-pattern>/ProdutoCadastrar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdutoAlterar</servlet-name>
+        <url-pattern>/ProdutoAlterar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

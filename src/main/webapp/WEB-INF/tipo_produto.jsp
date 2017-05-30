@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>SVIM - Cargo</title>
+        <title>SVIM - Tipo de Produto</title>
         <link rel="shortcut icon" href="imagens/favicon.ico"/>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="style.css">
