@@ -59,6 +59,10 @@ public class CargoController {
 
     private static void validar(Cargo cargo) throws Exception {
         try {
+            if (!(cargo.getHierarquia() > 0 && cargo.getHierarquia() < 4)){
+                throw new Exception("Hierarquia inválida");
+            }
+            
             if (cargo.getCargo() == null || cargo.getCargo().trim().isEmpty()) {
                 throw new Exception("Cargo vazio");
             }
@@ -66,5 +70,4 @@ public class CargoController {
             throw e;
         }
     }
-
 }
