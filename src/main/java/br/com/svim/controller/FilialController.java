@@ -8,6 +8,7 @@ package br.com.svim.controller;
 import br.com.svim.dao.DaoFilial;
 import br.com.svim.model.Filial;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -93,6 +94,40 @@ public class FilialController {
             return false;
         }
         return true;
+    }
+    
+    public static List<String> ListUFs(){
+            
+        List<String> UFs = new ArrayList<>();
+        UFs.add("AC");
+        UFs.add("AL");
+        UFs.add("AP");
+        UFs.add("AM");
+        UFs.add("BA");
+        UFs.add("CE");
+        UFs.add("DF");
+        UFs.add("ES");
+        UFs.add("GO");
+        UFs.add("MA");
+        UFs.add("MT");
+        UFs.add("MS");
+        UFs.add("MG");
+        UFs.add("PA");
+        UFs.add("PB");
+        UFs.add("PE");
+        UFs.add("PI");
+        UFs.add("PR");
+        UFs.add("RJ");
+        UFs.add("RN");
+        UFs.add("RO");
+        UFs.add("RR");
+        UFs.add("RS");
+        UFs.add("SC");
+        UFs.add("SE");
+        UFs.add("SP");
+        UFs.add("TO");
+        
+        return UFs;
     }
 
 }

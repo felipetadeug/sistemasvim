@@ -197,8 +197,11 @@
                                             <div class="form-group col-md-2">
                                                 <label for="uf">UF:</label>
                                                 <select name="uf" class="form-control" required>
-                                                    <option value="SP">SP</option> 
-                                                    <!-- Script para carregar valores. -->
+                                                    <c:forEach var="uf" items="${UFsList}">
+                                                        <option value="${uf}">
+                                                            ${uf}
+                                                        </option>
+                                                    </c:forEach>
                                                 </select>
                                             </div>					
                                         </div>
