@@ -62,6 +62,9 @@ public class ProdutoController {
             if (produto.getProduto() == null || produto.getProduto().trim().isEmpty()) {
                 throw new Exception("Produto vazio");
             }
+            if(!(produto.getTipoProduto().getIdTipoProduto() > 0)){
+                throw new Exception("Vínculo ao Tipo de produto inválido");
+            }
 
         } catch (Exception e) {
             throw e;
