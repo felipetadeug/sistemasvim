@@ -77,10 +77,10 @@ public class FuncionarioController {
             }
             validarCPF(funcionario.getCpf());
 
-            if (!(funcionario.getFilial().getIdFilial() <= 0)) {
+            if (funcionario.getFilial().getIdFilial() <= 0){
                 throw new Exception("Filial inválida");
             }
-            if (!(funcionario.getCargo().getIdCargo() <= 0)) {
+            if (funcionario.getCargo().getIdCargo() <= 0) {
                 throw new Exception("Cargo inválido");
             }
 
