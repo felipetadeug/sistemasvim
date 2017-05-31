@@ -19,26 +19,27 @@
     <body>
         <div class="container-fluid">
             <header class="row" id="superior">
-                <div class="col-md-12">
+                <div class="container-fluid"  style="background-color:black;color:#fff;height:100px;">
                     <h1>SVIM</h1>
+                    <p>The navbar is attached to the top of the page after you have scrolled a specified amount of pixels.</p>
                 </div>			
             </header>
-            
-            
+
+
             <div class="row">			
                 
-               
-                    <ul class="col-md-2 nav nav-pills nav-stacked">                  
-                        <li><a href="./Venda">Venda</a></li>
-                        <li><a href="">Estoque</a></li>
-                        <li><a href="">Relatório</a></li>
-                        <li><a href="./FilialListar">Filial</a></li>
-                        <li><a href="./CargoListar">Cargo</a></li>
-                        <li><a href="./FuncionarioListar">Funcionario</a></li>                      
-                        <li><a href="./ProdutoListar">Produto</a></li>
-                        <li><a href="./TipoProdutoListar">Tipo de Produto</a></li>
-                    </ul>
-               
+                <ul class="col-md-2 nav nav-pills nav-stacked">                  
+                    <li class="active"><a href="#">Operações</a></li>
+                    <li><a href="./Venda">Venda</a></li>
+                    <li><a href="">Estoque</a></li>
+                    <li><a href="">Relatório</a></li>
+                    <li><a href="./FilialListar">Filial</a></li>
+                    <li><a href="./CargoListar">Cargo</a></li>
+                    <li><a href="./FuncionarioListar">Funcionario</a></li>                      
+                    <li><a href="./ProdutoListar">Produto</a></li>
+                    <li><a href="./TipoProdutoListar">Tipo de Produto</a></li>
+                </ul>
+
 
 
                 <section class="col-md-10" id="principal">
@@ -46,7 +47,7 @@
                         <h1 class="txt">Filial</h1>
                         <p class="txt">Controle de filiais</p>
                     </article>
-                    
+
 
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastrarFilial">Cadastrar</button>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarFilial">Editar</button>
@@ -217,7 +218,7 @@
                             </div>				      
                         </div>
                     </div>
-                    
+
                     <!-- Modal - Deletar -->                    
                     <div class="modal fade" id="deletarFilial" role="dialog">
                         <div class="modal-dialog">
@@ -237,7 +238,7 @@
                             </div>				      
                         </div>
                     </div>
-                    
+
                 </section>
             </div>
 
