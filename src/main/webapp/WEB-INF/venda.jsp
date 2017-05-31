@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="venda.js"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -37,7 +38,7 @@
                     <li><a href="./ProdutoListar">Produto</a></li>
                     <li><a href="./TipoProdutoListar">Tipo de Produto</a></li>
                 </ul>
-                
+
                 <section class="col-md-10" id="principal">
                     <article class="page-header">
                         <h1 class="txt">Vendas</h1>
@@ -45,43 +46,39 @@
                     </article>
 
                     <form class="well well-lg">
-                        <div class="row">
-                            <div class="form-group col-md-4">
-                                <label for="tipo">Tipo</label>
-                                <select name="tipo" class="form-control">
-                                    <option value="combustivel">Combustivel</option>
-                                    <option value="produto">Produto</option>
-                                    <option value="servico">Serviço</option>
-                                </select>
+                        <div class="item">
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label for="tipo">Tipo de Produto</label>
+                                    <select name="tipo" class="form-control">
+                                    </select>
+                                </div>	
+                                <div class="form-group col-md-8">
+                                    <label for="produto">Produto</label>
+                                    <select name="produto" class="form-control">
+                                    </select>
+                                </div>		
                             </div>	
+                            <div class="row">
+                                <div class="form-group col-md-3">
+                                    <label for="quantidade">Quantidade</label>
+                                    <input type="number" name="quantidade" min="0" value="0" class="form-control"/>
+                                </div>
 
-                            <div class="form-group col-md-8">
-                                <label for="item">Item</label>
-                                <select name=item class="form-control">
-                                    <option value="gasolina adtivada v-power">Gasolina Adtivada - VPower</option>
-                                </select>
-                            </div>		
-                        </div>	
-
-                        <div class="row">
-                            <div class="form-group col-md-3">
-                                <label for="quantidade">Quantidade</label>
-                                <input type="text" name="quantidade" class="form-control">
+                                <div class="form-group col-md-3">
+                                    <label for="valor">Valor</label>
+                                    <input type="text" name="valor" value="0" class="form-control" readonly/>
+                                </div>					
                             </div>
-
-                            <div class="form-group col-md-3">
-                                <label for="valor">Valor</label>
-                                <input type="text" name="valor" class="form-control">
-                            </div>					
                         </div>
-
+                        
                         <a href="#">Adcicionar novo</a>
                     </form>
 
                     <div class="row">
                         <div class="form-group col-md-3">
                             <label for="total">Total:</label>
-                            <input type="text" name="total" class="form-control">					
+                            <input type="text" name="total" value="0" class="form-control" readonly/>					
                         </div>
                     </div>
 
@@ -95,5 +92,31 @@
                 </section>
             </div>
         </div>
+
+        <script type="text/javascript">
+            var produtos = [];
+            var tipos_produto = [];
+
+            <c:forEach var="produto" items="${ListProduto}">
+            produto = {};
+            produto.id = ${produto.getIdProduto()};
+            produto.produto = '${produto.getProduto()}';
+            produto.id_tipo_produto = ${produto.getTipoProduto().getIdTipoProduto()};
+            produto.tipo_produto = '${produto.getTipoProduto().getTipoProduto()}';
+            produto.preco = ${produto.getPreco()};
+            produto.combustivel = ${produto.isCombustivel()};
+            produto.estocavel = ${produto.isEstocavel()};
+            produtos.push(produto);
+            </c:forEach>
+
+            <c:forEach var="tipo" items="${ListTipoProduto}">
+            tipo = {};
+            tipo.id = ${tipo.getIdTipoProduto()};
+            tipo.tipo = '${tipo.getTipoProduto()}';
+            tipos_produto.push(tipo);
+            </c:forEach>
+
+        </script>
+
     </body>
 </html>

@@ -92,7 +92,7 @@
 
                                             <div class="form-group col-md-4">
                                                 <label for="hierarquia">Hierarquia:</label>
-                                                <input type="number" name="hierarquia" class="form-control" required>
+                                                <input type="number" name="hierarquia" min="1" max="3" value="1" class="form-control" required>
                                             </div>
                                         </div>
 
@@ -127,7 +127,7 @@
 
                                             <div class="form-group col-md-4">
                                                 <label for="hierarquia">Hierarquia:</label>
-                                                <input type="number" name="hierarquia" class="form-control" required>
+                                                <input type="number" name="hierarquia" min="1" max="3" value="1" class="form-control" required>
                                             </div>
                                         </div>
 

@@ -5,10 +5,10 @@
  */
 package br.com.svim.servlet;
 
+import br.com.svim.controller.ProdutoController;
+import br.com.svim.controller.TipoProdutoController;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +23,14 @@ public class VendaListar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try{
+        request.setAttribute("ListProduto", ProdutoController.obter());
+        request.setAttribute("ListTipoProduto", TipoProdutoController.obter());
         request.getRequestDispatcher("WEB-INF/venda.jsp").forward(request, response);
+        }
+        catch(Exception e){
+            System.err.println("Erro: " + e.getMessage());
+        }
     }
 
     @Override
