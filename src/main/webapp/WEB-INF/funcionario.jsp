@@ -23,7 +23,7 @@
                     <h1>SVIM</h1>
                 </div>			
             </header>
-
+            
             <div class="row">			
                 <aside class="col-md-2" id="menu">
                     <ul>                  

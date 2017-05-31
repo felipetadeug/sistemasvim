@@ -1,24 +1,15 @@
-#superior{
-}
-
-#menu{
-}
-
-#principal{	
-}
-
-#rodape{
-}
-
-.well, .txt, .btn-primary{
-	margin-right: 20px;
-	margin-left: 20px;
-}
-
-table{
-	margin-left: 20px;
-}
-
 .selected{
-	background-color: #EEE9E9;
+    background-color: #EEE9E9;
+}
+
+
+ul{
+    margin: 0;
+    padding: 0;
+    height: cover;
+}
+
+li{
+    margin: 0;
+    padding: 0;
 }
