@@ -21,7 +21,7 @@
             <header class="row" id="superior">
                 <div class="container-fluid"  style="background-color:black;color:#fff;height:100px;">
                     <h1>SVIM</h1>
-                    <p>The navbar is attached to the top of the page after you have scrolled a specified amount of pixels.</p>
+                    <p>Seja bem vindo.</p>
                 </div>			
             </header>
 
@@ -30,7 +30,7 @@
                 
                 <ul class="col-md-2 nav nav-pills nav-stacked">                  
                     <li class="active"><a href="#">Operações</a></li>
-                    <li><a href="./Venda">Venda</a></li>
+                    <li><a href="./VendaListar">Venda</a></li>
                     <li><a href="">Estoque</a></li>
                     <li><a href="">Relatório</a></li>
                     <li><a href="./FilialListar">Filial</a></li>
@@ -39,8 +39,6 @@
                     <li><a href="./ProdutoListar">Produto</a></li>
                     <li><a href="./TipoProdutoListar">Tipo de Produto</a></li>
                 </ul>
-
-
 
                 <section class="col-md-10" id="principal">
                     <article class="page-header">
@@ -134,8 +132,11 @@
                                             <div class="form-group col-md-4">
                                                 <label for="uf">UF:</label>
                                                 <select name="uf" class="form-control" required>
-                                                    <option value="SP">SP</option>
-                                                    <!-- Script para carregar UF-->
+                                                    <c:forEach var="uf" items="${UFsList}">
+                                                        <option value="${uf}">
+                                                            ${uf}
+                                                        </option>
+                                                    </c:forEach>
                                                 </select>
                                             </div>					
                                         </div>
@@ -241,7 +242,6 @@
 
                 </section>
             </div>
-
         </div>
     </body>
 </html>

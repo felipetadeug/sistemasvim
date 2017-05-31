@@ -19,24 +19,26 @@
     <body>
         <div class="container-fluid">
             <header class="row" id="superior">
-                <div class="col-md-12">
+                <div class="container-fluid"  style="background-color:black;color:#fff;height:100px;">
                     <h1>SVIM</h1>
+                    <p>Seja bem vindo.</p>
                 </div>			
             </header>
-            
+
+
             <div class="row">			
-                <aside class="col-md-2" id="menu">
-                    <ul>                  
-                        <li><a href="">Venda</a></li>
-                        <li><a href="">Estoque</a></li>
-                        <li><a href="">Relatório</a></li>
-                        <li><a href="./FilialListar">Filial</a></li>
-                        <li><a href="./CargoListar">Cargo</a></li>
-                        <li><a href="./FuncionarioListar">Funcionario</a></li>                      
-                        <li><a href="./ProdutoListar">Produto</a></li>
-                        <li><a href="./TipoProdutoListar">Tipo de Produto</a></li>
-                    </ul>
-                </aside>
+                
+                <ul class="col-md-2 nav nav-pills nav-stacked">                  
+                    <li class="active"><a href="#">Operações</a></li>
+                    <li><a href="./VendaListar">Venda</a></li>
+                    <li><a href="">Estoque</a></li>
+                    <li><a href="">Relatório</a></li>
+                    <li><a href="./FilialListar">Filial</a></li>
+                    <li><a href="./CargoListar">Cargo</a></li>
+                    <li><a href="./FuncionarioListar">Funcionario</a></li>                      
+                    <li><a href="./ProdutoListar">Produto</a></li>
+                    <li><a href="./TipoProdutoListar">Tipo de Produto</a></li>
+                </ul>
 
 
                 <section class="col-md-10" id="principal">
@@ -275,12 +277,6 @@
 
                 </section>
             </div>
-
-            <footer class="row" id="rodape">
-                <div class="col-md-12">
-                    <p>Sistema SVIM -  Todos os direitos reservados ®</p>
-                </div>			
-            </footer>
         </div>
     </body>
 </html>

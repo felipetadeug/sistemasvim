@@ -81,8 +81,8 @@
         <servlet-class>br.com.svim.servlet.ProdutoAlterar</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Venda</servlet-name>
-        <servlet-class>br.com.svim.servlet.Venda</servlet-class>
+        <servlet-name>VendaListar</servlet-name>
+        <servlet-class>br.com.svim.servlet.VendaListar</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CargoCadastrar</servlet-name>
@@ -165,8 +165,8 @@
         <url-pattern>/ProdutoAlterar</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Venda</servlet-name>
-        <url-pattern>/Venda</url-pattern>
+        <servlet-name>VendaListar</servlet-name>
+        <url-pattern>/VendaListar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
