@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author iago.cguimaraes
  */
 
-public class Venda extends HttpServlet {
+public class VendaListar extends HttpServlet {
 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
