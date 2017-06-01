@@ -1,6 +1,18 @@
 window.addEventListener('load', function () {
     configurarItem(document.querySelector('.item'));
+    
+    document.querySelector('#adicionar_item').addEventListener('click',function(){
+        
+    });
 });
+
+function adicionarNovoItem(){
+    
+    
+    
+}
+
+
 
 function configurarItem(item) {
     let comboTipo = item.querySelector('[name=tipo]')
