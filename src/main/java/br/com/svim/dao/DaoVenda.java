@@ -26,7 +26,10 @@ public class DaoVenda {
             stmt.setInt(1, venda.getFuncionario().getIdFuncionario());
             stmt.setInt(2, venda.getFilial().getIdFilial());
 
-            stmt.execute();
+            ResultSet rs = stmt.executeQuery();
+            rs.last();
+            venda.setIdVenda(rs.getInt(1));
+            
             stmt.close();
             conn.close();
 

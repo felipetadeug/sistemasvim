@@ -39,39 +39,22 @@ public class FuncionarioCadastrar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        Funcionario funcionario = new Funcionario();
-
-        funcionario.setNome(request.getParameter("nome"));
-        funcionario.setCpf(request.getParameter("cpf"));
-
         try {
+            Funcionario funcionario = new Funcionario();
+            funcionario.setNome(request.getParameter("nome"));
+            funcionario.setCpf(request.getParameter("cpf"));
             SimpleDateFormat dateType = new SimpleDateFormat("yyyy-MM-dd");
             funcionario.setDataAdmissao(dateType.parse(request.getParameter("dtadm")));
             funcionario.setDataNascimento(dateType.parse(request.getParameter("dtnasc")));
-
-        } catch (ParseException ex) {
-            Date data;
-            Logger.getLogger(FuncionarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        try {
             Cargo cargo = CargoController.obter(Integer.parseInt(request.getParameter("cargo")));
             funcionario.setCargo(cargo);
-
             Filial filial = FilialController.obter(Integer.parseInt(request.getParameter("filial")));
             funcionario.setFilial(filial);
-        } catch (Exception ex) {
-            Logger.getLogger(FuncionarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        funcionario.setSenha(request.getParameter("senha"));
-
-        try {
+            funcionario.setSenha(request.getParameter("senha"));
             FuncionarioController.cadastrar(funcionario);
             request.getRequestDispatcher("./FuncionarioListar").forward(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(FuncionarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            System.err.println("ERRO --->" + e.getMessage());
         }
 
     }

@@ -1,49 +1,63 @@
 window.addEventListener('load', function () {
-    configurarItem(document.querySelector('.item'));
-    
-    document.querySelector('#adicionar_item').addEventListener('click',function(){
-        
+    // armazena em variavel o template de item (para quando precisar adicionar)
+    var template = document.querySelector('#template-item');
+
+    // ao clicar em adicionar novo produto, adiciona um novo item na tela
+    document.querySelector('#adicionar_item').addEventListener('click', function () {
+        adicionarNovoItem(template);
     });
+
+    // adiciona o primeiro item
+    adicionarNovoItem(template);
 });
 
-function adicionarNovoItem(){
-    
-    
-    
+function adicionarNovoItem(template) {
+    let clone = document.importNode(template.content, true);
+    document.querySelector('#items').appendChild(clone);
+    let item = document.querySelector('.item:last-child');
+    configurarItem(item);
 }
 
-
-
 function configurarItem(item) {
-    let comboTipo = item.querySelector('[name=tipo]')
+    // armazena os combos e produto e tipo
+    let comboTipo = item.querySelector('[name=tipo]');
     let comboProduto = item.querySelector('[name=produto]');
     let quantidade = item.querySelector('[name=quantidade]');
-    let valor = item.querySelector('[name=valor]');
+    let remover = item.querySelector('[name=remover]');
 
+    // adiciona os tipos no combo de tipo
     adicionarTiposCombo(comboTipo);
 
+    // ao selecionar tipo adiciona os produtos no combo de produtos
     comboTipo.addEventListener('change', function (e) {
         adicionarProdutosCombo(comboProduto, e.target.value);
     });
 
+    // ao clicar em remover item
+    remover.addEventListener('click', function (e) {
+        item.parentNode.removeChild(item);
+        atualizarValorTotal();
+    });
+
+    // eventos para atualizar valor do item e valor total da compra
     comboTipo.addEventListener('change', function (e) {
-        valor.value = quantidade.value * precoProduto(comboProduto.value);
+        atualizarValorItem(item);
         atualizarValorTotal();
     });
     comboProduto.addEventListener('change', function (e) {
-        valor.value = quantidade.value * precoProduto(comboProduto.value);
+        atualizarValorItem(item);
         atualizarValorTotal();
     });
     quantidade.addEventListener('change', function (e) {
-        valor.value = quantidade.value * precoProduto(comboProduto.value);
+        atualizarValorItem(item);
         atualizarValorTotal();
     });
     quantidade.addEventListener('click', function (e) {
-        valor.value = quantidade.value * precoProduto(comboProduto.value);
+        atualizarValorItem(item);
         atualizarValorTotal();
     });
     quantidade.addEventListener('keyup', function (e) {
-        valor.value = quantidade.value * precoProduto(comboProduto.value);
+        atualizarValorItem(item);
         atualizarValorTotal();
     });
 }
@@ -78,7 +92,7 @@ function adicionarProdutosCombo(combo, tipo) {
 }
 
 function precoProduto(id) {
-    var result = $.grep(produtos, function (e) {
+    let result = $.grep(produtos, function (e) {
         return e.id == id;
     });
     if (result.length > 0) {
@@ -87,10 +101,19 @@ function precoProduto(id) {
     return 0;
 }
 
-function atualizarValorTotal(){
+function atualizarValorItem(item) {
+    let txt_valor = item.querySelector('[name=valor]');
+    let comboProduto = item.querySelector('[name=produto]');
+    let quantidade = item.querySelector('[name=quantidade]').value;
+    let valor = precoProduto(comboProduto.value);
+
+    txt_valor.value = (quantidade * valor).toFixed(2);
+}
+
+function atualizarValorTotal() {
     let vlTotal = 0;
-    document.querySelectorAll('[name=valor]').forEach(function(vl){
+    document.querySelectorAll('[name=valor]').forEach(function (vl) {
         vlTotal += parseFloat(vl.value);
     });
-    document.querySelector('[name=total]').value = vlTotal;
+    document.querySelector('#vltotal').innerText = vlTotal.toFixed(2);
 }

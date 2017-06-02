@@ -45,52 +45,54 @@
                         <p class="txt">Realize suas vendas.</p>
                     </article>
 
-                    <form class="">
-                        <div class="row well well-lg itens">
-                            <div class="item">
-                                <div class="form-group col-md-3">
-                                    <label for="tipo">Tipo de Produto</label>
-                                    <select name="tipo" class="form-control">
-                                    </select>
-                                </div>	
-                                <div class="form-group col-md-4">
-                                    <label for="produto">Produto</label>
-                                    <select name="produto" class="form-control">
-                                    </select>
-                                </div>		
-                                <div class="form-group col-md-2">
-                                    <label for="quantidade">Quantidade</label>
-                                    <input type="number" name="quantidade" min="0" value="0" class="form-control"/>
-                                </div>
+                    <form method="POST" action="./VendaCadastrar">
+                        <div class="row well well-lg">
 
-                                <div class="form-group col-md-2">
-                                    <label for="valor">Valor</label>
-                                    <input type="text" name="valor" value="0" class="form-control" readonly/>
-                                </div>	
-                                <div class="form-group col-md-1">
-                                    <label></label>
-                                    <input type="button" name="remover" value="Remover" class="btn btn-block btn-danger"/>
-                                </div>	
-                            </div> 
-                            <input id="adicionar_item" value="Adicionar Novo Produto" class="btn btn-info"/>
+                            <div id="items">
+                                <!-- TEMPLATE DE ITEM -->
+                                <template id="template-item">
+                                    <div class="item">
+                                        <div class="form-group col-md-3">
+                                            <label for="tipo">Tipo de Produto</label>
+                                            <select name="tipo" class="form-control">
+                                            </select>
+                                        </div>	
+                                        <div class="form-group col-md-3">
+                                            <label for="produto">Produto</label>
+                                            <select name="produto" class="form-control">
+                                            </select>
+                                        </div>		
+                                        <div class="form-group col-md-2">
+                                            <label for="quantidade">Quantidade</label>
+                                            <input type="number" name="quantidade" min="0" value="0" class="form-control"/>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="valor">Valor</label>
+                                            <input type="text" name="valor" value="0" class="form-control" readonly/>
+                                        </div>	
+                                        <div class="form-group col-md-2">
+                                            <label></label>
+                                            <input type="button" name="remover" value="Remover" class="btn btn-block btn-danger"/>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+
+                            <div class="pull-right col-md-2">
+                                <input id="adicionar_item" value="Adicionar Produto" class="btn btn-block btn-info"/>
+                            </div>    
+                            <div class="col-md-2">
+                                <label>Total: R$ <span id="vltotal">0.00</span></label>				
+                            </div>
                         </div>                        
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label></label>
+                                <button type="submit" class="btn btn-success">Finalizar Compra</button>
+                            </div>
+                        </div>      
                     </form>
-
-
-
-                    <div class="row">
-                        
-                        <div class="col-md-1 form-group">
-                            <label for="total">Total - R$:</label>
-                            <input type="text" name="total" value="0" class="form-control" readonly/>					
-                            
-                        </div>
-                        
-                        <div class="col-md-1    ">
-                            <label></label>
-                            <button type="submit" class="btn btn-success">Finalizar Compra</button>
-                        </div>
-                    </div>                                        
                 </section>
             </div>
         </div>

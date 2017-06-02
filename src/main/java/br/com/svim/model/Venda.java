@@ -33,6 +33,10 @@ public class Venda {
     public int getIdVenda() {
         return idVenda;
     }
+    
+    public void setIdVenda(int idVenda) {
+        this.idVenda = idVenda;
+    }
 
     public Funcionario getFuncionario() {
         return funcionario;
