@@ -34,7 +34,7 @@
                             <li class="active"><a href="#">Operações</a></li>
                             <li><a href="./VendaListar">Venda</a></li>
                             <li><a href="">Estoque</a></li>
-                            <li><a href="">Relatório</a></li>
+                            <li><a href="./Relatorio">Relatório</a></li>
                             <li><a href="./FilialListar">Filial</a></li>
                             <li><a href="./CargoListar">Cargo</a></li>
                             <li><a href="./FuncionarioListar">Funcionario</a></li>                      
@@ -45,7 +45,7 @@
                             <li class="active"><a href="#">Operações</a></li>
                             <li><a href="./VendaListar">Venda</a></li>
                             <li><a href="">Estoque</a></li>
-                            <li><a href="">Relatório</a></li>
+                            <li><a href="./Relatorio">Relatório</a></li>
                             <li><a href="./CargoListar">Cargo</a></li>
                             <li><a href="./FuncionarioListar">Funcionario</a></li>                      
                             <li><a href="./ProdutoListar">Produto</a></li>

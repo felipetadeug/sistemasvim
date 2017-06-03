@@ -70,5 +70,17 @@ public class Venda {
         this.items = items;
     }
     
+    public int getQuantidadeItens(){
+        return items.size();
+    }
+    
+    public double getValor(){
+        double vltotal = 0;
+        for (int i = 0; i < items.size(); i++) {
+            vltotal += items.get(i).getValor();
+        }
+        return vltotal;
+    }
+    
     
 }

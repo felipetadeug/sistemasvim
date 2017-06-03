@@ -92,6 +92,10 @@
         <servlet-name>Sair</servlet-name>
         <servlet-class>br.com.svim.servlet.Sair</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Relatorio</servlet-name>
+        <servlet-class>br.com.svim.servlet.Relatorio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CargoCadastrar</servlet-name>
         <url-pattern>/CargoCadastrar</url-pattern>
@@ -183,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>Sair</servlet-name>
         <url-pattern>/Sair</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Relatorio</servlet-name>
+        <url-pattern>/Relatorio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
