@@ -49,10 +49,8 @@ public class VendaCadastrar extends HttpServlet {
                 }
             }
 
-            Filial filial = new Filial();
-            filial.setIdFilial(1);
-            Funcionario funcionario = new Funcionario();
-            funcionario.setIdFuncionario(1);
+            Funcionario funcionario = (Funcionario)request.getSession().getAttribute("funcionario");
+            Filial filial = funcionario.getFilial();
 
             Venda venda = new Venda();
             venda.setFilial(filial);
@@ -60,6 +58,8 @@ public class VendaCadastrar extends HttpServlet {
             venda.setItems(items);
 
             VendaController.cadastrar(venda);
+            
+            request.getRequestDispatcher("./VendaListar").forward(request, response);
         } catch (Exception e) {
             System.err.println("ERRO --->" + e.getMessage());
         }
