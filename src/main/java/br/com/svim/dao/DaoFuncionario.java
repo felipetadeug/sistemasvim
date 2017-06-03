@@ -128,7 +128,7 @@ public class DaoFuncionario {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, cpf);
-            stmt.setString(1, senha);
+            stmt.setString(2, senha);
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {

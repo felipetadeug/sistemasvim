@@ -31,7 +31,10 @@ public class CargoCadastrar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        if (request.getSession().getAttribute("funcionario") == null) {
+            response.sendRedirect("index.jsp");
+        }
+
         Cargo cargo = new Cargo();
         cargo.setCargo(request.getParameter("cargo"));
         cargo.setHierarquia(Integer.parseInt(request.getParameter("hierarquia")));

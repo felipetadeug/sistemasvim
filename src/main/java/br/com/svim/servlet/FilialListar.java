@@ -24,18 +24,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class FilialListar extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         try {
+            if (request.getSession().getAttribute("funcionario") == null) {
+                response.sendRedirect("index.jsp");
+            }
+
             request.setAttribute("ListFilial", FilialController.obter());
             request.setAttribute("UFsList", FilialController.ListUFs());
             request.getRequestDispatcher("WEB-INF/filial.jsp").forward(request, response);

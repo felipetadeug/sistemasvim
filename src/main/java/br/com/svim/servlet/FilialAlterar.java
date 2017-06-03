@@ -20,17 +20,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class FilialAlterar extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        if (request.getSession().getAttribute("funcionario") == null) {
+            response.sendRedirect("index.jsp");
+        }
+
         Filial filial = new Filial();
 
         filial.setIdFilial(Integer.parseInt(request.getParameter("id")));
@@ -43,12 +38,12 @@ public class FilialAlterar extends HttpServlet {
         filial.setNumero(Integer.parseInt(request.getParameter("numero")));
 
         try {
-            
+
             FilialController.alterar(filial);
             request.getRequestDispatcher("./FilialListar").forward(request, response);
-        
+
         } catch (Exception e) {
-            System.err.println("ERROR ----> "+e);
+            System.err.println("ERROR ----> " + e);
         }
     }
 

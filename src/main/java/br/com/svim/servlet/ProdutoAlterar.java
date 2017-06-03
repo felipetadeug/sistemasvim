@@ -9,7 +9,6 @@ import br.com.svim.controller.ProdutoController;
 import br.com.svim.controller.TipoProdutoController;
 import br.com.svim.model.Produto;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,34 +20,23 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ProdutoAlterar extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Produto produto = new Produto();
-
-        produto.setIdProduto(Integer.parseInt(request.getParameter("id")));
-        produto.setProduto(request.getParameter("produto"));
-        produto.setPreco(Double.parseDouble(request.getParameter("preco")));
         try {
+            if (request.getSession().getAttribute("funcionario") == null) {
+                response.sendRedirect("index.jsp");
+            }
+
+            Produto produto = new Produto();
+            produto.setIdProduto(Integer.parseInt(request.getParameter("id")));
+            produto.setProduto(request.getParameter("produto"));
+            produto.setPreco(Double.parseDouble(request.getParameter("preco")));
             produto.setTipoProduto(TipoProdutoController.obter(Integer.parseInt(request.getParameter("tipo_produto"))));
-        } catch (Exception e) {
-            System.err.println("ERROR-----> " + e);
-        }
-               
-        produto.setCombustivel(Boolean.parseBoolean(request.getParameter("combustivel")));
-        produto.setEstocavel(Boolean.parseBoolean(request.getParameter("estocavel")));
-
-        try {
+            produto.setCombustivel(Boolean.parseBoolean(request.getParameter("combustivel")));
+            produto.setEstocavel(Boolean.parseBoolean(request.getParameter("estocavel")));
             ProdutoController.alterar(produto);
             request.getRequestDispatcher("./ProdutoListar").forward(request, response);
+            
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
         }

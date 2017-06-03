@@ -19,22 +19,17 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class FuncionarioDeletar extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-           FuncionarioController.deletar(Integer.parseInt(request.getParameter("id")));
-           request.getRequestDispatcher("./FuncionarioListar").forward(request, response);
+            if (request.getSession().getAttribute("funcionario") == null) {
+                response.sendRedirect("index.jsp");
+            }
+
+            FuncionarioController.deletar(Integer.parseInt(request.getParameter("id")));
+            request.getRequestDispatcher("./FuncionarioListar").forward(request, response);
         } catch (Exception e) {
-            System.out.println("ERROR --->   "+e);
+            System.out.println("ERROR --->   " + e);
         }
     }
 

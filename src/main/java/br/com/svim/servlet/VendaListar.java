@@ -17,18 +17,19 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author iago.cguimaraes
  */
-
 public class VendaListar extends HttpServlet {
-
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try{
-        request.setAttribute("ListProduto", ProdutoController.obter());
-        request.setAttribute("ListTipoProduto", TipoProdutoController.obter());
-        request.getRequestDispatcher("WEB-INF/venda.jsp").forward(request, response);
-        }
-        catch(Exception e){
+        try {
+            if (request.getSession().getAttribute("funcionario") == null) {
+                response.sendRedirect("index.jsp");
+            }
+
+            request.setAttribute("ListProduto", ProdutoController.obter());
+            request.setAttribute("ListTipoProduto", TipoProdutoController.obter());
+            request.getRequestDispatcher("WEB-INF/venda.jsp").forward(request, response);
+        } catch (Exception e) {
             System.err.println("Erro: " + e.getMessage());
         }
     }

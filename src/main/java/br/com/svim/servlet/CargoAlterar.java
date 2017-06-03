@@ -8,7 +8,6 @@ package br.com.svim.servlet;
 import br.com.svim.controller.CargoController;
 import br.com.svim.model.Cargo;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +30,10 @@ public class CargoAlterar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        if(request.getSession().getAttribute("funcionario") == null){
+            response.sendRedirect("index.jsp");
+        }
+               
         Cargo cargo = new Cargo();       
         cargo.setIdCargo(Integer.parseInt(request.getParameter("id")));
         cargo.setCargo(request.getParameter("cargo"));

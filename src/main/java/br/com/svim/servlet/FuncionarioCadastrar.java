@@ -12,11 +12,7 @@ import br.com.svim.model.Cargo;
 import br.com.svim.model.Filial;
 import br.com.svim.model.Funcionario;
 import java.io.IOException;
-import java.util.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,18 +24,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class FuncionarioCadastrar extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            if (request.getSession().getAttribute("funcionario") == null) {
+                response.sendRedirect("index.jsp");
+            }
+
             Funcionario funcionario = new Funcionario();
             funcionario.setNome(request.getParameter("nome"));
             funcionario.setCpf(request.getParameter("cpf"));

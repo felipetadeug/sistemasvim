@@ -12,12 +12,7 @@ import br.com.svim.model.Cargo;
 import br.com.svim.model.Filial;
 import br.com.svim.model.Funcionario;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,51 +24,29 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class FuncionarioAlterar extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        Funcionario funcionario = new Funcionario();
-
-        funcionario.setIdFuncionario(Integer.parseInt(request.getParameter("id")));
-        funcionario.setNome(request.getParameter("nome"));
-        funcionario.setCpf(request.getParameter("cpf"));
-
         try {
+            if (request.getSession().getAttribute("funcionario") == null) {
+                response.sendRedirect("index.jsp");
+            }
+
+            Funcionario funcionario = new Funcionario();
+            funcionario.setIdFuncionario(Integer.parseInt(request.getParameter("id")));
+            funcionario.setNome(request.getParameter("nome"));
+            funcionario.setCpf(request.getParameter("cpf"));
             SimpleDateFormat dateType = new SimpleDateFormat("yyyy-MM-dd");
             funcionario.setDataAdmissao(dateType.parse(request.getParameter("dtadm")));
             funcionario.setDataNascimento(dateType.parse(request.getParameter("dtnasc")));
-
-        } catch (ParseException ex) {
-            Date data;
-            Logger.getLogger(FuncionarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        try {
             Cargo cargo = CargoController.obter(Integer.parseInt(request.getParameter("cargo")));
             funcionario.setCargo(cargo);
-
             Filial filial = FilialController.obter(Integer.parseInt(request.getParameter("filial")));
             funcionario.setFilial(filial);
-        } catch (Exception ex) {
-            Logger.getLogger(FuncionarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        funcionario.setSenha(request.getParameter("senha"));
-
-        try {
+            funcionario.setSenha(request.getParameter("senha"));
             FuncionarioController.alterar(funcionario);
             request.getRequestDispatcher("./FuncionarioListar").forward(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(FuncionarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            System.err.println("ERRO -->" + e.getMessage());
         }
 
     }

@@ -7,80 +7,80 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-	<title>SVIM</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<meta charset="utf-8">
-</head>
-<body>
-	<section>
-		<article class="nav">
-			<ul>
-				<li>Sobre</li>
-				<li>Login</li>
-			</ul>
-		</article>
-		
-		<article class="home">
-			<div class="divisao um">
-				<h1>Bem vindo à<br> Astec Gestão de Filiais</h1>
-				
-				<p>Controle suas filiais, usuários, produtos e serviços em um só local. Saiba quantos itens foram vendidos em um intervalo de
-				tempo com a opção de Relatórios e efetue Vendas</p>
+    <head>
+        <title>SVIM</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <section>
+            <article class="nav">
+                <ul>
+                    <li>Sobre</li>
+                    <li>Login</li>
+                </ul>
+            </article>
 
-				<div class="botao">
-					<P>Sobre</P>
-				</div>
-			</div>
+            <article class="home">
+                <div class="divisao um">
+                    <h1>Bem vindo à<br> Astec Gestão de Filiais</h1>
 
-			<div class="divisao dois">
-				<div class="box_login">\ 
-					<div class="descricao_login">
-						<h1>Login to Astec</h1>
-						<p>Entre com seu usuário e senha para efetuar o Login</p>
-					</div>				
-					
-					<div class="form_login">
-						<form method="POST" action="./Autenticar">
-							<input type="text" name="usuario" placeholder="Usuário">
-							<input type="password" name="senha" placeholder="Senha">
-							<button>Login</button>
-						</form>
-					</div>
-				</div>				
-			</div>
-		</article>
+                    <p>Controle suas filiais, usuários, produtos e serviços em um só local. Saiba quantos itens foram vendidos em um intervalo de
+                        tempo com a opção de Relatórios e efetue Vendas</p>
 
-		<article class="sobre">
-			<div class="titulo">
-				<h1>Serviços</h1>
+                    <div class="botao">
+                        <P>Sobre</P>
+                    </div>
+                </div>
 
-				<ul>
-					<li>teste</li>
-					<li>teste2</li>
-				</ul>
-			</div>	
+                <div class="divisao dois">
+                    <div class="box_login">\ 
+                        <div class="descricao_login">
+                            <h1>Login to Astec</h1>
+                            <p>Entre com seu usuário e senha para efetuar o Login</p>
+                        </div>				
 
-			<div>
-				<img src="imagens\icone_cadastro.png">
-				<h3>Cadastros</h3>
-				<p>Controle o cadastro de filiais, itens e usuarios.</p>
-			</div>
+                        <div class="form_login">
+                            <form method="POST" action="./Autenticar">
+                                <input type="text" name="cpf" placeholder="CPF">
+                                <input type="password" name="senha" placeholder="Senha">
+                                <button>Login</button>
+                            </form>
+                        </div>
+                    </div>				
+                </div>
+            </article>
 
-			<div>
-				<img src="imagens\icone_vendas.png">
-				<h3>Vendas</h3>
-				<p>Realize e armazene os dados de suas vendas.</p>
-			</div>
+            <article class="sobre">
+                <div class="titulo">
+                    <h1>Serviços</h1>
 
-			<div>
-				<img src="imagens\icone_relatorio.png">
-				<h3>Relatórios</h3>
-				<p>Gerencie suas vendas com relatórios por período.</p>
-			</div>
+                    <ul>
+                        <li>teste</li>
+                        <li>teste2</li>
+                    </ul>
+                </div>	
+
+                <div>
+                    <img src="imagens\icone_cadastro.png">
+                    <h3>Cadastros</h3>
+                    <p>Controle o cadastro de filiais, itens e usuarios.</p>
+                </div>
+
+                <div>
+                    <img src="imagens\icone_vendas.png">
+                    <h3>Vendas</h3>
+                    <p>Realize e armazene os dados de suas vendas.</p>
+                </div>
+
+                <div>
+                    <img src="imagens\icone_relatorio.png">
+                    <h3>Relatórios</h3>
+                    <p>Gerencie suas vendas com relatórios por período.</p>
+                </div>
 
 
-		</article>
-	</section>
-</body>
+            </article>
+        </section>
+    </body>
 </html>

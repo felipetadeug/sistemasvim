@@ -18,19 +18,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class TipoProdutoDeletar extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         try {
+            if (request.getSession().getAttribute("funcionario") == null) {
+                response.sendRedirect("index.jsp");
+            }
+
             TipoProdutoController.deletar(Integer.parseInt(request.getParameter("id")));
             request.getRequestDispatcher("./TipoProdutoListar").forward(request, response);
         } catch (Exception e) {

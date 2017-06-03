@@ -5,8 +5,9 @@
  */
 package br.com.svim.servlet;
 
+import br.com.svim.controller.FuncionarioController;
+import br.com.svim.model.Funcionario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,10 +21,22 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Autenticar", urlPatterns = {"/Autenticar"})
 public class Autenticar extends HttpServlet {
 
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("./FilialListar").forward(request, response);
+        try {
+            String cpf = request.getParameter("cpf");
+            String senha = request.getParameter("senha");
+            Funcionario funcionario = FuncionarioController.logar(cpf, senha);
+
+            if (funcionario.getIdFuncionario() > 0) {
+                request.getSession().setAttribute("funcionario", funcionario);
+                request.getRequestDispatcher("./VendaListar").forward(request, response);
+            } else {
+                throw new Exception("Usuário e/ou senha incorreto(s)");
+            }
+        } catch (Exception e) {
+            System.err.println("ERRO --->" + e.getMessage());
+        }
     }
 
     @Override

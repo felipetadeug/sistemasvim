@@ -28,6 +28,9 @@ public class VendaCadastrar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            if (request.getSession().getAttribute("funcionario") == null) {
+                response.sendRedirect("index.jsp");
+            }
 
             String[] produtos = request.getParameterValues("produto");
             String[] quantidade = request.getParameterValues("quantidade");
