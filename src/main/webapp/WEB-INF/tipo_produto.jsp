@@ -30,17 +30,34 @@
 
 
             <div class="row">			
-                
+
                 <ul class="col-md-2 nav nav-pills nav-stacked">                  
-                    <li class="active"><a href="#">Operações</a></li>
-                    <li><a href="./VendaListar">Venda</a></li>
-                    <li><a href="">Estoque</a></li>
-                    <li><a href="">Relatório</a></li>
-                    <li><a href="./FilialListar">Filial</a></li>
-                    <li><a href="./CargoListar">Cargo</a></li>
-                    <li><a href="./FuncionarioListar">Funcionario</a></li>                      
-                    <li><a href="./ProdutoListar">Produto</a></li>
-                    <li><a href="./TipoProdutoListar">Tipo de Produto</a></li>
+                    <c:choose>
+                        <c:when test="${sessionScope.funcionario.cargo.hierarquia gt 2}">
+                            <li class="active"><a href="#">Operações</a></li>
+                            <li><a href="./VendaListar">Venda</a></li>
+                            <li><a href="">Estoque</a></li>
+                            <li><a href="./Relatorio">Relatório</a></li>
+                            <li><a href="./FilialListar">Filial</a></li>
+                            <li><a href="./CargoListar">Cargo</a></li>
+                            <li><a href="./FuncionarioListar">Funcionario</a></li>                      
+                            <li><a href="./ProdutoListar">Produto</a></li>
+                            <li><a href="./TipoProdutoListar">Tipo de Produto</a></li>
+                            </c:when>
+                            <c:when test="${sessionScope.funcionario.cargo.hierarquia gt 1}">
+                            <li class="active"><a href="#">Operações</a></li>
+                            <li><a href="./VendaListar">Venda</a></li>
+                            <li><a href="">Estoque</a></li>
+                            <li><a href="./Relatorio">Relatório</a></li>
+                            <li><a href="./CargoListar">Cargo</a></li>
+                            <li><a href="./FuncionarioListar">Funcionario</a></li>                      
+                            <li><a href="./ProdutoListar">Produto</a></li>
+                            <li><a href="./TipoProdutoListar">Tipo de Produto</a></li>
+                            </c:when>
+                            <c:otherwise>
+                            <li><a href="./VendaListar">Venda</a></li>
+                            </c:otherwise>
+                        </c:choose>
                 </ul>
 
                 <section class="col-md-10" id="principal">
@@ -48,7 +65,7 @@
                         <h1 class="txt">Tipo de Produto</h1>
                         <p class="txt">Controle de tipos de produto</p>
                     </article>
-                    
+
 
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastrarTipoProduto">Cadastrar</button>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarTipoProduto">Editar</button>
@@ -114,7 +131,7 @@
 
                                 <div class="modal-body">
                                     <form method="POST" action="./TipoProdutoCadastrar">
-                                        
+
                                         <div class="row">
                                             <div class="form-group col-md-8">
                                                 <label for="tipo">Tipo de Produto:</label>
@@ -131,7 +148,7 @@
                             </div>				      
                         </div>
                     </div>
-                    
+
                     <!-- Modal - Deletar -->                    
                     <div class="modal fade" id="deletarTipoProduto" role="dialog">
                         <div class="modal-dialog">
@@ -151,7 +168,7 @@
                             </div>				      
                         </div>
                     </div>
-                    
+
                 </section>
             </div>
         </div>
