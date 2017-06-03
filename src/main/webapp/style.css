@@ -16,3 +16,7 @@ li{
 nav{
     background-color: gray;
 }
+
+.dataTables_wrapper{
+    margin-top: 20px;
+}

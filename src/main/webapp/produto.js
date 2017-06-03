@@ -1,5 +1,8 @@
 window.addEventListener('load', function () {
 
+    // tabela com paginacao e busca
+    $('table').DataTable();
+
     // instancia um objeto vazio para usar como produto (produto selecionada)
     var produto = {};
 

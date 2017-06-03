@@ -1,5 +1,8 @@
 window.addEventListener('load', function () {
 
+    // tabela com paginacao e busca
+    $('table').DataTable();
+
     // instancia um objeto vazio para usar como filial (filial selecionada)
     var filial = {};
 
