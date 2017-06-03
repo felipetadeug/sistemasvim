@@ -7,6 +7,7 @@ package br.com.svim.servlet;
 
 import br.com.svim.controller.ProdutoController;
 import br.com.svim.controller.TipoProdutoController;
+import br.com.svim.model.Funcionario;
 import br.com.svim.model.Produto;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -23,8 +24,13 @@ public class ProdutoAlterar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            if (request.getSession().getAttribute("funcionario") == null) {
+            Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
+            if (funcionario == null) {
                 response.sendRedirect("index.jsp");
+            } else {
+                if (funcionario.getCargo().getHierarquia() < 2) {
+                    response.sendRedirect("index.jsp");
+                }
             }
 
             Produto produto = new Produto();
@@ -36,7 +42,7 @@ public class ProdutoAlterar extends HttpServlet {
             produto.setEstocavel(Boolean.parseBoolean(request.getParameter("estocavel")));
             ProdutoController.alterar(produto);
             request.getRequestDispatcher("./ProdutoListar").forward(request, response);
-            
+
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
         }

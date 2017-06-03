@@ -5,9 +5,8 @@
  */
 package br.com.svim.servlet;
 
-import br.com.svim.controller.ProdutoController;
-import br.com.svim.model.Funcionario;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,30 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author iago.cguimaraes
+ * @author Iago
  */
-public class ProdutoDeletar extends HttpServlet {
+public class Sair extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
-            if (funcionario == null) {
-                response.sendRedirect("index.jsp");
-            } else {
-                if (funcionario.getCargo().getHierarquia() < 2) {
-                    response.sendRedirect("index.jsp");
-                }
-            }
-
-            ProdutoController.deletar(Integer.parseInt(request.getParameter("id")));
-            request.getRequestDispatcher("./ProdutoListar").forward(request, response);
-        } catch (Exception e) {
-            System.out.println("ERROR --->   " + e);
-        }
+        request.getSession().removeAttribute("funcionario");
+        response.sendRedirect("index.jsp");
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

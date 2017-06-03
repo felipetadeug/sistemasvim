@@ -21,6 +21,7 @@
             <header class="row" id="superior">
                 <div class="container-fluid"  style="background-color:black;color:#fff;height:100px;">
                     <h1>SVIM</h1>
+                    <div class="pull-right"><a href="./Sair"> Sair</a></div>
                     <p>Seja bem vindo.</p>
                 </div>			
             </header>

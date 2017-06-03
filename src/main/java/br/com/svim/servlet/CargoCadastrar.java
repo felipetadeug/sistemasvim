@@ -7,6 +7,7 @@ package br.com.svim.servlet;
 
 import br.com.svim.controller.CargoController;
 import br.com.svim.model.Cargo;
+import br.com.svim.model.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,19 +21,15 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CargoCadastrar extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getSession().getAttribute("funcionario") == null) {
+        Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
+        if (funcionario == null) {
             response.sendRedirect("index.jsp");
+        } else {
+            if (funcionario.getCargo().getHierarquia() < 2) {
+                response.sendRedirect("index.jsp");
+            }
         }
 
         Cargo cargo = new Cargo();

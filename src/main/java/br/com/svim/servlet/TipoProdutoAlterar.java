@@ -6,6 +6,7 @@
 package br.com.svim.servlet;
 
 import br.com.svim.controller.TipoProdutoController;
+import br.com.svim.model.Funcionario;
 import br.com.svim.model.TipoProduto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,8 +24,13 @@ public class TipoProdutoAlterar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            if (request.getSession().getAttribute("funcionario") == null) {
+            Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
+            if (funcionario == null) {
                 response.sendRedirect("index.jsp");
+            } else {
+                if (funcionario.getCargo().getHierarquia() < 2) {
+                    response.sendRedirect("index.jsp");
+                }
             }
 
             TipoProduto tipo = new TipoProduto();

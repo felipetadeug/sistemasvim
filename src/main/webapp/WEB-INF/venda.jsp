@@ -20,23 +20,31 @@
             <header class="row" id="superior">
                 <div class="container-fluid"  style="background-color:black;color:#fff;height:100px;">
                     <h1>SVIM</h1>
+                    <div class="pull-right"><a href="./Sair"> Sair</a></div>
                     <p>Seja bem vindo.</p>
-                </div>			
+                </div>
             </header>
 
 
             <div class="row">			
 
-                <ul class="col-md-2 nav nav-pills nav-stacked">                  
-                    <li class="active"><a href="#">Operações</a></li>
-                    <li><a href="./VendaListar">Venda</a></li>
-                    <li><a href="">Estoque</a></li>
-                    <li><a href="">Relatório</a></li>
-                    <li><a href="./FilialListar">Filial</a></li>
-                    <li><a href="./CargoListar">Cargo</a></li>
-                    <li><a href="./FuncionarioListar">Funcionario</a></li>                      
-                    <li><a href="./ProdutoListar">Produto</a></li>
-                    <li><a href="./TipoProdutoListar">Tipo de Produto</a></li>
+                <ul class="col-md-2 nav nav-pills nav-stacked"> 
+                    <c:choose>
+                        <c:when test="${sessionScope.funcionario.cargo.hierarquia gt 1}">
+                            <li class="active"><a href="#">Operações</a></li>
+                            <li><a href="./VendaListar">Venda</a></li>
+                            <li><a href="">Estoque</a></li>
+                            <li><a href="">Relatório</a></li>
+                            <li><a href="./FilialListar">Filial</a></li>
+                            <li><a href="./CargoListar">Cargo</a></li>
+                            <li><a href="./FuncionarioListar">Funcionario</a></li>                      
+                            <li><a href="./ProdutoListar">Produto</a></li>
+                            <li><a href="./TipoProdutoListar">Tipo de Produto</a></li>
+                            </c:when>
+                            <c:otherwise>
+                            <li><a href="./VendaListar">Venda</a></li>
+                            </c:otherwise>
+                        </c:choose>
                 </ul>
 
                 <section class="col-md-10" id="principal">

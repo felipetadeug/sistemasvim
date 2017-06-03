@@ -6,6 +6,7 @@
 package br.com.svim.servlet;
 
 import br.com.svim.controller.CargoController;
+import br.com.svim.model.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -22,8 +23,13 @@ public class CargoDeletar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            if (request.getSession().getAttribute("funcionario") == null) {
+            Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
+            if (funcionario == null) {
                 response.sendRedirect("index.jsp");
+            } else {
+                if (funcionario.getCargo().getHierarquia() < 2) {
+                    response.sendRedirect("index.jsp");
+                }
             }
 
             CargoController.deletar(Integer.parseInt(request.getParameter("id")));

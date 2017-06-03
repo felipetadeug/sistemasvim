@@ -27,8 +27,13 @@ public class FuncionarioCadastrar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            if (request.getSession().getAttribute("funcionario") == null) {
+            Funcionario f = (Funcionario) request.getSession().getAttribute("funcionario");
+            if (f == null) {
                 response.sendRedirect("index.jsp");
+            } else {
+                if (f.getCargo().getHierarquia() < 2) {
+                    response.sendRedirect("index.jsp");
+                }
             }
 
             Funcionario funcionario = new Funcionario();

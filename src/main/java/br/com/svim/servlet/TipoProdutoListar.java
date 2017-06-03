@@ -6,6 +6,7 @@
 package br.com.svim.servlet;
 
 import br.com.svim.controller.TipoProdutoController;
+import br.com.svim.model.Funcionario;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +22,13 @@ public class TipoProdutoListar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            if (request.getSession().getAttribute("funcionario") == null) {
+            Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
+            if (funcionario == null) {
                 response.sendRedirect("index.jsp");
+            } else {
+                if (funcionario.getCargo().getHierarquia() < 2) {
+                    response.sendRedirect("index.jsp");
+                }
             }
 
             request.setAttribute("ListTipoProduto", TipoProdutoController.obter());

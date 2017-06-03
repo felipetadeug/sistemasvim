@@ -6,11 +6,8 @@
 package br.com.svim.servlet;
 
 import br.com.svim.controller.FilialController;
-import br.com.svim.model.Filial;
+import br.com.svim.model.Funcionario;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -27,8 +24,13 @@ public class FilialListar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         try {
-            if (request.getSession().getAttribute("funcionario") == null) {
+            Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
+            if (funcionario == null) {
                 response.sendRedirect("index.jsp");
+            } else {
+                if (funcionario.getCargo().getHierarquia() < 2) {
+                    response.sendRedirect("index.jsp");
+                }
             }
 
             request.setAttribute("ListFilial", FilialController.obter());
