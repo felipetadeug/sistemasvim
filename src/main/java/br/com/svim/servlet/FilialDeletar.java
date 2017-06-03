@@ -26,7 +26,7 @@ public class FilialDeletar extends HttpServlet {
             if (funcionario == null) {
                 response.sendRedirect("index.jsp");
             } else {
-                if (funcionario.getCargo().getHierarquia() < 2) {
+                if (funcionario.getCargo().getHierarquia() < 3) {
                     response.sendRedirect("index.jsp");
                 }
             }

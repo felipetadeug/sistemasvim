@@ -1303,7 +1303,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `funcionario` WRITE;
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
-INSERT INTO `funcionario` VALUES (1,'Administrador','11111111111','2000-01-01 00:00:00','2000-01-01 00:00:00',3,1,'admin',1),(1,'Frentista','22222222222','2000-01-01 00:00:00','2000-01-01 00:00:00',1,2,'frent',1);
+INSERT INTO `funcionario` VALUES (1,'Administrador','11111111111','2000-01-01 00:00:00','2000-01-01 00:00:00',3,1,'admin',1),(2,'Gerente','22222222222','2000-01-01 00:00:00','2000-01-01 00:00:00',2,2,'gerente',1),(3,'Frentista','33333333333','2000-01-01 00:00:00','2000-01-01 00:00:00',1,2,'frentista',1);
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 UNLOCK TABLES;
 
