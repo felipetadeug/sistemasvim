@@ -23,6 +23,8 @@ public class CargoListar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        request.removeAttribute("msg");
+        
         Telas tela = new Telas();
         
         try {

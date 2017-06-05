@@ -24,6 +24,9 @@ public class CargoCadastrar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        request.removeAttribute("msg");
+
         Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
         if (funcionario == null) {
             response.sendRedirect("index.jsp");
@@ -36,6 +39,7 @@ public class CargoCadastrar extends HttpServlet {
         Cargo cargo = new Cargo();
         cargo.setCargo(request.getParameter("cargo"));
         cargo.setHierarquia(Integer.parseInt(request.getParameter("hierarquia")));
+
         try {
             CargoController.cadastrar(cargo);
             request.getRequestDispatcher("./CargoListar").forward(request, response);
@@ -43,7 +47,7 @@ public class CargoCadastrar extends HttpServlet {
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
             Telas tela = new Telas();
-            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.setAttribute("msg", "Algo de Errado Ocorreu: " + e);
             request.getRequestDispatcher(tela.getCargoScreen()).forward(request, response);
         }
     }

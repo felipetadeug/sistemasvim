@@ -25,6 +25,8 @@ public class FilialListar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         
+        request.removeAttribute("msg");
+        
         Telas tela = new Telas();
         
         try {

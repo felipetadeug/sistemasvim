@@ -23,7 +23,7 @@ public class Telas {
         this.estoque = "WEB-INF/estoque.jsp";
         this.funcionario = "WEB-INF/funcionario.jsp";
         this.produto = "WEB-INF/produto.jsp";
-        this.produto = "WEB-INF/tipo_produto.jsp";
+        this.tipo_produto = "WEB-INF/tipo_produto.jsp";
     }
     
     

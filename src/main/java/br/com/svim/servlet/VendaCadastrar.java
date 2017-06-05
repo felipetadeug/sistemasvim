@@ -28,6 +28,9 @@ public class VendaCadastrar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        request.removeAttribute("msg");
+        
         try {
             if (request.getSession().getAttribute("funcionario") == null) {
                 response.sendRedirect("index.jsp");

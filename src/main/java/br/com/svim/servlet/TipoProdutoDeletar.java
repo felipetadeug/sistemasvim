@@ -22,6 +22,9 @@ public class TipoProdutoDeletar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        request.removeAttribute("msg");
+        
         try {
             Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
             if (funcionario == null) {

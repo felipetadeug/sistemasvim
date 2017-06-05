@@ -27,6 +27,9 @@ public class FuncionarioCadastrar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        request.removeAttribute("msg");
+        
         try {
             Funcionario f = (Funcionario) request.getSession().getAttribute("funcionario");
             if (f == null) {

@@ -24,6 +24,9 @@ public class Autenticar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        request.removeAttribute("msg");
+        
         try {
             String cpf = request.getParameter("cpf");
             String senha = request.getParameter("senha");
