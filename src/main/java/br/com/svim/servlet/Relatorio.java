@@ -24,7 +24,9 @@ public class Relatorio extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-         Telas tela = new Telas();
+        request.removeAttribute("msg");
+        
+        Telas tela = new Telas();
         
         try{           
             request.setAttribute("ListVenda", VendaController.obter());
