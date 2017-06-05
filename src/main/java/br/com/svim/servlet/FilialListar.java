@@ -7,6 +7,7 @@ package br.com.svim.servlet;
 
 import br.com.svim.controller.FilialController;
 import br.com.svim.model.Funcionario;
+import br.com.svim.model.Telas;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,9 @@ public class FilialListar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
+        
+        Telas tela = new Telas();
+        
         try {
             Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
             if (funcionario == null) {
@@ -35,9 +39,12 @@ public class FilialListar extends HttpServlet {
 
             request.setAttribute("ListFilial", FilialController.obter());
             request.setAttribute("UFsList", FilialController.ListUFs());
-            request.getRequestDispatcher("WEB-INF/filial.jsp").forward(request, response);
+            request.getRequestDispatcher(tela.getFilialScreen()).forward(request, response);
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
+            
+            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.getRequestDispatcher(tela.getFilialScreen()).forward(request, response);
         }
     }
 

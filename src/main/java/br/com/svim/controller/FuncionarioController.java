@@ -7,6 +7,7 @@ package br.com.svim.controller;
 
 import br.com.svim.dao.DaoFuncionario;
 import br.com.svim.model.Funcionario;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 

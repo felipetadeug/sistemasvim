@@ -6,6 +6,7 @@
 package br.com.svim.servlet;
 
 import br.com.svim.controller.VendaController;
+import br.com.svim.model.Telas;
 import br.com.svim.model.Venda;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,12 +23,18 @@ public class Relatorio extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+         Telas tela = new Telas();
+        
         try{           
             request.setAttribute("ListVenda", VendaController.obter());
-            request.getRequestDispatcher("WEB-INF/relatorio.jsp").forward(request, response);
+            request.getRequestDispatcher(tela.getRelatorioScreen()).forward(request, response);
         }
         catch(Exception e){
             System.err.println("ERRO -->" + e.getMessage());
+           
+            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.getRequestDispatcher(tela.getRelatorioScreen()).forward(request, response);
         }
     }
 

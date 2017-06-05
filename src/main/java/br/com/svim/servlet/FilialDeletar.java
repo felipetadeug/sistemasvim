@@ -7,6 +7,7 @@ package br.com.svim.servlet;
 
 import br.com.svim.controller.FilialController;
 import br.com.svim.model.Funcionario;
+import br.com.svim.model.Telas;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +36,9 @@ public class FilialDeletar extends HttpServlet {
             request.getRequestDispatcher("./FilialListar").forward(request, response);
         } catch (Exception e) {
             System.out.println("ERROR --->   " + e);
+            Telas tela = new Telas();
+            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.getRequestDispatcher(tela.getFilialScreen()).forward(request, response);
         }
     }
 

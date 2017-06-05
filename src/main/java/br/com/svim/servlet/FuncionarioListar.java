@@ -9,6 +9,7 @@ import br.com.svim.controller.CargoController;
 import br.com.svim.controller.FilialController;
 import br.com.svim.controller.FuncionarioController;
 import br.com.svim.model.Funcionario;
+import br.com.svim.model.Telas;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +24,9 @@ public class FuncionarioListar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        Telas tela = new Telas();
+        
         try {
             Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
             if (funcionario == null) {
@@ -36,9 +40,12 @@ public class FuncionarioListar extends HttpServlet {
             request.setAttribute("ListFilial", FilialController.obter());
             request.setAttribute("ListCargo", CargoController.obter());
             request.setAttribute("ListFuncionario", FuncionarioController.obter());
-            request.getRequestDispatcher("WEB-INF/funcionario.jsp").forward(request, response);
+            request.getRequestDispatcher(tela.getFuncionarioScreen()).forward(request, response);
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
+            
+            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.getRequestDispatcher(tela.getFuncionarioScreen()).forward(request, response);
         }
     }
 

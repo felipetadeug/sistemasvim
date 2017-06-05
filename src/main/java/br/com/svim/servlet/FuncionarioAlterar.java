@@ -11,6 +11,7 @@ import br.com.svim.controller.FuncionarioController;
 import br.com.svim.model.Cargo;
 import br.com.svim.model.Filial;
 import br.com.svim.model.Funcionario;
+import br.com.svim.model.Telas;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
@@ -52,6 +53,9 @@ public class FuncionarioAlterar extends HttpServlet {
             request.getRequestDispatcher("./FuncionarioListar").forward(request, response);
         } catch (Exception e) {
             System.err.println("ERRO -->" + e.getMessage());
+            Telas tela = new Telas();
+            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.getRequestDispatcher(tela.getFuncionarioScreen()).forward(request, response);
         }
 
     }

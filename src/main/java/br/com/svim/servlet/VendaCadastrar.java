@@ -11,6 +11,7 @@ import br.com.svim.model.Filial;
 import br.com.svim.model.Funcionario;
 import br.com.svim.model.ItemVenda;
 import br.com.svim.model.Produto;
+import br.com.svim.model.Telas;
 import br.com.svim.model.Venda;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,6 +63,9 @@ public class VendaCadastrar extends HttpServlet {
             request.getRequestDispatcher("./VendaListar").forward(request, response);
         } catch (Exception e) {
             System.err.println("ERRO --->" + e.getMessage());
+            Telas tela = new Telas();
+            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.getRequestDispatcher(tela.getVendaScreen()).forward(request, response);
         }
     }
 

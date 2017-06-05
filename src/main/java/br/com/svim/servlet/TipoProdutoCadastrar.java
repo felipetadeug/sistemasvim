@@ -7,6 +7,7 @@ package br.com.svim.servlet;
 
 import br.com.svim.controller.TipoProdutoController;
 import br.com.svim.model.Funcionario;
+import br.com.svim.model.Telas;
 import br.com.svim.model.TipoProduto;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -39,6 +40,9 @@ public class TipoProdutoCadastrar extends HttpServlet {
 
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
+            Telas tela = new Telas();
+            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.getRequestDispatcher(tela.getTipo_produtoScreen()).forward(request, response);
         }
 
     }

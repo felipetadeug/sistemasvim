@@ -8,6 +8,7 @@ package br.com.svim.servlet;
 import br.com.svim.controller.CargoController;
 import br.com.svim.model.Cargo;
 import br.com.svim.model.Funcionario;
+import br.com.svim.model.Telas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -41,6 +42,9 @@ public class CargoCadastrar extends HttpServlet {
 
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
+            Telas tela = new Telas();
+            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.getRequestDispatcher(tela.getCargoScreen()).forward(request, response);
         }
     }
 

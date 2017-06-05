@@ -8,6 +8,7 @@ package br.com.svim.servlet;
 import br.com.svim.controller.CargoController;
 import br.com.svim.model.Cargo;
 import br.com.svim.model.Funcionario;
+import br.com.svim.model.Telas;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,12 +46,17 @@ public class CargoAlterar extends HttpServlet {
         cargo.setCargo(request.getParameter("cargo"));
         cargo.setHierarquia(Integer.parseInt(request.getParameter("hierarquia")));
 
+        
+        
         try {
             CargoController.alterar(cargo);
             request.getRequestDispatcher("./CargoListar").forward(request, response);
 
         } catch (Exception e) {
+            Telas tela = new Telas();
             System.err.println("ERROR ----> " + e);
+            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.getRequestDispatcher(tela.getCargoScreen()).forward(request, response);
         }
 
     }

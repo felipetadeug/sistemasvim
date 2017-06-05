@@ -7,6 +7,7 @@ package br.com.svim.servlet;
 
 import br.com.svim.controller.CargoController;
 import br.com.svim.model.Funcionario;
+import br.com.svim.model.Telas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -36,6 +37,9 @@ public class CargoDeletar extends HttpServlet {
             request.getRequestDispatcher("./CargoListar").forward(request, response);
         } catch (Exception e) {
             System.out.println("ERROR --->   " + e);
+            Telas tela = new Telas();
+            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.getRequestDispatcher(tela.getCargoScreen()).forward(request, response);
         }
 
     }

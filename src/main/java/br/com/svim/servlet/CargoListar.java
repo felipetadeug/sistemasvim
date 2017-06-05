@@ -7,6 +7,7 @@ package br.com.svim.servlet;
 
 import br.com.svim.controller.CargoController;
 import br.com.svim.model.Funcionario;
+import br.com.svim.model.Telas;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +22,9 @@ public class CargoListar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        Telas tela = new Telas();
+        
         try {
             Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
             if (funcionario == null) {
@@ -32,9 +36,12 @@ public class CargoListar extends HttpServlet {
             }
 
             request.setAttribute("ListCargo", CargoController.obter());
-            request.getRequestDispatcher("WEB-INF/cargo.jsp").forward(request, response);
+            request.getRequestDispatcher(tela.getCargoScreen()).forward(request, response);
         } catch (Exception e) {
-            System.err.println("ERROR-----> " + e);
+            
+            System.err.println("ERROR ----> " + e);
+            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.getRequestDispatcher(tela.getCargoScreen()).forward(request, response);
         }
     }
 

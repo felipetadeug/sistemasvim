@@ -8,6 +8,7 @@ package br.com.svim.servlet;
 import br.com.svim.controller.FuncionarioController;
 import br.com.svim.model.Funcionario;
 import java.io.IOException;
+import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,10 +33,13 @@ public class Autenticar extends HttpServlet {
                 request.getSession().setAttribute("funcionario", funcionario);
                 request.getRequestDispatcher("./VendaListar").forward(request, response);
             } else {
-                throw new Exception("Usuário e/ou senha incorreto(s)");
+                request.setAttribute("msg", "Usuário e Senha Inválidos");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } catch (Exception e) {
-            System.err.println("ERRO --->" + e.getMessage());
+            System.err.println("Error --> "+ e);
+            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 
