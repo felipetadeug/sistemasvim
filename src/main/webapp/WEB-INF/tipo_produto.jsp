@@ -169,6 +169,26 @@
                         </div>
                     </div>
 
+
+                    <!-- Modal - ERRO -->                    
+                    <div class="modal fade" id="errorModal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">ERRO!</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h4 id="msgErro">
+                                        <c:if test="${not empty msg}">
+                                            ${msg}
+                                        </c:if>
+                                    </h4>
+                                </div>
+                            </div>				      
+                        </div>
+                    </div> 
+
                 </section>
             </div>
         </div>

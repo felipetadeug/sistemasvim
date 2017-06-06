@@ -1,4 +1,10 @@
 window.addEventListener('load', function () {
+
+    // se houver erro na tela, mostra o modal
+    if ($('#msgErro').text().trim()) {
+        $('#errorModal').modal('show');
+    }
+
     // armazena em variavel o template de item (para quando precisar adicionar)
     var template = document.querySelector('#template-item');
 

@@ -1,5 +1,10 @@
 window.addEventListener('load', function () {
 
+    // se houver erro na tela, mostra o modal
+    if ($('#msgErro').text().trim()) {
+        $('#errorModal').modal('show');
+    }
+
     // tabela com paginacao e busca
     $('table').DataTable();
 
@@ -39,9 +44,9 @@ window.addEventListener('load', function () {
         $('#editarFilial [name=cidade]').val(filial.cidade);
         $('#editarFilial [name=uf]').val(filial.uf);
     });
-    
+
     // ao clicar no botao de DELETAR (abrir modal)
-    $('button[data-target="#deletarFilial"]').click(function () {   
+    $('button[data-target="#deletarFilial"]').click(function () {
         if ($('tr.selected').length == 0) {
             alert('selecione um registro');
             return false;
@@ -50,6 +55,6 @@ window.addEventListener('load', function () {
         // envia os dados pros campos da modal
         $('#deletarFilial [name=id]').val(filial.id);
     });
-     
+
 });
 

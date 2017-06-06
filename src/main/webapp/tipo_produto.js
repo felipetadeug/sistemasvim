@@ -1,5 +1,10 @@
 window.addEventListener('load', function () {
 
+    // se houver erro na tela, mostra o modal
+    if ($('#msgErro').text().trim()) {
+        $('#errorModal').modal('show');
+    }
+
     // tabela com paginacao e busca
     $('table').DataTable();
 
@@ -28,9 +33,9 @@ window.addEventListener('load', function () {
         $('#editarTipoProduto [name=id]').val(tipo.id);
         $('#editarTipoProduto [name=tipo]').val(tipo.tipo);
     });
-    
+
     // ao clicar no botao de DELETAR (abrir modal)
-    $('button[data-target="#deletarTipoProduto"]').click(function () {   
+    $('button[data-target="#deletarTipoProduto"]').click(function () {
         if ($('tr.selected').length == 0) {
             alert('selecione um registro');
             return false;
@@ -39,7 +44,7 @@ window.addEventListener('load', function () {
         // envia os dados pros campos da modal
         $('#deletarTipoProduto [name=id]').val(tipo.id);
     });
-     
+
 });
 
 
