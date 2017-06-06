@@ -13,10 +13,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
         <script type="text/javascript" src="relatorio.js"></script>
+        
     </head>
     <body>
         <div class="container-fluid">
@@ -27,7 +30,6 @@
                     <p>Seja bem vindo.</p>
                 </div>			
             </header>
-
 
             <div class="row">			
 
@@ -65,6 +67,24 @@
                         <h1 class="txt">Relatório</h1>
                         <p class="txt">Relatório de Vendas</p>
                     </article>
+
+                    <div class="row">
+                        <form method="GET" action="./Relatorio">
+                            <div class="form-group col-md-3">
+                                <label for="dtini">De:</label>
+                                <input type="text" name="dtini" placeholder="yyyy-mm-dd" class="form-control dtpicker" required/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="dtfim">Até:</label>
+                                <input type="text" name="dtfim" placeholder="yyyy-mm-dd" class="form-control dtpicker" required/>
+                            </div>
+                            <div>
+                                <br>
+                                <button type="submit" class="btn btn-primary">Consultar</button>
+                            </div>
+
+                        </form>             
+                    </div>
 
                     <table class="table table-hover">
                         <thead>				

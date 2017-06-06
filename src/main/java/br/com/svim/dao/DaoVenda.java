@@ -7,6 +7,7 @@ package br.com.svim.dao;
 
 import br.com.svim.model.Venda;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class DaoVenda {
             ResultSet rs = stmt.executeQuery();
             rs.last();
             venda.setIdVenda(rs.getInt(1));
-            
+
             stmt.close();
             conn.close();
 
@@ -102,6 +103,34 @@ public class DaoVenda {
             String sql = "call obter_vendas()";
             PreparedStatement stmt = conn.prepareStatement(sql);
 
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                vendas.add(new Venda(
+                        rs.getInt("id_venda"),
+                        DaoFuncionario.obter(rs.getInt("id_funcionario")),
+                        DaoFilial.obter(rs.getInt("id_filial")),
+                        rs.getDate("data_venda"),
+                        DaoItemVenda.obter(rs.getInt("id_venda"))));
+            }
+            stmt.close();
+            conn.close();
+
+            return vendas;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public static ArrayList<Venda> obter(Date dtini,Date dtfim) throws Exception {
+        try {
+            ArrayList<Venda> vendas = new ArrayList<Venda>();
+            Connection conn = SqlConnection.getConexao();
+            String sql = "call obter_vendas_data(?,?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setDate(1, dtini);
+            stmt.setDate(2, dtfim);
+            
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 vendas.add(new Venda(

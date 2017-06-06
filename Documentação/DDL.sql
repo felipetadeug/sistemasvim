@@ -1340,3 +1340,21 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2017-06-01 23:59:11
+
+
+
+
+
+
+-- NOVA PROC DE OBTER VENDAS PELA DATA
+DELIMITER ;;
+ CREATE DEFINER=`root`@`localhost` PROCEDURE `obter_vendas_data`(
+ _dtini datetime
+,_dtfim datetime
+)
+BEGIN
+
+select * from venda where data_venda between _dtini and _dtfim;
+
+END ;;
+DELIMITER ;

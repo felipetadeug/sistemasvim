@@ -8,6 +8,11 @@ window.addEventListener('load', function () {
     // tabela com paginacao e busca
     $('table').DataTable();
 
+    // formatacao de data
+    $(".dtpicker").datepicker({
+        format: 'yyyy-mm-dd'
+    });
+
     // instancia um objeto vazio para usar como funcionario (funcionario selecionada)
     var funcionario = {};
 

@@ -13,9 +13,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
         <script type="text/javascript" src="funcionario.js"></script>
     </head>
     <body>
@@ -137,14 +139,14 @@
                                         <div class="row">
                                             <div class="form-group col-md-8">
                                                 <label for="dtnasc">Data Nascimento:</label>
-                                                <input type="text" name="dtnasc" placeholder="yyyy-mm-dd" class="form-control" required>
+                                                <input type="text" name="dtnasc" placeholder="yyyy-mm-dd" class="form-control dtpicker" required>
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="form-group col-md-8">
                                                 <label for="dtadm">Data Admissão</label>
-                                                <input type="text" name="dtadm" placeholder="yyyy-mm-dd" class="form-control" required>
+                                                <input type="text" name="dtadm" placeholder="yyyy-mm-dd" class="form-control dtpicker" required>
                                             </div>
                                         </div>
 
@@ -221,14 +223,14 @@
                                         <div class="row">
                                             <div class="form-group col-md-8">
                                                 <label for="dtnasc">Data Nascimento:</label>
-                                                <input type="text" name="dtnasc" placeholder="yyyy-mm-dd" class="form-control" required>
+                                                <input type="text" name="dtnasc" placeholder="yyyy-mm-dd" class="form-control dtpicker" required>
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="form-group col-md-8">
                                                 <label for="dtadm">Data Admissão</label>
-                                                <input type="text" name="dtadm" placeholder="yyyy-mm-dd" class="form-control" required>
+                                                <input type="text" name="dtadm" placeholder="yyyy-mm-dd" class="form-control dtpicker" required>
                                             </div>
                                         </div>
 

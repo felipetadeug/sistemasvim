@@ -6,10 +6,12 @@
 package br.com.svim.servlet;
 
 import br.com.svim.controller.VendaController;
+import br.com.svim.model.Funcionario;
 import br.com.svim.model.Telas;
-import br.com.svim.model.Venda;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,19 +25,47 @@ public class Relatorio extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         request.removeAttribute("msg");
-        
         Telas tela = new Telas();
-        
-        try{           
-            request.setAttribute("ListVenda", VendaController.obter());
+        try {
+            Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
+            if (funcionario == null) {
+                response.sendRedirect("index.jsp");
+            } else {
+                if (funcionario.getCargo().getHierarquia() < 2) {
+                    response.sendRedirect("index.jsp");
+                }
+            }
+
+            // se o usuario nao tiver setado data, obtem vendas de hoje
+            java.util.Date _dtini = new java.util.Date();
+            java.util.Date _dtfim = new java.util.Date();
+            Date dtini = new java.sql.Date(_dtini.getTime());
+            Date dtfim = new java.sql.Date(_dtfim.getTime());
+
+            // se tiver data, obtem vendas do período passado
+            if (request.getParameter("dtini") != null) {
+                SimpleDateFormat dateType = new SimpleDateFormat("yyyy-MM-dd");
+                _dtini = dateType.parse(request.getParameter("dtini"));
+                _dtfim = dateType.parse(request.getParameter("dtfim"));
+            }
+
+            // adiciona um dia a data fim
+            Calendar c = Calendar.getInstance();
+            c.setTime(_dtfim);
+            c.add(Calendar.DATE, 1);
+            _dtfim = c.getTime();
+
+            // seta no forma sql.date
+            dtini = new java.sql.Date(_dtini.getTime());
+            dtfim = new java.sql.Date(_dtfim.getTime());
+
+            request.setAttribute("ListVenda", VendaController.obter(dtini, dtfim));
             request.getRequestDispatcher(tela.getRelatorioScreen()).forward(request, response);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.err.println("ERRO -->" + e.getMessage());
-           
-            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+
+            request.setAttribute("msg", "Algo de Errado Ocorreu: " + e);
             request.getRequestDispatcher(tela.getRelatorioScreen()).forward(request, response);
         }
     }
