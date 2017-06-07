@@ -22,10 +22,8 @@ public class FuncionarioDeletar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.removeAttribute("msg");
-        
         try {
+            // AUTENTICACAO/AUTORIZACAO
             Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
             if (funcionario == null) {
                 response.sendRedirect("index.jsp");
@@ -35,12 +33,14 @@ public class FuncionarioDeletar extends HttpServlet {
                 }
             }
 
+            request.removeAttribute("msg");
+
             FuncionarioController.deletar(Integer.parseInt(request.getParameter("id")));
             request.getRequestDispatcher("./FuncionarioListar").forward(request, response);
         } catch (Exception e) {
             System.out.println("ERROR --->   " + e);
+            request.getSession().setAttribute("erro", "Algo de Errado Ocorreu: " + e.getMessage());
             Telas tela = new Telas();
-            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
             request.getRequestDispatcher(tela.getFuncionarioScreen()).forward(request, response);
         }
     }

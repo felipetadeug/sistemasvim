@@ -27,10 +27,8 @@ public class FuncionarioCadastrar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.removeAttribute("msg");
-        
         try {
+            // AUTENTICACAO/AUTORIZACAO
             Funcionario f = (Funcionario) request.getSession().getAttribute("funcionario");
             if (f == null) {
                 response.sendRedirect("index.jsp");
@@ -39,6 +37,8 @@ public class FuncionarioCadastrar extends HttpServlet {
                     response.sendRedirect("index.jsp");
                 }
             }
+
+            request.removeAttribute("msg");
 
             Funcionario funcionario = new Funcionario();
             funcionario.setNome(request.getParameter("nome"));
@@ -54,10 +54,10 @@ public class FuncionarioCadastrar extends HttpServlet {
             FuncionarioController.cadastrar(funcionario);
             request.getRequestDispatcher("./FuncionarioListar").forward(request, response);
         } catch (Exception e) {
-            System.err.println("ERRO --->" + e.getMessage());
+            System.err.println("ERRO --->" + e.getMessage());            
+            request.getSession().setAttribute("erro", "Algo de Errado Ocorreu: " + e.getMessage());  
             Telas tela = new Telas();
-            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
-            request.getRequestDispatcher(tela.getFuncionarioScreen()).forward(request, response);
+            request.getRequestDispatcher("./FuncionarioListar").forward(request, response);
         }
 
     }

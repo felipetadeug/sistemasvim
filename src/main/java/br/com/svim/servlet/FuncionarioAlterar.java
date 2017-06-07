@@ -27,10 +27,8 @@ public class FuncionarioAlterar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.removeAttribute("msg");
-        
-        try {
+        try {           
+            // AUTENTICACAO/AUTORIZACAO
             Funcionario f = (Funcionario) request.getSession().getAttribute("funcionario");
             if (f == null) {
                 response.sendRedirect("index.jsp");
@@ -40,6 +38,8 @@ public class FuncionarioAlterar extends HttpServlet {
                 }
             }
 
+            request.removeAttribute("msg");
+            
             Funcionario funcionario = new Funcionario();
             funcionario.setIdFuncionario(Integer.parseInt(request.getParameter("id")));
             funcionario.setNome(request.getParameter("nome"));
@@ -54,13 +54,11 @@ public class FuncionarioAlterar extends HttpServlet {
             funcionario.setSenha(request.getParameter("senha"));
             FuncionarioController.alterar(funcionario);
             request.getRequestDispatcher("./FuncionarioListar").forward(request, response);
-        } catch (Exception e) {
+        } catch (Exception e) {           
             System.err.println("ERRO -->" + e.getMessage());
-            Telas tela = new Telas();
-            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
-            request.getRequestDispatcher(tela.getFuncionarioScreen()).forward(request, response);
+            request.getSession().setAttribute("erro", "Algo de Errado Ocorreu: " + e.getMessage());           
+            request.getRequestDispatcher("./FuncionarioListar").forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
