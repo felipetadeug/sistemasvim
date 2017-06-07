@@ -21,12 +21,13 @@
     <body>
         <div class="container-fluid">
             <header class="row" id="superior">
-                <div class="container-fluid"  style="background-color:black;color:#fff;height:100px;">
+                <div class="container-fluid"  style="background-color:hsla(190, 100%, 35%, 1);color:#fff;height:100px;">
                     <h1>SVIM</h1>
-                    <div class="pull-right"><a href="./Sair"> Sair</a></div>
+                    <div class="pull-right" ><a href="./Sair" class="linkColor"> Sair</a></div>
                     <p>Seja bem vindo.</p>
                 </div>			
             </header>
+            <br>
 
 
             <div class="row">			
@@ -36,7 +37,6 @@
                         <c:when test="${sessionScope.funcionario.cargo.hierarquia gt 2}">
                             <li class="active"><a href="#">Operações</a></li>
                             <li><a href="./VendaListar">Venda</a></li>
-                            <li><a href="">Estoque</a></li>
                             <li><a href="./Relatorio">Relatório</a></li>
                             <li><a href="./FilialListar">Filial</a></li>
                             <li><a href="./CargoListar">Cargo</a></li>
@@ -47,7 +47,6 @@
                             <c:when test="${sessionScope.funcionario.cargo.hierarquia gt 1}">
                             <li class="active"><a href="#">Operações</a></li>
                             <li><a href="./VendaListar">Venda</a></li>
-                            <li><a href="">Estoque</a></li>
                             <li><a href="./Relatorio">Relatório</a></li>
                             <li><a href="./CargoListar">Cargo</a></li>
                             <li><a href="./FuncionarioListar">Funcionario</a></li>                      
@@ -181,7 +180,7 @@
                         </div>
                     </div>
 
-                                        <!-- Modal - ERRO -->                    
+                    <!-- Modal - ERRO -->                    
                     <div class="modal fade" id="errorModal" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -199,7 +198,7 @@
                             </div>				      
                         </div>
                     </div> 
-                    
+
                 </section>
             </div>
         </div>
