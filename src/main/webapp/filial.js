@@ -1,3 +1,6 @@
+    // instancia um objeto vazio para usar como filial (filial selecionada)
+    var filial = {};
+
 window.addEventListener('load', function () {
 
     // se houver erro na tela, mostra o modal
@@ -7,25 +10,6 @@ window.addEventListener('load', function () {
 
     // tabela com paginacao e busca
     $('table').DataTable();
-
-    // instancia um objeto vazio para usar como filial (filial selecionada)
-    var filial = {};
-
-    // ao clicar em uma linha da tabela
-    $('.table tr').click(function () {
-        // adiciona a classe selected na linha e remove da antiga
-        $(this).addClass('selected').siblings().removeClass('selected');
-
-        // obtem os dados contidos em cada coluna e preenche o objeto
-        filial.id = $(this).find('td:nth-child(1)').html();
-        filial.nome = $(this).find('td:nth-child(2)').html();
-        filial.cep = $(this).find('td:nth-child(3)').html();
-        filial.endereco = $(this).find('td:nth-child(4)').html();
-        filial.numero = $(this).find('td:nth-child(5)').html();
-        filial.bairro = $(this).find('td:nth-child(6)').html();
-        filial.cidade = $(this).find('td:nth-child(7)').html();
-        filial.uf = $(this).find('td:nth-child(8)').html();
-    });
 
     // ao clicar no botao de EDITAR (abrir modal)
     $('button[data-target="#editarFilial"]').click(function () {
@@ -58,3 +42,18 @@ window.addEventListener('load', function () {
 
 });
 
+// ao clicar em uma linha da tabela
+$(document).on('click', ".table tr", function () {
+    // adiciona a classe selected na linha e remove da antiga
+    $(this).addClass('selected').siblings().removeClass('selected');
+
+    // obtem os dados contidos em cada coluna e preenche o objeto
+    filial.id = $(this).find('td:nth-child(1)').html();
+    filial.nome = $(this).find('td:nth-child(2)').html();
+    filial.cep = $(this).find('td:nth-child(3)').html();
+    filial.endereco = $(this).find('td:nth-child(4)').html();
+    filial.numero = $(this).find('td:nth-child(5)').html();
+    filial.bairro = $(this).find('td:nth-child(6)').html();
+    filial.cidade = $(this).find('td:nth-child(7)').html();
+    filial.uf = $(this).find('td:nth-child(8)').html();
+});

@@ -1,3 +1,6 @@
+    // instancia um objeto vazio para usar como funcionario (funcionario selecionada)
+    var funcionario = {};
+
 window.addEventListener('load', function () {
 
     // se houver erro na tela, mostra o modal
@@ -11,28 +14,6 @@ window.addEventListener('load', function () {
     // formatacao de data
     $(".dtpicker").datepicker({
         format: 'yyyy-mm-dd'
-    });
-
-    // instancia um objeto vazio para usar como funcionario (funcionario selecionada)
-    var funcionario = {};
-
-    // ao clicar em uma linha da tabela
-    $('.table tr').click(function () {
-        // adiciona a classe selected na linha e remove da antiga
-        $(this).addClass('selected').siblings().removeClass('selected');
-
-        // obtem os dados contidos em cada coluna e preenche o objeto
-        funcionario.id = $(this).find('td:nth-child(1)').html();
-        funcionario.nome = $(this).find('td:nth-child(2)').html();
-        funcionario.cpf = $(this).find('td:nth-child(3)').html();
-        funcionario.dtnasc = $(this).find('td:nth-child(4)').html();
-        funcionario.dtadm = $(this).find('td:nth-child(5)').html();
-        funcionario.id_cargo = $(this).find('td:nth-child(6)').html();
-        funcionario.cargo = $(this).find('td:nth-child(7)').html();
-        funcionario.id_filial = $(this).find('td:nth-child(8)').html();
-        funcionario.filial = $(this).find('td:nth-child(9)').html();
-        funcionario.senha = $(this).find('td:nth-child(10)').html();
-
     });
 
     // ao clicar no botao de EDITAR (abrir modal)
@@ -66,5 +47,22 @@ window.addEventListener('load', function () {
 
 });
 
+// ao clicar em uma linha da tabela
+$(document).on('click', ".table tr", function () {
+            // adiciona a classe selected na linha e remove da antiga
+        $(this).addClass('selected').siblings().removeClass('selected');
+
+        // obtem os dados contidos em cada coluna e preenche o objeto
+        funcionario.id = $(this).find('td:nth-child(1)').html();
+        funcionario.nome = $(this).find('td:nth-child(2)').html();
+        funcionario.cpf = $(this).find('td:nth-child(3)').html();
+        funcionario.dtnasc = $(this).find('td:nth-child(4)').html();
+        funcionario.dtadm = $(this).find('td:nth-child(5)').html();
+        funcionario.id_cargo = $(this).find('td:nth-child(6)').html();
+        funcionario.cargo = $(this).find('td:nth-child(7)').html();
+        funcionario.id_filial = $(this).find('td:nth-child(8)').html();
+        funcionario.filial = $(this).find('td:nth-child(9)').html();
+        funcionario.senha = $(this).find('td:nth-child(10)').html();
+});
 
 

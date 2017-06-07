@@ -1,3 +1,6 @@
+    // instancia um objeto vazio para usar como cargo (cargo selecionada)
+    var cargo = {};
+
 window.addEventListener('load', function () {
 
     // se houver erro na tela, mostra o modal
@@ -7,21 +10,6 @@ window.addEventListener('load', function () {
 
     // tabela com paginacao e busca
     $('table').DataTable();
-
-    // instancia um objeto vazio para usar como cargo (cargo selecionada)
-    var cargo = {};
-
-    // ao clicar em uma linha da tabela
-    $('.table tr').click(function () {
-        // adiciona a classe selected na linha e remove da antiga
-        $(this).addClass('selected').siblings().removeClass('selected');
-
-        // obtem os dados contidos em cada coluna e preenche o objeto
-        cargo.id = $(this).find('td:nth-child(1)').html();
-        cargo.cargo = $(this).find('td:nth-child(2)').html();
-        cargo.hierarquia = $(this).find('td:nth-child(3)').html();
-
-    });
 
     // ao clicar no botao de EDITAR (abrir modal)
     $('button[data-target="#editarCargo"]').click(function () {
@@ -49,5 +37,16 @@ window.addEventListener('load', function () {
 
 });
 
+// ao clicar em uma linha da tabela
+$(document).on('click', ".table tr", function () {
 
+    // adiciona a classe selected na linha e remove da antiga
+    $(this).addClass('selected').siblings().removeClass('selected');
+
+    // obtem os dados contidos em cada coluna e preenche o objeto
+    cargo.id = $(this).find('td:nth-child(1)').html();
+    cargo.cargo = $(this).find('td:nth-child(2)').html();
+    cargo.hierarquia = $(this).find('td:nth-child(3)').html();
+
+});
 

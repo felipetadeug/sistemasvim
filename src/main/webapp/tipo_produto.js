@@ -1,3 +1,6 @@
+    // instancia um objeto vazio para usar como tipo (tipo selecionada)
+    var tipo = {};
+
 window.addEventListener('load', function () {
 
     // se houver erro na tela, mostra o modal
@@ -7,20 +10,6 @@ window.addEventListener('load', function () {
 
     // tabela com paginacao e busca
     $('table').DataTable();
-
-    // instancia um objeto vazio para usar como tipo (tipo selecionada)
-    var tipo = {};
-
-    // ao clicar em uma linha da tabela
-    $('.table tr').click(function () {
-        // adiciona a classe selected na linha e remove da antiga
-        $(this).addClass('selected').siblings().removeClass('selected');
-
-        // obtem os dados contidos em cada coluna e preenche o objeto
-        tipo.id = $(this).find('td:nth-child(1)').html();
-        tipo.tipo = $(this).find('td:nth-child(2)').html();
-
-    });
 
     // ao clicar no botao de EDITAR (abrir modal)
     $('button[data-target="#editarTipoProduto"]').click(function () {
@@ -48,4 +37,15 @@ window.addEventListener('load', function () {
 });
 
 
+// ao clicar em uma linha da tabela
+$(document).on('click', ".table tr", function () {
+
+    // adiciona a classe selected na linha e remove da antiga
+    $(this).addClass('selected').siblings().removeClass('selected');
+
+    // obtem os dados contidos em cada coluna e preenche o objeto
+    tipo.id = $(this).find('td:nth-child(1)').html();
+    tipo.tipo = $(this).find('td:nth-child(2)').html();
+
+});
 
