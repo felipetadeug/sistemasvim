@@ -82,7 +82,7 @@
                                         </div>		
                                         <div class="form-group col-md-2">
                                             <label for="quantidade">Quantidade</label>
-                                            <input type="number" name="quantidade" min="0" value="0" class="form-control"/>
+                                            <input type="number" name="quantidade" min="0" value="0" step="0.01" class="form-control"/>
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="valor">Valor</label>

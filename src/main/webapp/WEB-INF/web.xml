@@ -96,6 +96,10 @@
         <servlet-name>Relatorio</servlet-name>
         <servlet-class>br.com.svim.servlet.Relatorio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioDetalhe</servlet-name>
+        <servlet-class>br.com.svim.servlet.RelatorioDetalhe</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CargoCadastrar</servlet-name>
         <url-pattern>/CargoCadastrar</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>Relatorio</servlet-name>
         <url-pattern>/Relatorio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioDetalhe</servlet-name>
+        <url-pattern>/RelatorioDetalhe</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

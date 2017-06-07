@@ -42,7 +42,7 @@ public class VendaCadastrar extends HttpServlet {
 
             for (int i = 0; i < produtos.length; i++) {
                 int idProduto = Integer.parseInt(produtos[i]);
-                int qtd = Integer.parseInt(quantidade[i]);
+                double qtd = Double.parseDouble(quantidade[i]);
 
                 if (qtd > 0) {
                     ItemVenda item = new ItemVenda();

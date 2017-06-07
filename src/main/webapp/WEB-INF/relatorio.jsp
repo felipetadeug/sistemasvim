@@ -19,7 +19,7 @@
         <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
         <script type="text/javascript" src="relatorio.js"></script>
-        
+
     </head>
     <body>
         <div class="container-fluid">
@@ -89,6 +89,7 @@
                     <table class="table table-hover">
                         <thead>				
                             <tr>
+                                <th>ID</th>
                                 <th>Data</th>
                                 <th>Funcionario</th>
                                 <th>Filial</th>
@@ -99,11 +100,12 @@
                         <tbody>
                             <c:forEach var="venda" items="${ListVenda}">
                                 <tr>
+                                    <td>${venda.getIdVenda()}</td>
                                     <td>${venda.getDataVenda()}</td>
                                     <td>${venda.getFuncionario().getNome()}</td>
                                     <td>${venda.getFilial().getNomeFilial()}</td>
                                     <td>${venda.getQuantidadeItens()}</td>
-                                    <td>${venda.getValor()}</td>
+                                    <td>R$ <fmt:formatNumber minFractionDigits="2" maxFractionDigits="2" value="${venda.getValor()}"/></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
@@ -127,6 +129,22 @@
                             </div>				      
                         </div>
                     </div> 
+
+                    <!-- Modal - DETALHE -->                    
+                    <div class="modal fade" id="modalDetalhe" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Detalhes da Venda</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                </div>
+                            </div>				      
+                        </div>
+                    </div>
+
 
                 </section>
             </div>
