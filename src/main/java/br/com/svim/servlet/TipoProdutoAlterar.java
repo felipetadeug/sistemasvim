@@ -25,7 +25,7 @@ public class TipoProdutoAlterar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        request.removeAttribute("msg");
+        
         
         try {
             Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
@@ -36,6 +36,8 @@ public class TipoProdutoAlterar extends HttpServlet {
                     response.sendRedirect("index.jsp");
                 }
             }
+            
+            request.removeAttribute("msg");
 
             TipoProduto tipo = new TipoProduto();
             tipo.setIdTipoProduto(Integer.parseInt(request.getParameter("id")));
@@ -45,9 +47,8 @@ public class TipoProdutoAlterar extends HttpServlet {
 
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
-            Telas tela = new Telas();
-            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
-            request.getRequestDispatcher(tela.getTipo_produtoScreen()).forward(request, response);
+            request.getSession().setAttribute("erro", "Algo de Errado Ocorreu: " + e.getMessage());
+            request.getRequestDispatcher("./TipoProdutoListar").forward(request, response);
         }
 
     }

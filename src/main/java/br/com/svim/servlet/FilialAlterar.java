@@ -25,38 +25,37 @@ public class FilialAlterar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.removeAttribute("msg");
-        
-        Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
-        if (funcionario == null) {
-            response.sendRedirect("index.jsp");
-        } else {
-            if (funcionario.getCargo().getHierarquia() < 3) {
-                response.sendRedirect("index.jsp");
-            }
-        }
-
-        Filial filial = new Filial();
-
-        filial.setIdFilial(Integer.parseInt(request.getParameter("id")));
-        filial.setNomeFilial(request.getParameter("nome"));
-        filial.setRua(request.getParameter("endereco"));
-        filial.setBairro(request.getParameter("bairro"));
-        filial.setCidade(request.getParameter("cidade"));
-        filial.setUf(request.getParameter("uf"));
-        filial.setCep(request.getParameter("cep"));
-        filial.setNumero(Integer.parseInt(request.getParameter("numero")));
-
         try {
+
+            Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
+            if (funcionario == null) {
+                response.sendRedirect("index.jsp");
+            } else {
+                if (funcionario.getCargo().getHierarquia() < 3) {
+                    response.sendRedirect("index.jsp");
+                }
+            }
+
+            request.removeAttribute("msg");
+
+            Filial filial = new Filial();
+
+            filial.setIdFilial(Integer.parseInt(request.getParameter("id")));
+            filial.setNomeFilial(request.getParameter("nome"));
+            filial.setRua(request.getParameter("endereco"));
+            filial.setBairro(request.getParameter("bairro"));
+            filial.setCidade(request.getParameter("cidade"));
+            filial.setUf(request.getParameter("uf"));
+            filial.setCep(request.getParameter("cep"));
+            filial.setNumero(Integer.parseInt(request.getParameter("numero")));
 
             FilialController.alterar(filial);
             request.getRequestDispatcher("./FilialListar").forward(request, response);
 
         } catch (Exception e) {
             System.err.println("ERROR ----> " + e);
-            Telas tela = new Telas();
-            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
-            request.getRequestDispatcher(tela.getFilialScreen()).forward(request, response);
+            request.getSession().setAttribute("erro", "Algo de Errado Ocorreu: " + e.getMessage());
+            request.getRequestDispatcher("./FilialListar").forward(request, response);
         }
     }
 

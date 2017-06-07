@@ -64,7 +64,6 @@ public class Relatorio extends HttpServlet {
             request.getRequestDispatcher(tela.getRelatorioScreen()).forward(request, response);
         } catch (Exception e) {
             System.err.println("ERRO -->" + e.getMessage());
-
             request.setAttribute("msg", "Algo de Errado Ocorreu: " + e);
             request.getRequestDispatcher(tela.getRelatorioScreen()).forward(request, response);
         }

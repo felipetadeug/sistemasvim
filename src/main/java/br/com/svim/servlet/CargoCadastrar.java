@@ -25,30 +25,30 @@ public class CargoCadastrar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.removeAttribute("msg");
-
-        Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
-        if (funcionario == null) {
-            response.sendRedirect("index.jsp");
-        } else {
-            if (funcionario.getCargo().getHierarquia() < 2) {
-                response.sendRedirect("index.jsp");
-            }
-        }
-
-        Cargo cargo = new Cargo();
-        cargo.setCargo(request.getParameter("cargo"));
-        cargo.setHierarquia(Integer.parseInt(request.getParameter("hierarquia")));
-
         try {
+
+            Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
+            if (funcionario == null) {
+                response.sendRedirect("index.jsp");
+            } else {
+                if (funcionario.getCargo().getHierarquia() < 2) {
+                    response.sendRedirect("index.jsp");
+                }
+            }
+
+            request.removeAttribute("msg");
+
+            Cargo cargo = new Cargo();
+            cargo.setCargo(request.getParameter("cargo"));
+            cargo.setHierarquia(Integer.parseInt(request.getParameter("hierarquia")));
+
             CargoController.cadastrar(cargo);
             request.getRequestDispatcher("./CargoListar").forward(request, response);
 
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
-            Telas tela = new Telas();
-            request.setAttribute("msg", "Algo de Errado Ocorreu: " + e);
-            request.getRequestDispatcher(tela.getCargoScreen()).forward(request, response);
+            request.getSession().setAttribute("erro", "Algo de Errado Ocorreu: " + e.getMessage());
+            request.getRequestDispatcher("./CargoListar").forward(request, response);
         }
     }
 

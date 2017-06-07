@@ -23,8 +23,6 @@ public class CargoListar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        request.removeAttribute("msg");
-        
         Telas tela = new Telas();
         
         try {
@@ -36,13 +34,21 @@ public class CargoListar extends HttpServlet {
                     response.sendRedirect("index.jsp");
                 }
             }
+            
+            String erro = (String) request.getSession().getAttribute("erro");
+            request.getSession().removeAttribute("erro");
+            if (erro != null) {
+                request.setAttribute("msg", erro);
+            } else {
+                request.removeAttribute("msg");             
+            }
 
             request.setAttribute("ListCargo", CargoController.obter());
             request.getRequestDispatcher(tela.getCargoScreen()).forward(request, response);
         } catch (Exception e) {
             
             System.err.println("ERROR ----> " + e);
-            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
+            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e.getMessage());
             request.getRequestDispatcher(tela.getCargoScreen()).forward(request, response);
         }
     }

@@ -25,7 +25,6 @@ public class FilialListar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         
-        request.removeAttribute("msg");
         
         Telas tela = new Telas();
         
@@ -38,13 +37,20 @@ public class FilialListar extends HttpServlet {
                     response.sendRedirect("index.jsp");
                 }
             }
+            
+            String erro = (String) request.getSession().getAttribute("erro");
+            request.getSession().removeAttribute("erro");
+            if (erro != null) {
+                request.setAttribute("msg", erro);
+            } else {
+                request.removeAttribute("msg");             
+            }
 
             request.setAttribute("ListFilial", FilialController.obter());
             request.setAttribute("UFsList", FilialController.ListUFs());
             request.getRequestDispatcher(tela.getFilialScreen()).forward(request, response);
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
-            
             request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
             request.getRequestDispatcher(tela.getFilialScreen()).forward(request, response);
         }

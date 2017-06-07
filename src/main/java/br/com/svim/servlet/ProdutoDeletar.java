@@ -22,9 +22,7 @@ public class ProdutoDeletar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.removeAttribute("msg");
-        
+
         try {
             Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
             if (funcionario == null) {
@@ -35,13 +33,14 @@ public class ProdutoDeletar extends HttpServlet {
                 }
             }
 
+            request.removeAttribute("msg");
+
             ProdutoController.deletar(Integer.parseInt(request.getParameter("id")));
             request.getRequestDispatcher("./ProdutoListar").forward(request, response);
         } catch (Exception e) {
             System.out.println("ERROR --->   " + e);
-            Telas tela = new Telas();
-            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
-            request.getRequestDispatcher(tela.getProdutoScreen()).forward(request, response);
+            request.getSession().setAttribute("erro", "Algo de Errado Ocorreu: " + e.getMessage());
+            request.getRequestDispatcher("./ProdutoListar").forward(request, response);
         }
     }
 

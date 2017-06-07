@@ -29,7 +29,7 @@ public class VendaCadastrar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        request.removeAttribute("msg");
+        
         
         try {
             if (request.getSession().getAttribute("funcionario") == null) {
@@ -52,6 +52,8 @@ public class VendaCadastrar extends HttpServlet {
                     items.add(item);
                 }
             }
+            
+            request.removeAttribute("msg");
 
             Funcionario funcionario = (Funcionario)request.getSession().getAttribute("funcionario");
             Filial filial = funcionario.getFilial();
@@ -66,9 +68,8 @@ public class VendaCadastrar extends HttpServlet {
             request.getRequestDispatcher("./VendaListar").forward(request, response);
         } catch (Exception e) {
             System.err.println("ERRO --->" + e.getMessage());
-            Telas tela = new Telas();
-            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
-            request.getRequestDispatcher(tela.getVendaScreen()).forward(request, response);
+            request.getSession().setAttribute("erro", "Algo de Errado Ocorreu: " + e.getMessage());
+            request.getRequestDispatcher("./VendaListarListar").forward(request, response);
         }
     }
 

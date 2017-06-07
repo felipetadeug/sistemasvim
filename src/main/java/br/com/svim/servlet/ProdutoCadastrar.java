@@ -24,9 +24,7 @@ public class ProdutoCadastrar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.removeAttribute("msg");
-        
+
         try {
             Funcionario funcionario = (Funcionario) request.getSession().getAttribute("funcionario");
             if (funcionario == null) {
@@ -36,6 +34,8 @@ public class ProdutoCadastrar extends HttpServlet {
                     response.sendRedirect("index.jsp");
                 }
             }
+
+            request.removeAttribute("msg");
 
             Produto produto = new Produto();
             produto.setProduto(request.getParameter("produto"));
@@ -48,9 +48,8 @@ public class ProdutoCadastrar extends HttpServlet {
 
         } catch (Exception e) {
             System.err.println("ERROR-----> " + e);
-            Telas tela = new Telas();
-            request.setAttribute("msg", "Algo de Errado Ocorreu: "+ e);
-            request.getRequestDispatcher(tela.getProdutoScreen()).forward(request, response);
+            request.getSession().setAttribute("erro", "Algo de Errado Ocorreu: " + e.getMessage());
+            request.getRequestDispatcher("./ProdutoListar").forward(request, response);
         }
     }
 
